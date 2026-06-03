@@ -37,7 +37,7 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1200://0px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -474,140 +474,139 @@
                 id: 2,
                 title: "Lesson 2: Introduction to Python Text-Based Code",
                 content: `
-                    <p>Now that you understand block configurations and sequences, it is time to look at real text-based programming using <strong>Python</strong>.</p>
-                    <p>In Python, instead of dragging visual logic puzzle fragments together, you type functional actions step-by-step. The rules regarding ordering still strictly apply. If you arrange statements out of sequence, or make typos, the computer cannot process your goals correctly. This is called a <em>syntax error</em>.</p>
-                    <p>Let's look at how to display word outputs on a machine dashboard using the <code>print()</code> instruction system:</p>
+                    <p>Now that you understand block configurations and sequences, it is time to transition into written, text-based programming using the <strong>Python</strong> language.</p>
+                    <p>In Python, instead of dragging visual logical elements together, you type functional commands line-by-line. The rules of logical layout and structure still strictly apply. If you write code elements out of sequence, or format your written text incorrectly, the machine will fail to understand your intentions. This is called a <em>syntax error</em>.</p>
+                    <p>To display standard output to your program terminal dashboard, use the built-in <code>print()</code> instruction system:</p>
                     <pre>print("Hello, World!")</pre>
-                    <p>Variables are data lockers inside your programs. They allow the engine to remember information like scores, coordinates, user profiles, or computations. For example, setting up a numerical storage box works like this:</p>
+                    <p>Variables serve as named data storage boxes in your software. They allow the engine to remember values like points, calculations, or status profiles. For example:</p>
                     <pre>score = 100\nprint(score)</pre>
-                    <p>Just like block models, your goal with text-based engines is to find clean, elegant solutions to complicated automation problems!</p>
                 `,
                 questions: [
-                    { id: "l2_q1", text: "What type of programming language is Python?", options: { A: "Visual Block-based", B: "Text-based", C: "Graphical layout only" }, correct: "B" },
-                    { id: "l2_q2", text: "What type of mistake is a code structural typo called in Python?", options: { A: "Syntax Error", B: "Block Error", C: "Robot Mistake" }, correct: "A" },
-                    { id: "l2_q3", text: "What feature functions as a 'data storage locker' inside an engineering program?", options: { A: "A script tag", B: "A sequence order box", C: "A Variable" }, correct: "C" }
+                    { id: "l2_q1", text: "What structural programming framework does Python utilize?", options: { A: "Visual Block configurations", B: "Text-based writing statements", C: "Image dragging layers" }, correct: "B" },
+                    { id: "l2_q2", text: "What formatting error breaks Python code processing rules?", options: { A: "Syntax Error", B: "Block Placement Error", C: "Logic Gap Exception" }, correct: "A" },
+                    { id: "l2_q3", text: "What container component acts as a named data storage cell?", options: { A: "A print statement", B: "A loop system", C: "A Variable" }, correct: "C" }
                 ]
             },
             {
                 id: 3,
                 title: "Lesson 3: String Data Types & Text Manipulation",
                 content: `
-                    <p>In Python, any alphanumeric text enveloped in quotation marks is explicitly processed as a <strong>String</strong> data type (<code>str</code>).</p>
-                    <p>Strings are immutable vectors of characters. You can merge strings together sequentially through an operation called <em>concatenation</em> using the <code>+</code> mathematical operator.</p>
+                    <p>In Python, any textual or alphanumeric content wrapped inside explicit quotation marks is parsed as a <strong>String</strong> data type (represented as <code>str</code>).</p>
+                    <p>Strings are immutable sequences of character units. You can join multiple text pieces into a continuous element through an operation called <em>concatenation</em> using the <code>+</code> operator.</p>
                     <pre>first_name = "Apex"\nlast_name = "Coder"\nfull_name = first_name + " " + last_name\nprint(full_name) # Outputs: Apex Coder</pre>
-                    <p>Be careful: trying to concatenate strings directly with bare numbers will prompt the system interpreter engine to break with a data mismatch exception.</p>
+                    <p>Attempting to concatenate raw text directly with numbers will cause a runtime type assignment exception.</p>
                 `,
                 questions: [
-                    { id: "l3_q1", text: "What data wrapper represents text parameters in Python?", options: { A: "Integer", B: "String", C: "Boolean" }, correct: "B" },
-                    { id: "l3_q2", text: "What operation merges two disparate text string pieces into a single unified continuous segment?", options: { A: "Concatenation", B: "Slicing", C: "Factoring" }, correct: "A" }
+                    { id: "l3_q1", text: "What Python data type represents standard written text content blocks?", options: { A: "Integer", B: "String", C: "Boolean" }, correct: "B" },
+                    { id: "l3_q2", text: "What operation joins separate text strings together into a unified sequence?", options: { A: "Concatenation", B: "Parsing", C: "Division" }, correct: "A" }
                 ]
             },
             {
                 id: 4,
                 title: "Lesson 4: Numerical Data Types (Integers vs. Floats)",
                 content: `
-                    <p>Python parses numbers through distinct quantitative configurations: whole units or fractional values.</p>
-                    <p>An <strong>Integer</strong> (<code>int</code>) represents an absolute whole number without a fractional fractional remainder element (e.g., -5, 0, 42).</p>
-                    <p>A <strong>Float</strong> (<code>float</code>) represents explicit floating-point values tracking decimals precisely (e.g., 3.14, -0.001, 2.0).</p>
+                    <p>Python parses arithmetic parameters through two primary formats depending on whether a decimal point is present.</p>
+                    <p>An <strong>Integer</strong> (<code>int</code>) handles whole numeric representations containing no fractional balance components (e.g., -5, 0, 100).</p>
+                    <p>A <strong>Float</strong> (<code>float</code>) explicitly logs fractional numeric values tracking precise floating-point decimals (e.g., 3.14, -0.5, 4.0).</p>
                     <pre>items_count = 12\nunit_price = 19.99\ntotal_cost = items_count * unit_price</pre>
                 `,
                 questions: [
-                    { id: "l4_q1", text: "Which assignment value natively resolves as an explicit Float data type parameter?", options: { A: "x = 5", B: "x = 5.0", C: "x = '5.0'" }, correct: "B" },
-                    { id: "l4_q2", text: "What keyword abbreviation identifies clean whole value integer fields inside code engines?", options: { A: "integer", B: "intg", C: "int" }, correct: "C" }
+                    { id: "l4_q1", text: "Which variable initialization represents a clean Float numerical type?", options: { A: "x = 5", B: "x = 5.0", C: "x = '5'" }, correct: "B" },
+                    { id: "l4_q2", text: "What short keyword flags clean, whole numerical parameters without fractions?", options: { A: "integer", B: "float", C: "int" }, correct: "C" }
                 ]
             },
             {
                 id: 5,
                 title: "Lesson 5: Basic Arithmetic Processing Operations",
                 content: `
-                    <p>Python utilizes standard intuitive operational signs to perform standard math formulas on numbers:</p>
+                    <p>Python relies on standard operational symbols to compute calculations across your math routines:</p>
                     <p><code>+</code> (Addition), <code>-</code> (Subtraction), <code>*</code> (Multiplication), and <code>/</code> (Division).</p>
-                    <p>Note that standard division operations using the single forward slash symbol always return a <code>float</code> output, even if the division evaluates perfectly into a whole number configuration balance.</p>
+                    <p>Note that standard division processing with a single slash always converts the output value into a <code>float</code> format, even if the result divides evenly into a whole value.</p>
                     <pre>result = (10 + 5) * 2\nprint(result) # Outputs: 30</pre>
                 `,
                 questions: [
-                    { id: "l5_q1", text: "What mathematical assignment character manages script multiplication processing calculations?", options: { A: "x", B: "*", C: "^" }, correct: "B" },
-                    { id: "l5_q2", text: "What baseline evaluation format type is always generated by a clean single-slash division rule?", options: { A: "Integer", B: "Float", C: "String" }, correct: "B" }
+                    { id: "l5_q1", text: "What character handles multiplication calculations in Python scripts?", options: { A: "x", B: "*", C: "^" }, correct: "B" },
+                    { id: "l5_q2", text: "What standard data type is consistently generated from a single-slash division rule?", options: { A: "Integer", B: "Float", C: "String" }, correct: "B" }
                 ]
             },
             {
                 id: 6,
                 title: "Lesson 6: Advanced Math Operators (Modulo, Floor Division, Exponents)",
                 content: `
-                    <p>Python includes advanced math tools for specific processing tasks:</p>
-                    <p>The <strong>Modulo</strong> operator (<code>%</code>) returns the remainder left over from a division problem.</p>
-                    <p>The <strong>Floor Division</strong> operator (<code>//</code>) divides two values and truncates the fractional decimal entirely, rounding down to the nearest whole integer.</p>
-                    <p>The <strong>Exponentiation</strong> operator (<code>**</code>) calculates power transformations (e.g., base raised to an exponent exponent).</p>
+                    <p>Python provides specialized math tools for advanced evaluation tasks:</p>
+                    <p>The <strong>Modulo</strong> operator (<code>%</code>) extracts the mathematical remainder left over following integer division.</p>
+                    <p>The <strong>Floor Division</strong> operator (<code>//</code>) divides values and drops the trailing decimal remainder completely, rounding down to the nearest whole integer.</p>
+                    <p>The <strong>Exponentiation</strong> operator (<code>**</code>) handles power calculations (base raised to an exponent exponent).</p>
                     <pre>remainder = 10 % 3\nfloor_div = 10 // 3\npower_val = 2 ** 3</pre>
                 `,
                 questions: [
-                    { id: "l6_q1", text: "What configuration operator extracts the remainder from structural integer division operations?", options: { A: "//", B: "%", C: "**" }, correct: "B" },
-                    { id: "l6_q2", text: "What evaluation output does 5 ** 2 generate inside a terminal session environment?", options: { A: "10", B: "25", C: "7" }, correct: "B" }
+                    { id: "l6_q1", text: "What syntax tool evaluates the remaining balance leftover after an integer division process?", options: { A: "//", B: "%", C: "**" }, correct: "B" },
+                    { id: "l6_q2", text: "What evaluation output does the execution expression 5 ** 2 return?", options: { A: "10", B: "25", C: "7" }, correct: "B" }
                 ]
             },
             {
                 id: 7,
                 title: "Lesson 7: Dynamic User Keyboard Inputs via input()",
                 content: `
-                    <p>To accept data straight from a user, we use the built-in global <code>input()</code> function.</p>
-                    <p><strong>Crucial Rule:</strong> The <code>input()</code> instruction capturing mechanism converts all recorded inbound strokes strictly into a <code>string</code> structure, regardless of what the user typed. If you need numerical digits for math formulas, you must explicitly convert them using target typecast definitions.</p>
+                    <p>To acquire dynamic interactive inputs from users, use the globally available <code>input()</code> function.</p>
+                    <p><strong>Crucial Rule:</strong> The <code>input()</code> command converts all inbound captured characters into a <code>string</code> structure, regardless of what the user typed. If you require numbers for arithmetic operations, you must typecast them explicitly.</p>
                     <pre>user_age = input("Enter your age: ")\nreal_age = int(user_age)</pre>
                 `,
                 questions: [
-                    { id: "l7_q1", text: "What type profile is natively returned by the base default input() framework function?", options: { A: "Integer", B: "String", C: "Float" }, correct: "B" },
-                    { id: "l7_q2", text: "What utility command method wraps string data vectors to convert them cleanly into formal mathematical integers?", options: { A: "str()", B: "float()", C: "int()" }, correct: "C" }
+                    { id: "l7_q1", text: "What base data profile type is returned by the default input() function call?", options: { A: "Integer", B: "String", C: "Float" }, correct: "B" },
+                    { id: "l7_q2", text: "What validation wrapper changes typed string records into functional mathematical integers?", options: { A: "str()", B: "float()", C: "int()" }, correct: "C" }
                 ]
             },
             {
                 id: 8,
                 title: "Lesson 8: Boolean Logic Matrices (True vs. False)",
                 content: `
-                    <p>A <strong>Boolean</strong> data type tracks binary evaluation states: either <code>True</code> or <code>False</code>.</p>
-                    <p>Note that both literal designations require absolute proper capitalization configuration signatures. Typing lowercase <code>true</code> or <code>false</code> will trigger immediate script breakdown crashes.</p>
+                    <p>A <strong>Boolean</strong> data type tracks evaluation states: either <code>True</code> or <code>False</code>.</p>
+                    <p>Note that both valid states require strict casing initialization properties. Typing lowercase references like <code>true</code> or <code>false</code> will result in a script crash.</p>
                     <pre>is_active = True\nhas_clearance = False</pre>
                 `,
                 questions: [
-                    { id: "l8_q1", text: "Which option represents a perfectly formatted legal Boolean literal initialization statement?", options: { A: "is_valid = true", B: "is_valid = True", C: "is_valid = 'True'" }, correct: "B" },
-                    { id: "l8_q2", text: "How many absolute evaluation conditional value state tracks are covered by standard Boolean variables?", options: { A: "1", B: "2", C: "Infinite" }, correct: "B" }
+                    { id: "l8_q1", text: "Which initialization code line sets up a valid Boolean type reference?", options: { A: "is_valid = true", B: "is_valid = True", C: "is_valid = 'True'" }, correct: "B" },
+                    { id: "l8_q2", text: "How many absolute logical assessment values can a standard Boolean type track?", options: { A: "1", B: "2", C: "Infinite" }, correct: "B" }
                 ]
             },
             {
                 id: 9,
                 title: "Lesson 9: Evaluation Operators (Comparisons)",
                 content: `
-                    <p>Comparison tools evaluate specific equations and return Boolean answers:</p>
-                    <p><code>==</code> (Equality verification check), <code>!=</code> (Inequality/not equal check), <code>&gt;</code> (Greater than), <code>&lt;</code> (Less than), <code>&gt;=</code> (Greater or equal), and <code>&lt;=</code> (Less or equal).</p>
-                    <p><strong>Warning:</strong> Never mix up the double equal validation comparator <code>==</code> with the single assignment engine operator <code>=</code> which shifts value metrics to variables.</p>
+                    <p>Comparison tools evaluate programmatic relationships and return Boolean answers:</p>
+                    <p><code>==</code> (Equality verification check), <code>!=</code> (Inequality check), <code>&gt;</code> (Greater than), <code>&lt;</code> (Less than), <code>&gt;=</code> (Greater or equal), and <code>&lt;=</code> (Less or equal).</p>
+                    <p><strong>Warning:</strong> Do not confuse the equality comparison check <code>==</code> with the single equals assignment symbol <code>=</code> which assigns values to variables.</p>
                     <pre>check_val = (10 == 5 * 2) # Resolves to: True</pre>
                 `,
                 questions: [
-                    { id: "l9_q1", text: "Which expression token verifies absolute parameter equality check matching?", options: { A: "=", B: "==", C: "===" }, correct: "B" },
-                    { id: "l9_q2", text: "What is the structural output configuration for expression segment evaluating (15 != 15)?", options: { A: "True", B: "False", C: "Syntax Error" }, correct: "False" }
+                    { id: "l9_q1", text: "Which expression symbol checks for exact equality match conditions inside evaluations?", options: { A: "=", B: "==", C: "===" }, correct: "B" },
+                    { id: "l9_q2", text: "What is the structural evaluation output of the code segment (15 != 15)?", options: { True: "True", False: "False" }, correct: "False" }
                 ]
             },
             {
                 id: 10,
                 title: "Lesson 10: Conditional Branch Processing Logic (if Blocks)",
                 content: `
-                    <p>Conditional branches allow programs to make decisions based on runtime values. An <code>if</code> block evaluates an expression condition; if that expression resolves as <code>True</code>, the code indented directly under it executes.</p>
-                    <p>Python establishes block groups using clean line spacing indent gaps instead of brackets or braces. Every control block header declaration requires a formal colon character (<code>:</code>) terminal symbol.</p>
+                    <p>Conditional structures allow your scripts to react differently based on current values. An <code>if</code> block evaluates an expression condition; if it evaluates as <code>True</code>, the code blocks indented directly under it execute.</p>
+                    <p>Python handles structural groupings via clear line spacing indents instead of braces. Block headers require a trailing colon character (<code>:</code>) symbol.</p>
                     <pre>score = 95\nif score >= 90:\n    print("Performance Level: A")</pre>
                 `,
                 questions: [
-                    { id: "l10_q1", text: "What syntax punctuation token must terminate all standard conditional block statement headers?", options: { A: ";", B: ".", C: ":" }, correct: "C" },
-                    { id: "l10_q2", text: "How does the Python parsing engine determine where conditional block contents begin and end?", options: { A: "Curly Braces {}", B: "Indentation alignment blocks", C: "Parentheses ()" }, correct: "B" }
+                    { id: "l10_q1", text: "What syntax punctuation token must terminate all standard conditional control block headers?", options: { A: ";", B: ".", C: ":" }, correct: "C" },
+                    { id: "l10_q2", text: "How does Python identify lines belonging directly to an activated if block?", options: { A: "By enclosing them in braces {}", B: "By uniform indentation spacing blocks", C: "By parenthesis wrappers ()" }, correct: "B" }
                 ]
             },
             {
                 id: 11,
                 title: "Lesson 11: Alternate Execution Control Blocks (else Statements)",
                 content: `
-                    <p>The <code>else</code> keyword defines a fallback block. It executes if, and only if, the preceding conditional check evaluates to <code>False</code>.</p>
-                    <p>An <code>else</code> clause cannot track explicit test criteria equations independently, and must stay perfectly level with its original parent <code>if</code> signature context block.</p>
+                    <p>The <code>else</code> keyword defines a fallback block. It executes if, and only if, all preceding conditional equations evaluate as <code>False</code>.</p>
+                    <p>An <code>else</code> block cannot track separate, distinct logical equations independently, and must stay aligned with its original parent <code>if</code> context statement block.</p>
                     <pre>age = 16\nif age >= 18:\n    print("Access Unlocked")\nelse:\n    print("Access Denied: Age Threshold Unmet")</pre>
                 `,
                 questions: [
-                    { id: "l11_q1", text: "True or False: An independent else statement block can specify logical condition rules directly inside its header.", options: { True: "True", False: "False" }, correct: "False" },
+                    { id: "l11_q1", text: "True or False: An isolated else statement block can specify logic condition checks directly inside its header signature.", options: { True: "True", False: "False" }, correct: "False" },
                     { id: "l11_q2", text: "When does code nested inside an else execution fallback pathway trigger?", options: { A: "When parent checking condition fails", B: "When checking condition passes" }, correct: "A" }
                 ]
             },
@@ -615,12 +614,12 @@
                 id: 12,
                 title: "Lesson 12: Multi-Test Control Routes (elif Chains)",
                 content: `
-                    <p>To evaluate multiple conditions sequentially, use the <code>elif</code> keyword (short for "else if").</p>
-                    <p>Python runs these checks from top to bottom. As soon as one condition evaluates to <code>True</code>, its corresponding block executes, and the rest of the chain is skipped.</p>
+                    <p>To check multiple conditions sequentially, use the <code>elif</code> keyword (short for "else if").</p>
+                    <p>Python runs these checks from top to bottom. As soon as one condition evaluates to <code>True</code>, its code runs, and the rest of the chain is skipped entirely.</p>
                     <pre>status_code = 404\nif status_code == 200:\n    print("Success")\nelif status_code == 404:\n    print("Resource Missing")\nelse:\n    print("General Warning")</pre>
                 `,
                 questions: [
-                    { id: "l12_q1", text: "Which keyword handles multi-tier conditional routing checks in Python?", options: { A: "elseif", B: "elif", C: "else if" }, correct: "B" },
+                    { id: "l12_q1", text: "Which keyword handles multi-tier conditional evaluation statements inside Python?", options: { A: "elseif", B: "elif", C: "else if" }, correct: "B" },
                     { id: "l12_q2", text: "True or False: Python runs multiple matching blocks inside an elif chain if more than one condition is true.", options: { True: "True", False: "False" }, correct: "False" }
                 ]
             },
@@ -641,10 +640,10 @@
             },
             {
                 id: 14,
-                title: "Lesson 14: Automated Interation Loops (while Systems)",
+                title: "Lesson 14: Automated Iteration Loops (while Systems)",
                 content: `
-                    <p>A <code>while</code> loop continuously executes a targeted programmatic block as long as its core condition remains evaluated as <code>True</code>.</p>
-                    <p>You must manipulate the checking boundary variable inside the loop block architecture to prevent setting off an endless, destructive execution pattern called an <em>infinite loop</em>.</p>
+                    <p>A <code>while</code> loop continuously executes a targeted block of code as long as its core condition remains evaluated as <code>True</code>.</p>
+                    <p>You must modify the loop variables within the block to eventually make the condition false. Otherwise, you will create an endless, system-stalling cycle called an <em>infinite loop</em>.</p>
                     <pre>counter = 0\nwhile counter < 3:\n    print("Processing index")\n    counter = counter + 1</pre>
                 `,
                 questions: [
@@ -656,8 +655,8 @@
                 id: 15,
                 title: "Lesson 15: Sequence Iterations (for Loop Containers)",
                 content: `
-                    <p>A <code>for</code> loop steps structural sequence fields over defined elements directly. It extracts indices or list items consecutively without tracking incremental arithmetic boundaries manually.</p>
-                    <p>The global built-in <code>range(start, stop)</code> tool is commonly utilized to automate loops over numerical parameters securely.</p>
+                    <p>A <code>for</code> loop steps through sequential items directly. It extracts indices or elements consecutively without tracking increment metrics manually.</p>
+                    <p>The built-in <code>range(start, stop)</code> function is commonly used to generate a sequence of numbers to loop through.</p>
                     <pre>for index in range(0, 5):\n    print(index)  # Iterates integers 0 through 4 cleanly</pre>
                 `,
                 questions: [
@@ -669,8 +668,8 @@
                 id: 16,
                 title: "Lesson 16: Python Structured Data Lists",
                 content: `
-                    <p>A <strong>List</strong> is an ordered, modifiable collection enclosed in square brackets (<code>[]</code>). Lists handle varied information storage arrays within a single variable wrapper.</p>
-                    <p>Individual entries inside list configurations are read via zero-based structural numbering indices. This means your first item resides at position <code>0</code>, the second at index <code>1</code>, and so forth.</p>
+                    <p>A <strong>List</strong> is an ordered, modifiable collection enclosed in square brackets (<code>[]</code>). Lists handle varied information items within a single variable wrapper.</p>
+                    <p>Individual elements inside a list are accessed using zero-based numbering indices. This means your first item resides at index <code>0</code>, the second at index <code>1</code>, and so on.</p>
                     <pre>languages = ["Python", "Java", "C++"]\nprint(languages[0])  # Outputs: Python</pre>
                 `,
                 questions: [
@@ -682,10 +681,10 @@
                 id: 17,
                 title: "Lesson 17: Dynamic List Operations",
                 content: `
-                    <p>You can adjust list structures dynamically during execution using utility method extensions:</p>
-                    <p>Use <code>.append(item)</code> to insert a fresh parameter at the end of your list layout.</p>
-                    <p>Use <code>.remove(item)</code> to search for and eliminate an explicit entry value profile.</p>
-                    <p>Use the global <code>len(your_list)</code> tool to count the items inside a list structure.</p>
+                    <p>You can modify list structures dynamically during program execution using built-in list methods:</p>
+                    <p>Use <code>.append(item)</code> to insert a new element at the end of your list.</p>
+                    <p>Use <code>.remove(item)</code> to locate and delete a specific item value from the collection.</p>
+                    <p>Use the global <code>len(your_list)</code> function to count the current number of items inside a list.</p>
                     <pre>scores = [88, 92]\nscores.append(79)  # scores becomes [88, 92, 79]</pre>
                 `,
                 questions: [
