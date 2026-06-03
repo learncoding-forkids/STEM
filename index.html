@@ -3,858 +3,1218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Coding Course</title>
+    <title>CodeAcademy - Master Coding Foundations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #3498db;
-            --success-color: #2ecc71;
-            --danger-color: #e74c3c;
-            --light-bg: #f8f9fa;
-            --text-color: #333;
-            --sidebar-width: 280px;
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --border-color: #1f2937;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            display: flex;
-            background-color: var(--light-bg);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-color);
-            height: 100vh;
-            overflow: hidden;
+            line-height: 1.6;
         }
 
-        /* Sidebar Styling */
-        #sidebar {
-            width: var(--sidebar-width);
-            background-color: var(--primary-color);
-            color: white;
+        /* Navigation Bar */
+        header {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            background-color: var(--border-color);
+        }
+
+        .tab-btn.active {
+            color: #fff;
+            background-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        main {
+            max-width: 1400px;
+            margin: 2.5rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Contact Tab Layout */
+        .contact-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3.5rem;
+            text-align: center;
+            max-width: 650px;
+            margin: 2rem auto;
+        }
+
+        .contact-card h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-options {
             display: flex;
             flex-direction: column;
-            height: 100%;
-            flex-shrink: 0;
+            gap: 1.25rem;
         }
 
-        .sidebar-header {
-            padding: 20px;
-            background-color: #1a252f;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: center;
-            border-bottom: 1px solid #34495e;
+        .email-btn {
+            display: block;
+            background-color: var(--border-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 1.1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
         }
 
-        .sidebar-menu {
-            list-style: none;
+        .email-btn:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(59, 130, 246, 0.08);
+        }
+
+        /* Syllabus Sidebar Dashboard Layout */
+        .lessons-layout {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .lessons-sidebar {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 140px);
             overflow-y: auto;
-            flex-grow: 1;
+        }
+
+        .lessons-sidebar h3 {
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
         }
 
         .sidebar-item {
-            padding: 12px 20px;
-            cursor: pointer;
-            border-bottom: 1px solid #34495e;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            text-align: left;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 0.4rem;
+            transition: all 0.2s ease;
+            gap: 0.5rem;
         }
 
-        .sidebar-item:hover {
-            background-color: var(--secondary-color);
+        .sidebar-item:disabled {
+            cursor: not-allowed;
+            opacity: 0.35;
+        }
+
+        .sidebar-item:not(:disabled):hover {
+            color: #fff;
+            background-color: var(--border-color);
         }
 
         .sidebar-item.active {
+            color: #fff;
             background-color: var(--accent-color);
-            font-weight: bold;
         }
 
-        .badge {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+        .status-icon {
+            font-size: 0.9rem;
+            flex-shrink: 0;
         }
 
-        /* Main Content Styling */
-        #main-content {
-            flex-grow: 1;
-            padding: 40px;
-            overflow-y: auto;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        /* Content Workspace Display Panel */
+        .lesson-panel {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .container {
-            max-width: 850px;
-            width: 100%;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        .lesson-panel h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
 
-        h1, h2, h3 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
+        .lesson-content {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            margin-bottom: 3.5rem;
         }
 
-        p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
+        .lesson-content p {
+            margin-bottom: 1.5rem;
         }
 
-        ul, ol {
-            margin-left: 25px;
-            margin-bottom: 20px;
+        .lesson-content ul {
+            margin: 1rem 0 1.5rem 2rem;
         }
 
-        li {
-            margin-bottom: 8px;
-            line-height: 1.5;
+        .lesson-content li {
+            margin-bottom: 0.5rem;
         }
 
-        /* Code Block Styling */
-        pre {
-            background-color: #272822;
-            color: #f8f8f2;
-            padding: 15px 20px;
-            border-radius: 6px;
-            font-family: 'Courier New', Courier, monospace;
-            overflow-x: auto;
-            margin: 20px 0;
-            line-height: 1.4;
-        }
-
-        code {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #eef2f5;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #c7254e;
-        }
-
-        pre code {
-            background-color: transparent;
-            padding: 0;
-            color: inherit;
-        }
-
-        /* Quiz Box Styling */
-        .quiz-section {
-            margin-top: 40px;
-            border-top: 2px solid #eee;
-            padding-top: 30px;
-        }
-
-        .quiz-card {
-            background-color: var(--light-bg);
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 20px;
+        .lesson-content code {
+            display: block;
+            background-color: var(--bg-color);
+            padding: 1.25rem 1.75rem;
             border-left: 4px solid var(--accent-color);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: #60a5fa;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .side-note-box {
+            background-color: rgba(59, 130, 246, 0.05);
+            border: 1px dashed rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .side-note-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Custom Project Area styles */
+        .project-input-zone {
+            margin-top: 1.5rem;
+        }
+
+        .project-textarea {
+            width: 100%;
+            height: 220px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            padding: 1.25rem;
+            font-family: monospace;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+
+        .project-textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Quiz UI Module Styling */
+        .quiz-container {
+            border-top: 1px solid var(--border-color);
+            padding-top: 3.5rem;
+        }
+
+        .quiz-container h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.75rem;
+            font-weight: 600;
+        }
+
+        .question-block {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
         }
 
         .question-text {
             font-weight: 600;
-            margin-bottom: 12px;
+            font-size: 1.15rem;
+            margin-bottom: 1.25rem;
         }
 
-        .options-group {
+        .options-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 0.85rem;
         }
 
         .option-label {
             display: flex;
             align-items: center;
-            gap: 10px;
-            background: white;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            gap: 0.85rem;
+            padding: 0.85rem 1.25rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s;
+            font-size: 1rem;
+            transition: all 0.15s ease;
         }
 
         .option-label:hover {
-            background: #edf7ff;
+            border-color: var(--text-muted);
+            background-color: rgba(255,255,255,0.02);
         }
 
-        /* Contact Form Styling */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+        .option-label input {
+            accent-color: var(--accent-color);
+            width: 1.1rem;
+            height: 1.1rem;
+            flex-shrink: 0;
         }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .form-group label {
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        .form-group input, .form-group textarea {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Buttons Navigation */
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-
-        button {
-            padding: 12px 24px;
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            padding: 1.1rem 2.25rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: opacity 0.2s;
+            transition: background-color 0.2s ease;
         }
 
-        button:hover {
-            opacity: 0.9;
+        .submit-btn:hover {
+            background-color: var(--accent-hover);
         }
 
-        .btn-primary { background-color: var(--accent-color); color: white; }
-        .btn-secondary { background-color: #95a5a6; color: white; }
-        .btn-success { background-color: var(--success-color); color: white; }
+        .done-btn {
+            background-color: var(--success-color);
+            color: #fff;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
 
-        /* Custom Tkinter Modal Simulator */
-        .modal-overlay {
+        .done-btn:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* Score & Progression Window Overlays */
+        .quiz-feedback {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .quiz-feedback.success {
+            display: block;
+            background-color: rgba(16, 185, 129, 0.08);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+
+        .quiz-feedback.error {
+            display: block;
+            background-color: rgba(239, 68, 68, 0.08);
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+        }
+
+        /* Modal Popup Window */
+        .popup-overlay {
+            display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            visibility: hidden;
-            opacity: 0;
-            transition: all 0.3s ease;
         }
 
-        .modal-overlay.show {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .tkinter-window {
-            background: #f0f0f0;
-            border: 2px solid #777;
-            border-radius: 3px;
-            width: 320px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            font-family: sans-serif;
-        }
-
-        .tkinter-titlebar {
-            background: linear-gradient(to bottom, #4a90e2, #2176ff);
-            color: white;
-            padding: 4px 8px;
-            font-size: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .tkinter-body {
-            padding: 20px;
+        .popup-box {
+            background-color: var(--card-bg);
+            border: 2px solid var(--success-color);
+            padding: 3.5rem;
+            border-radius: 16px;
+            max-width: 550px;
             text-align: center;
-            background: #f0f0f0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            animation: popScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .tkinter-btn {
-            background: #e1e1e1;
-            border: 1px solid #adadad;
-            color: black;
-            padding: 5px 20px;
-            font-size: 12px;
+        @keyframes popScale {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-box h4 {
+            font-size: 2.25rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .popup-box p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .popup-close-btn {
+            background-color: var(--success-color);
+            color: #fff;
+            border: none;
+            padding: 0.85rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
             cursor: pointer;
-            margin-top: 15px;
-            box-shadow: inset 0 1px 0 white;
         }
 
-        .tkinter-btn:active {
-            background: #c1c1c1;
+        /* Responsive UI viewports adjustment */
+        @media (max-width: 1024px) {
+            .lessons-layout {
+                grid-template-columns: 1fr;
+            }
+            .lessons-sidebar {
+                position: relative;
+                top: 0;
+                max-height: 250px;
+            }
+            .lesson-panel {
+                padding: 2rem;
+            }
         }
-
-        /* Grading and Feedback elements */
-        .feedback-message {
-            margin-top: 15px;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 4px;
-            display: none;
-        }
-        .correct { background-color: #d4edda; color: #155724; }
-        .incorrect { background-color: #f8d7da; color: #721c24; }
     </style>
 </head>
 <body>
 
-    <nav id="sidebar">
-        <div class="sidebar-header">Coding Curriculum</div>
-        <ul class="sidebar-menu" id="menu-list"></ul>
-    </nav>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Code<span>Academy</span></div>
+            <nav>
+                <button class="tab-btn active" onclick="switchMainTab('lessons-tab')">Online Lessons</button>
+                <button class="tab-btn" onclick="switchMainTab('contact-tab')">Contact Tutoring</button>
+            </nav>
+        </div>
+    </header>
 
-    <main id="main-content">
-        <div class="container" id="content-pane"></div>
+    <main>
+        <section id="contact-tab" class="content-section">
+            <div class="contact-card">
+                <h2>Get Expert Coding Tutoring</h2>
+                <p>Ready to level up your technical skills? Connect directly with our primary course instructors to schedule personalized, one-on-one debugging sessions and code reviews.</p>
+                <div class="contact-options">
+                    <a href="mailto:saleel.khisti@gmail.com" class="email-btn">Email Saleel Khisti</a>
+                    <a href="mailto:viha.koparde@gmail.com" class="email-btn">Email Viha Koparde</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="lessons-tab" class="content-section active">
+            <div class="lessons-layout">
+                
+                <aside class="lessons-sidebar">
+                    <h3>Course Syllabus</h3>
+                    <div id="sidebar-buttons">
+                        </div>
+                </aside>
+
+                <article class="lesson-panel" id="lesson-panel-container">
+                    </article>
+
+            </div>
+        </section>
     </main>
 
-    <div class="modal-overlay" id="popup-overlay">
-        <div class="tkinter-window">
-            <div class="tkinter-titlebar">
-                <span>Success!</span>
-                <span style="cursor:pointer" onclick="closePopup()">×</span>
-            </div>
-            <div class="tkinter-body">
-                <p style="font-size: 13px; font-family: sans-serif; margin-bottom:0;">YOU HAVE FINISHED THE CODING LESSONS!</p>
-                <button class="tkinter-btn" onclick="closePopup()">OK</button>
-            </div>
+    <div class="popup-overlay" id="completion-modal">
+        <div class="popup-box">
+            <h4>Congratulations!</h4>
+            <p id="modal-msg">YOU HAVE FINISHED THE CODING LESSONS!</p>
+            <button class="popup-close-btn" onclick="closeCompletionModal()">Return to Dashboard</button>
         </div>
     </div>
 
     <script>
+        // Data Vault containing full, raw unedited course curriculum inputs
         const courseData = [
             {
+                id: 1,
+                title: "Lesson 1: Intro to Coding",
+                type: "quiz",
+                content: `
+                    <p>So…you want to learn coding, well here is how to start. We will begin with basic block coding. Coding is giving a robot instructions for it to follow. In the world of coding, there are many “languages” to learn or different ways to write code. We will be focusing on block and python coding. Coding is providing detailed and formatted plans to a robot. This is the core idea of coding for all languages.</p>
+                    <p>Block coding consists of prepared sets of code. Each block has a unique purpose such as,“Hello,” or “What is your name?” When you structure the blocks correctly, the computer performs them in order. This is called a sequence. Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error.</p>
+                    <p>Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it. Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent an accurate solution. Mistakes are ok though, they are just a part of the coding process.</p>
+                    <p>Computers can’t guess what you want to code. If you just say “make a calculator" the computer won’t know what to do. You must break the task into steps.</p>
+                    <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. Coding is essential for every person to learn and develop.</p>
+                    <p>The number one rule of coding is to find unique solutions to problems.</p>
+                `,
+                quiz: [
+                    { q: "What is the core idea of coding?", options: ["Conditionals", "Giving detailed plans to a robot", "Solving equations", "Computing equations"], ans: 1 },
+                    { q: "True or False: There is only one coding language.", options: ["True", "False"], ans: 1 },
+                    { q: "What is block coding made up of?", options: ["Lines of code", "Arithmetic code", "Sets of code", "Linear code"], ans: 2 },
+                    { q: "Do all blocks in block coding have the same purpose?", options: ["Yes", "No"], ans: 1 },
+                    { q: "What is it called when a computer performs blocks in order?", options: ["Sequence", "Order", "Method", "Pathway"], ans: 0 },
+                    { q: "What is coding used for?", options: ["Solve problems", "Social media", "Make websites", "All of the above"], ans: 3 },
+                    { q: "What is debugging?", options: ["Fixing mistakes", "Finalizing an idea"], ans: 0 },
+                    { q: "True or False: Mistakes in coding are okay.", options: ["True", "False"], ans: 0 },
+                    { q: "What is the number one rule of coding?", options: ["Find unique ways to solve a problem", "Make robots"], ans: 0 }
+                ]
+            },
+            {
+                id: 2,
+                title: "Lesson 2: Core Functions",
+                type: "quiz",
+                content: `
+                    <p>In the previous lesson we learned about the basics of what coding is. In coding there are a multitude of different functions that do different tasks. In coding, we use these functions to create solutions to various things. The fundamental functions in block coding are conditionals, and loops. To make these functions you first require a variable which is a piece of code that stores data. This data can be altered with preset code or inputs.</p>
+                    <p>Inputs are coding lines that require a non-pregenerated response. In other words they take the data from and respond to someone or something giving it. This is essential for block coding because based on the input, the action performed can be different.</p>
+                    <p>With inputs, there must be an output. Without an output the input has no purpose. Depending on the input the output can vary. If I put in one the output can be different then if I input two. This means that inputs and outputs are always linked together.</p>
+                    <p>Every part of coding, whether it be variables, conditionals, loops, impetus, or outputs play an essential role in coding.</p>
+                `,
+                quiz: [
+                    { q: "What is a variable in block coding?", options: ["A picture used in coding", "A piece of code that stores data", "A type of robot", "A coding mistake"], ans: 1 },
+                    { q: "What can happen to the data inside a variable?", options: ["It can never be changed", "It can only be erased", "It can be changed by preset code or inputs", "It disappears after one use"], ans: 2 },
+                    { q: "What are inputs?", options: ["Lines of code that require a response or data", "A computer sound effect", "A block used only for decoration", "Something that deletes variables"], ans: 0 },
+                    { q: "Why are inputs important?", options: ["They make the robot look cool", "They allow the code to receive information", "They replace all other coding blocks", "They are only used in video games"], ans: 1 },
+                    { q: "What must always be paired with an input?", options: ["A color code", "An extra computer", "An output", "A password"], ans: 2 },
+                    { q: "What is an output?", options: ["A random sound", "The action or result that happens after an input", "A broken part of code", "A type of robot"], ans: 1 },
+                    { q: "What are conditionals used for in block coding?", options: ["To repeat code over and over", "To make decisions based on a condition (like if something happens)", "To erase variables", "To decorate the screen"], ans: 1 },
+                    { q: "What is a loop used for?", options: ["To stop the program", "To repeat a set of instructions multiple times", "To change colors", "To delete outputs"], ans: 1 },
+                    { q: "Which of the following shows how input and output work together?", options: ["The computer ignores the input", "You press a key (input) and a character moves (output)", "The robot shuts down", "The program restarts automatically"], ans: 1 },
+                    { q: "What is the main idea of this lesson?", options: ["Coding is just for fun", "All parts of block coding (variables, inputs, outputs, loops, conditionals) work together to solve problems", "Coding never uses data", "Outputs are not important"], ans: 1 }
+                ]
+            },
+            {
+                id: 3,
+                title: "Lesson 3: Intro to Variables",
+                type: "quiz",
+                content: `
+                    <p>In the previous lesson we briefly talked about variables. In the next couple lessons, we will further dive into the concept of variables. Have you ever kept a secret code or nickname for something? That is similar to a variable in coding! Think of variables as a special box that holds information. Now imagine the box has a label. The label tells you what the box is for, and inside the box you can put different things.</p>
+                    <p>For example, imagine you have a box labeled "Favorite food." One day, you might put chocolate in the box. Another day, you might change it to a banana. The box stays the same, but what is inside it can change. That is exactly how variables work! They help computers remember information that can change.</p>
+                    <p>Variables are super useful when coding because they let us store numbers, words, or answers. If we are making a game, we might use a variable to keep track of a score. Each time you earn points, the score changes. The variable helps the computer remember the new score.</p>
+                    <p>So, a variable is just a name for something we want to remember. It is like a little memory helper that makes coding easier.</p>
+                `,
+                quiz: [
+                    { q: "What is a variable in coding?", options: ["A type of food", "A special box that holds information", "A computer game"], ans: 1 },
+                    { q: "What does the label on a variable (the box) tell us?", options: ["The color of the box", "What the box is for", "Who owns the box"], ans: 1 },
+                    { q: "True or False: The information inside a variable can change.", options: ["True", "False"], ans: 0 },
+                    { q: "Which of these is an example of a variable?", options: ["A box labeled “Favorite Food”", "A rock", "A pencil"], ans: 0 },
+                    { q: "If your variable is labeled \"Favorite Food\", can you change what is inside it?", options: ["No", "Yes"], ans: 1 },
+                    { q: "Fill in the blank: Variables help computers ______ information.", options: ["Eat", "Hide", "Remember"], ans: 2 },
+                    { q: "In a video game, what might a variable be used to keep track of?", options: ["The player’s score", "The number of buttons on the keyboard", "The color of the sky"], ans: 0 },
+                    { q: "True or False: The box changes, but the thing inside stays the same.", options: ["True", "False"], ans: 1 },
+                    { q: "What happens when you change what is inside a variable?", options: ["The box disappears", "The label changes", "Only the information changes"], ans: 2 },
+                    { q: "Fill in the blank: A variable is like a little memory ______.", options: ["Monster", "Helper", "Puzzle"], ans: 1 }
+                ]
+            },
+            {
                 id: 4,
-                title: "Lesson 4: How Variables Work",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 4: How Variables Work in a Program</h2>
-                    <p>Now that we have learned what a variable is, let’s take the next step and learn how variables work when we use them in coding. Remember, a variable is like a box with a label that stores information. But how do we actually use this box in a program?</p>
+                title: "Lesson 4: Variables in Action",
+                type: "quiz",
+                content: `
+                    <p>Now that we understand variables and how they store information, let’s take the next step and learn how variables work when we use them in coding. Remember, a variable is like a box with a label that stores information. But how do we actually use this box in a program?</p>
                     <p>First, let’s think about how we use labels in real life. Imagine you have three boxes:</p>
-                    <ul>
-                        <li>One labeled <strong>Snacks</strong></li>
-                        <li>One labeled <strong>Toys</strong></li>
-                        <li>One labeled <strong>Art Supplies</strong></li>
-                    </ul>
+                    <p>One labeled Snacks</p>
+                    <p>One labeled Toys</p>
+                    <p>One labeled Art Supplies</p>
                     <p>Because of the labels, you know what belongs in each box. If you want to find your crayons, you don’t look in the snack box, you look in the Art Supplies box. The label guides you. Variables work just like that. The name of the variable tells the computer what kind of information we are storing.</p>
                     <p>Now, inside each box, the objects can be changed. You might have cookies in the snack box today and chips tomorrow. The box remains the same, but the contents change. This is exactly what happens with variables. The value inside the variable can be changed anytime we need.</p>
-                    <p>Let’s look at an example in a game. Imagine we want to keep track of our score:</p>
-                    <pre>score = 0</pre>
-                    <p>This means we made a variable called score, and we put the number 0 inside the box. If you earn points, we change the value.</p>
-                    <pre>score = score + 1</pre>
-                    <p>This means we take what is already in the score box, add one, and put the new number back into the same box. The label score stays the same, but the number inside changes.</p>
+                    <p>Let’s look at an example in a game. Imagine we want to keep track of our score: This means we made a variable called score, and we put the number 0 inside the box. If you earn points, we change the value. This means we take what is already in the score box, add one, and put the new number back into the same box. The label score stays the same, but the number inside changes.</p>
                     <p>Variables can hold all kinds of information, not just numbers. They can also store:</p>
                     <ul>
-                        <li>Names, Words, Colors</li>
-                        <li>Yes-or-no answers, Messages</li>
+                        <li>Names</li>
+                        <li>Words</li>
+                        <li>Colors</li>
+                        <li>Yes-or-no answers</li>
+                        <li>Messages</li>
                     </ul>
-                    <p>Variables are important because they let the computer keep track of changing information. Without variables, the computer would forget everything as soon as it happened.</p>
+                    <p>This helps the computer remember information throughout the program. Without variables, the computer would forget everything as soon as it happened. Variables act like the computer’s memory helpers.</p>
+                    <p>So remember:</p>
+                    <p>• A variable is a labeled box.<br>• The label tells us what the box is for.<br>• The contents of the box can change anytime.<br>• Variables help computers remember during a program.</p>
                 `,
-                questions: [
-                    { q: "What is a variable most like?", a: ["A shoe you wear", "A box with a label", "A snack you eat", "A crayon"], c: "B" },
-                    { q: "What does the label on the box (variable name) tell us?", a: ["How heavy the box is", "What should go inside the box", "Who owns the box", "How old the box is"], c: "B" },
-                    { q: "If you have a box labeled “Art Supplies,” where should your crayons go?", a: ["Snack box", "Toy box", "Art Supplies box", "Trash can"], c: "C" },
-                    { q: "What can change in a variable?", a: ["The label", "The size of the box", "The contents inside the box", "The color of the box"], c: "C" },
-                    { q: "In a game, which variable is used to remember points?", a: ["toyBox", "score", "cookies", "crayons"], c: "B" },
-                    { q: "Which of these can a variable store?", a: ["Only numbers", "Only food", "Only toys", "Numbers, names, colors, and more"], c: "D" },
-                    { q: "Why are variables important in coding?", a: ["They help the computer remember information", "They make the computer go faster", "They stop the computer from sleeping", "They make the game colorful"], c: "A" }
+                quiz: [
+                    { q: "What is a variable most like?", options: ["A shoe you wear", "A box with a label", "A snack you eat", "A crayon"], ans: 1 },
+                    { q: "What does the label on the box (variable name) tell us?", options: ["How heavy the box is", "What should go inside the box", "Who owns the box", "How old the box is"], ans: 1 },
+                    { q: "If you have a box labeled “Art Supplies,” where should your crayons go?", options: ["Snack box", "Toy box", "Art Supplies box", "Trash can"], ans: 2 },
+                    { q: "What can change in a variable?", options: ["The label", "The size of the box", "The contents inside the box", "The color of the box"], ans: 2 },
+                    { q: "In a game, which variable is used to remember points?", options: ["toyBox", "score", "cookies", "crayons"], ans: 1 },
+                    { q: "Which of these can a variable store?", options: ["Only numbers", "Only food", "Only toys", "Numbers, names, colors, and more"], ans: 3 },
+                    { q: "Why are variables important in coding?", options: ["They help the computer remember information", "They make the computer go faster", "They stop the computer from sleeping", "They make the game colorful"], ans: 0 }
                 ]
             },
             {
                 id: 5,
                 title: "Lesson 5: Introduction to Conditionals",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 5: Introduction to Conditionals</h2>
-                    <p>Conditionals help computers decide what to do. Just like you make choices every day, computers do too, but they need clear rules to follow.</p>
-                    <p>A conditional is like saying <strong>“If this happens, then do that.”</strong></p>
-                    <p>For example, imagine you are outside and you feel raindrops. You might think: <em>If it is snowing, then put on a jacket.</em> You made a decision based on a condition!</p>
+                type: "quiz",
+                content: `
+                    <p>Now that we understand variables and how they store information, we are ready to learn a new concept, conditionals! Conditionals help computers decide what to do. Just like you make choices every day, computers do too, but they need clear rules to follow.</p>
+                    <p>A conditional is like saying “If this happens, then do that.”</p>
+                    <p>For example, imagine you are outside and you feel raindrops. You might think:<br>If it is snowing, then put on a jacket.<br>You made a decision based on a condition! Computers do the same thing, but they use code.</p>
                     <p>In coding, a conditional might look like this:</p>
-                    <pre>if score > 20:\n    say "Nice!"</pre>
-                    <p>If the condition is not true, the computer will not do that action. Sometimes we use the word <code>else</code> to tell the computer what to do if the condition is not met:</p>
-                    <pre>if it is raining:\n    take an umbrella\nelse:\n    wear sunglasses</pre>
+                    <code>if score &gt; 20:\n    say “Nice!”</code>
+                    <p>This means: If the score is greater than 20, then the computer should say “Nice!” If the condition is not true, the computer will not do that action. So if the score is 19 it will not say “Nice!”.</p>
+                    <p>Sometimes we also use the word else to tell the computer what to do if the condition is not met.</p>
+                    <code>if it is raining:\n    take an umbrella\nelse:\n    wear sunglasses</code>
+                    <p>Computers follow these rules step-by-step. Conditionals are very powerful because they let programs react to what is happening. Games use conditionals to check if you win or lose. Robots use conditionals to decide when to move or stop. Apps use conditionals to respond when you tap a button.</p>
+                    <p>Conditionals are statements that decide an output based on the circumstances.</p>
                 `,
-                questions: [
-                    { q: "What do conditionals help computers do?", a: ["Draw pictures", "Make decisions", "Go to sleep", "Make music"], c: "B" },
-                    { q: "A conditional is like saying:", a: ["“Do everything at once.”", "“If this happens, then do that.”", "“Never change anything.”", "“Always repeat forever.”"], c: "B" },
-                    { q: "True or False: You make decisions every day, just like computers do.", a: ["True", "False"], c: "True" },
-                    { q: "Which is an example of a conditional in real life?", a: ["If it’s raining, take an umbrella", "Eat lunch", "Jump up and down", "Say hello"], c: "A" },
-                    { q: "In the code 'if score > 30: say “Fabulous!”', what must be true for the computer to say “Fabulous!”?", a: ["Score is less than 10", "Score is exactly 30", "Score is greater than 30", "Score is 30"], c: "C" },
-                    { q: "If the score is 19 in the example, what happens?", a: ["The computer says “Nice!”", "The computer says nothing", "The computer shuts down", "The score resets"], c: "B" },
-                    { q: "The word else tells the computer:", a: ["What to do if the condition is not true", "To restart the program", "To play music", "To ignore everything"], c: "A" },
-                    { q: "If it is raining: take an umbrella. Else: wear sunglasses. What happens if it is not raining?", a: ["Take an umbrella", "Wear sunglasses", "Stand still", "Go inside"], c: "B" },
-                    { q: "Where are conditionals used?", a: ["Only in video games", "Only in robots", "In games, robots, and apps", "Nowhere"], c: "C" },
-                    { q: "Conditionals help programs:", a: ["React to what is happening", "Stay the same", "Erase variables", "Make sounds only"], c: "A" },
-                    { q: "Conditionals decide an output based on the ________.", a: ["Time", "Circumstance", "Color", "Shape"], c: "B" }
+                quiz: [
+                    { q: "What do conditionals help computers do?", options: ["Draw pictures", "Make decisions", "Go to sleep", "Make music"], ans: 1 },
+                    { q: "A conditional is like saying:", options: ["Do everything at once.", "If this happens, then do that.", "Never change anything.", "Always repeat forever."], ans: 1 },
+                    { q: "True or False: You make decisions every day, just like computers do.", options: ["True", "False"], ans: 0 },
+                    { q: "Which is an example of a conditional in real life?", options: ["If it’s raining, take an umbrella", "Eat lunch", "Jump up and down", "Say hello"], ans: 0 },
+                    { q: "In the code if score > 30: say “Fabulous!”, what must be true for the computer to say “Fabulous!”?", options: ["Score is less than 10", "Score is exactly 30", "Score is greater than 30", "Score is 30"], ans: 2 },
+                    { q: "If the score is 19 in the example, what happens?", options: ["The computer says “Nice!”", "The computer says nothing", "The computer shuts down", "The score resets"], ans: 1 },
+                    { q: "The word else tells the computer:", options: ["What to do if the condition is not true", "To restart the program", "To play music", "To ignore everything"], ans: 0 },
+                    { q: "If it is raining: take an umbrella. Else: wear sunglasses. What happens if it is not raining?", options: ["Take an umbrella", "Wear sunglasses", "Stand still", "Go inside"], ans: 1 },
+                    { q: "Where are conditionals used?", options: ["Only in video games", "Only in robots", "In games, robots, and apps", "Nowhere"], ans: 2 },
+                    { q: "Conditionals help programs:", options: ["React to what is happening", "Stay the same", "Erase variables", "Make sounds only"], ans: 0 },
+                    { q: "Conditionals decide an output based on the ________.", options: ["Time", "Circumstance", "Color", "Shape"], ans: 1 }
                 ]
             },
             {
                 id: 6,
                 title: "Lesson 6: When and How to Use Conditionals",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 6: When and How to Use Conditionals</h2>
-                    <p>Conditionals are used in coding when we want a computer to make a choice. Instead of doing the exact same action every time, a conditional allows the computer to check what is happening and then decide what to do.</p>
-                    <pre>if button is pressed:\n    jump</pre>
-                    <p>This tells the computer that it should only make the character jump if the button is pressed. If the button is not pressed, nothing happens.</p>
-                    <pre>if button is pressed:\n    jump\nelse:\n    walk</pre>
+                type: "quiz",
+                content: `
+                    <p>In the previous lesson, we talked about what conditionals are. In this lesson we will show when and how to use conditionals. Conditionals are used in coding when we want a computer to make a choice. Instead of doing the exact same action every time, a conditional allows the computer to check what is happening and then decide what to do. A conditional follows a simple rule: If something is true, then the computer does a specific action. This means the computer looks at a situation first, and only performs the action if the condition is met.</p>
+                    <p>In coding, a conditional might look like this:</p>
+                    <code>if button is pressed:\n    jump</code>
+                    <p>This tells the computer that it should only make the character jump if the button is pressed. If the button is not pressed, nothing happens. The action depends on the situation.</p>
+                    <p>Sometimes we want to give the computer a second choice in case the condition is not true. That is when we use the word else. For examples:</p>
+                    <code>if button is pressed:\n    jump\nelse:\n    walk</code>
+                    <p>Conditionals are essential in coding because they make code fun and interactive.</p>
                 `,
-                questions: [
-                    { q: "What do conditionals allow a computer to do?", a: ["Draw pictures", "Make choices", "Sleep", "Repeat forever"], c: "B" },
-                    { q: "A conditional follows the rule:", a: ["“Do everything at once.”", "“If something is true, then do something.”", "“Never change anything.”", "“Repeat until stopped.”"], c: "B" },
-                    { q: "True or False: Conditionals make computers do the same action every time.", a: ["True", "False"], c: "False" },
-                    { q: "In this code, when will the character jump?\nif button is pressed:\n    jump", a: ["Always", "Only if the button is pressed", "When the game ends", "After walking"], c: "B" },
-                    { q: "If the condition is not true, what happens?", a: ["The action does not run", "The computer guesses", "The program explodes", "The computer falls asleep"], c: "A" },
-                    { q: "What does the word else do?", a: ["Repeats code forever", "Gives a second choice if the first condition is not true", "Stops the program", "Makes the screen brighter"], c: "B" },
-                    { q: "In this code, what happens if the button is NOT pressed?\nif button is pressed:\n    jump\nelse:\n    walk", a: ["Jump", "Walk", "Do nothing", "Restart the game"], c: "B" },
-                    { q: "Conditionals help programs:", a: ["React to what is happening", "Stay the same all the time", "Erase all code", "Turn off automatically"], c: "A" },
-                    { q: "True or False: Conditionals are used when we want the computer to check something before acting.", a: ["True", "False"], c: "True" },
-                    { q: "In real life, which is like a conditional?", a: ["If it’s cold, wear a jacket", "Eat lunch every day no matter what", "Always run", "Never look outside"], c: "A" },
-                    { q: "The action in a conditional depends on:", a: ["Random guessing", "The situation or condition", "The color of the screen", "The time of day"], c: "B" }
+                quiz: [
+                    { q: "What do conditionals allow a computer to do?", options: ["Draw pictures", "Make choices", "Sleep", "Repeat forever"], ans: 1 },
+                    { q: "A conditional follows the rule:", options: ["Do everything at once.", "If something is true, then do something.", "Never change anything.", "Repeat until stopped."], ans: 1 },
+                    { q: "True or False: Conditionals make computers do the same action every time.", options: ["True", "False"], ans: 1 },
+                    { q: "In this code, when will the character jump?\nif button is pressed:\n    jump", options: ["Always", "Only if the button is pressed", "When the game ends", "After walking"], ans: 1 },
+                    { q: "If the condition is not true, what happens?", options: ["The action does not run", "The computer guesses", "The program explodes", "The computer falls asleep"], ans: 0 },
+                    { q: "What does the word else do?", options: ["Repeats code forever", "Gives a second choice if the first condition is not true", "Stops the program", "Makes the screen brighter"], ans: 1 },
+                    { q: "In this code, what happens if the button is NOT pressed?\nif button is pressed:\n    jump\nelse:\n    walk", options: ["Jump", "Walk", "Do nothing", "Restart the game"], ans: 1 },
+                    { q: "Conditionals help programs:", options: ["React to what is happening", "Stay the same all the time", "Erase all code", "Turn off automatically"], ans: 0 },
+                    { q: "True or False: Conditionals are used when we want the computer to check something before acting.", options: ["True", "False"], ans: 0 },
+                    { q: "In real life, which is like a conditional?", options: ["If it’s cold, wear a jacket", "Eat lunch every day no matter what", "Always run", "Never look outside"], ans: 0 },
+                    { q: "The action in a conditional depends on:", options: ["Random guessing", "The situation or condition", "The color of the screen", "The time of day"], ans: 1 }
                 ]
             },
             {
                 id: 7,
                 title: "Lesson 7: Introduction to Loops",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 7: Introduction to Loops</h2>
-                    <p>In coding, we often want the computer to repeat something. Imagine you are playing a game and your character keeps walking forward, or a robot keeps moving its arm up and down. Instead of writing the same line of code over and over, we use a loop.</p>
-                    <p>A loop is a way to tell the computer, “Do this action again and again.” It saves time and keeps our code neat.</p>
-                    <p>A <strong>for loop</strong> repeats something a certain number of times. A <strong>while loop</strong> repeats as long as something remains true.</p>
+                type: "quiz",
+                content: `
+                    <p>In coding, we often want the computer to repeat something. Imagine you are playing a game and your character keeps walking forward, or a robot keeps moving its arm up and down. You wouldn’t want to write the same line of code over and over. That would take a long time and be easy to mess up. Instead, we use something special called a loop. A loop is a way to tell the computer, “Do this action again and again.”</p>
+                    <p>Loops help us save time and keep our code neat. When we use a loop, the computer can repeat instructions without us having to write them many times. For example, if you want a character to clap 10 times, instead of writing “clap” ten times, you can use a loop to do it for you!</p>
+                    <p>There are different kinds of loops. The most common ones are for loops and while loops. We won’t go deeply into them yet, but here’s the basic idea. A for loop repeats something a certain number of times. It’s like saying, “Do this action exactly this many times.” A while loop repeats as long as something is true. It’s like saying, “Keep doing this until something changes.”</p>
+                    <p>Loops are helpful in games, animations, robots, and apps. They make programs faster and smarter because the computer can perform repeated actions easily. Learning loops is important because once you understand how to use them, you can create more powerful and exciting code!</p>
+                    <p>Loops are utilized to make code efficient and simpler.</p>
                 `,
-                questions: [
-                    { q: "What is a loop used for in coding?", a: ["To stop all actions", "To repeat actions", "To make code colorful", "To erase code"], c: "B" },
-                    { q: "Why do we use loops?", a: ["To write the same code over and over", "To make code messy", "To save time and keep code neat", "To slow down a program"], c: "C" },
-                    { q: "True or False: Loops help the computer repeat instructions automatically.", a: ["True", "False"], c: "True" },
-                    { q: "If you wanted a character to clap 10 times, what would a loop help you avoid?", a: ["Writing “clap” 10 times", "Writing “jump”", "Using conditionals", "Making a new character"], c: "A" },
-                    { q: "A for loop repeats something:", a: ["A random number of times", "A certain number of times", "Only once", "Forever"], c: "B" },
-                    { q: "A while loop repeats something:", a: ["Only if you press a button", "Only once", "As long as something is true", "When the game ends"], c: "C" },
-                    { q: "Which statement describes a loop?", a: ["“Do this action again and again.”", "“Do this action only once.”", "“Never repeat anything.”", "“Stop all code.”"], c: "A" },
-                    { q: "Where are loops helpful?", a: ["In games", "In robots", "In animations and apps", "All of the above"], c: "D" },
-                    { q: "True or False: Loops make programs slower and harder to understand.", a: ["True", "False"], c: "False" },
-                    { q: "Loops help make code:", a: ["Longer and confusing", "Efficient and simpler", "Only work in video games", "Useless"], c: "B" }
+                quiz: [
+                    { q: "What is a loop used for in coding?", options: ["To stop all actions", "To repeat actions", "To make code colorful", "To erase code"], ans: 1 },
+                    { q: "Why do we use loops?", options: ["To write the same code over and over", "To make code messy", "To save time and keep code neat", "To slow down a program"], ans: 2 },
+                    { q: "True or False: Loops help the computer repeat instructions automatically.", options: ["True", "False"], ans: 0 },
+                    { q: "If you wanted a character to clap 10 times, what would a loop help you avoid?", options: ["Writing “clap” 10 times", "Writing “jump”", "Using conditionals", "Making a new character"], ans: 0 },
+                    { q: "A for loop repeats something:", options: ["A random number of times", "A certain number of times", "Only once", "Forever"], ans: 1 },
+                    { q: "A while loop repeats something:", options: ["Only if you press a button", "Only once", "As long as something is true", "When the game ends"], ans: 2 },
+                    { q: "Which statement describes a loop?", options: ["“Do this action again and again.”", "“Do this action only once.”", "“Never repeat anything.”", "“Stop all code.”"], ans: 0 },
+                    { q: "Where are loops helpful?", options: ["In games", "In robots", "In animations and apps", "All of the above"], ans: 3 },
+                    { q: "True or False: Loops make programs slower and harder to understand.", options: ["True", "False"], ans: 1 },
+                    { q: "Loops help make code:", options: ["Longer and confusing", "Efficient and simpler", "Only work in video games", "Useless"], ans: 1 }
                 ]
             },
             {
                 id: 8,
                 title: "Lesson 8: What Is a For Loop?",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 8: What Is a For Loop?</h2>
-                    <p>A for loop is a tool in coding that lets you repeat actions and functions without writing the same instruction multiple times. It’s like telling your computer, “Do this ten times!”</p>
+                type: "quiz",
+                content: `
+                    <h4>What Is a For Loop?</h4>
+                    <p>A for loop is a tool in coding that lets you repeat actions and functions without writing the same instruction multiple times. It’s like telling your computer, “Do this ten times!” Instead of using the same block many times, you use one loop block to make the computer repeat your instructions.</p>
+                    <h4>Why Are For Loops Useful?</h4>
+                    <p>Imagine you want your character in a game to walk forwards five times, or you want to draw ten stars on the screen. You could drag out the same blocks again and again… but that would take unnecessary time. A for loop lets you repeat the same action as many times as you want using just one block. It keeps your code neat and makes your project easier to change later.</p>
+                    <h4>What Does a For Loop Look Like?</h4>
                     <p>In block coding, it usually looks like this:</p>
-                    <pre>repeat (10)\n→ move 10 steps\n→ turn 15 degrees</pre>
-                    <p>This loop tells the computer to repeat the actions inside the block 10 times quickly and cleanly.</p>
+                    <code>repeat (10)\n→ move 10 steps\n→ turn 15 degrees</code>
+                    <p>This loop tells the computer to repeat the actions inside the block 10 times.</p>
+                    <h4>In Short…</h4>
+                    <p>A for loop helps you do repeated tasks quickly and cleanly. Once you learn loops, you can create cooler animations, games, and interactive stories with less effort!</p>
                 `,
-                questions: [
-                    { q: "What are for loops used for in coding?", a: ["Making sound", "Repeating actions automatically", "Moving sprites", "Adding new characters"], c: "B" },
-                    { q: "Why are for loops so important in coding?", a: ["They make your code complex", "They let you repeat actions without copying blocks", "They delete blocks", "They speed up your program"], c: "B" },
-                    { q: "In block coding, where do you put the actions you want repeated?", a: ["Inside the conditionals block", "Inside the loop block", "In the sprite", "At the bottom of the screen"], c: "B" },
-                    { q: "If you want an action to be done 10 times, which block would you use?", a: ["repeat (10)", "do (10)", "play music (10)", "forever"], c: "A" },
-                    { q: "What happens when a loop runs?", a: ["The code resets", "The actions inside the loop run again", "The sprite disappears ", "The sprite appears"], c: "B" },
-                    { q: "True or False: A for loop can also keep your code efficient.", a: ["True", "False"], c: "A" },
-                    { q: "True or False: You must drag the same block multiple times when using a for loop.", a: ["True", "False"], c: "B" },
-                    { q: "Which is an example of an action being repeated?", a: ["Moving 10 steps again and again", "Choosing a new sprite", "Naming your project", "Choosing a backdrop"], c: "A" },
-                    { q: "Why does having loops instead of repeated lines of code save time?", a: ["You write fewer blocks", "You get extra sprites", "Your computer becomes faster", "It makes levels for you"], c: "A" },
-                    { q: "What kinds of projects can loops help you create?", a: ["Games", "Animations", "Interactive stories", "All of the above"], c: "D" }
+                quiz: [
+                    { q: "What are for loops used for in coding?", options: ["Making sound", "Repeating actions automatically", "Moving sprites", "Adding new characters"], ans: 1 },
+                    { q: "Why are for loops so important in coding?", options: ["They make your code complex", "They let you repeat actions without copying blocks", "They delete blocks", "They speed up your program"], ans: 1 },
+                    { q: "In block coding, where do you put the actions you want repeated?", options: ["Inside the conditionals block", "Inside the loop block", "In the sprite", "At the bottom of the screen"], ans: 1 },
+                    { q: "If you want an action to be done 10 times, which block would you use?", options: ["repeat (10)", "do (10)", "play music (10)", "forever"], ans: 0 },
+                    { q: "What happens when a loop runs?", options: ["The code resets", "The actions inside the loop run again", "The sprite disappears ", "The sprite appears"], ans: 1 },
+                    { q: "True or False: A for loop can also keep your code efficient.", options: ["True", "False"], ans: 0 },
+                    { q: "True or False: You must drag the same block multiple times when using a for loop.", options: ["True", "False"], ans: 1 },
+                    { q: "Which is an example of an action being repeated?", options: ["Moving 10 steps again and again", "Choosing a new sprite", "Naming your project", "Choosing a backdrop"], ans: 0 },
+                    { q: "Why does having loops instead of repeated lines of code save time?", options: ["You write fewer blocks", "You get extra sprites", "Your computer becomes faster", "It makes levels for you"], ans: 0 },
+                    { q: "What kinds of projects can loops help you create?", options: ["Games", "Animations", "Interactive stories", "All of the above"], ans: 3 }
                 ]
             },
             {
                 id: 9,
-                title: "Lesson 9: The While Loop",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 9: The While Loop</h2>
-                    <p>A while loop also repeats actions, but it works in a different way. Instead of repeating a set number of times, a while loop repeats as long as a condition is true: <strong>“Keep doing this until something changes.”</strong></p>
-                    <p>Imagine you’re filling a balloon with air. You keep blowing while the balloon is not full. Once it is full, you stop.</p>
-                    <pre>repeat until (balloon is full)\n→ add air</pre>
+                title: "Lesson 9: Introduction to While Loops",
+                type: "quiz",
+                content: `
+                    <p>Now that you understand for loops, let’s learn about another kind of loop: the while loop. A while loop also repeats actions, but it works in a different way. Instead of repeating a set number of times, a while loop repeats as long as a condition is true.</p>
+                    <p>Think of a while loop like a rule that says, “Keep doing this until something changes.”</p>
+                    <p>For example, imagine you’re filling a balloon with air. You keep blowing while the balloon is not full. Once it is full, you stop. You didn’t choose a number of breaths—you stopped when the condition changed.</p>
+                    <p>In block coding (like Scratch), a while loop looks like:</p>
+                    <code>repeat until (balloon is full)\n→ add air</code>
+                    <p>Inside this block, the computer keeps repeating the actions until the condition becomes true.</p>
+                    <h4>Why Are While Loops Useful?</h4>
+                    <p>While loops help with things that depend on changing conditions, not numbers. For example:</p>
+                    <ul>
+                        <li>Keep moving while the sprite’s health is above 0</li>
+                        <li>Keep playing a sound until the timer runs out</li>
+                        <li>Keep jumping while the space bar is pressed</li>
+                    </ul>
+                    <h4>In Short…</h4>
+                    <p>For loops repeat a set number of times. While loops repeat until a condition becomes true. Both help you make smarter, more powerful programs!</p>
                 `,
-                questions: [
-                    { q: "What makes a while loop different from a for loop?", a: ["It only works on Fridays", "It repeats until a condition changes", "It runs only one time", "It plays sounds automatically"], c: "B" },
-                    { q: "A while loop repeats actions…", a: ["A set number of times", "Only when the project starts", "As long as a condition is true", "Only if you click the sprite"], c: "C" },
-                    { q: "Which example best shows a while loop?", a: ["Jump 10 times", "Move until you reach the wall", "Say “Hello” five times", "Turn 15 degrees once"], c: "B" },
-                    { q: "What does the condition in a while loop do?", a: ["Stops the whole project", "Decides when the loop should end", "Makes sprites larger", "Creates new blocks"], c: "B" },
-                    { q: "In block coding, a while loop might look like:", a: ["repeat (10)", "forever", "repeat until (condition)", "switch costume"], c: "C" },
-                    { q: "Which is a good use of a while loop?", a: ["Say “Hi” exactly 3 times", "Move forward while the space key is pressed", "Change costumes once", "Pick a random number"], c: "B" },
-                    { q: "True or False: A while loop can run different numbers of times depending on what happens in the program.", a: ["True", "False"], c: "A" },
-                    { q: "What would make a while loop stop running?", a: ["The condition becomes true", "The sprite changes color", "You name the project", "A new sprite appears"], c: "A" },
-                    { q: "Which situation describes a condition?", a: ["“Repeat 12 times”", "“Move forever”", "“When the timer reaches 0”", "“Choose a new sound”"], c: "C" },
-                    { q: "Which loop is better for repeating a specific number of times?", a: ["While loop", "Forever loop", "For loop", "Costume loop"], c: "C" },
-                    { q: "Which loop is better for repeating until something changes?", a: ["For loop", "While loop", "Repeat (10)", "Say block"], c: "B" }
+                quiz: [
+                    { q: "What makes a while loop different from a for loop?", options: ["It only works on Fridays", "It repeats until a condition changes", "It runs only one time", "It plays sounds automatically"], ans: 1 },
+                    { q: "A while loop repeats actions…", options: ["A set number of times", "Only when the project starts", "As long as a condition is true", "Only if you click the sprite"], ans: 2 },
+                    { q: "Which example best shows a while loop?", options: ["Jump 10 times", "Move until you reach the wall", "Say “Hello” five times", "Turn 15 degrees once"], ans: 1 },
+                    { q: "What does the condition in a while loop do?", options: ["Stops the whole project", "Decides when the loop should end", "Makes sprites larger", "Creates new blocks"], ans: 1 },
+                    { q: "In block coding, a while loop might look like:", options: ["repeat (10)", "forever", "repeat until (condition)", "switch costume"], ans: 2 },
+                    { q: "Which is a good use of a while loop?", options: ["Say “Hi” exactly 3 times", "Move forward while the space key is pressed", "Change costumes once", "Pick a random number"], ans: 1 },
+                    { q: "True or False: A while loop can run different numbers of times depending on what happens in the program.", options: ["True", "False", "Only in long projects", "Only with sounds"], ans: 0 },
+                    { q: "What would make a while loop stop running?", options: ["The condition becomes true", "The sprite changes color", "You name the project", "A new sprite appears"], ans: 0 },
+                    { q: "Which situation describes a condition?", options: ["“Repeat 12 times”", "“Move forever”", "“When the timer reaches 0”", "“Choose a new sound”"], ans: 2 },
+                    { q: "Which loop is better for repeating a specific number of times?", options: ["While loop", "Forever loop", "For loop", "Costume loop"], ans: 2 },
+                    { q: "Which loop is better for repeating until something changes?", options: ["For loop", "While loop", "Repeat (10)", "Say block"], ans: 1 }
                 ]
             },
             {
                 id: 10,
-                title: "Lesson 10: Your First Program",
-                type: "lesson_only",
-                html: `
-                    <h2>Lesson 10: Building Your First Simple Program</h2>
-                    <ol>
-                        <li><strong>Pick Your Sprite:</strong> Choose a character (a “sprite”) like a cat, a robot, or a dinosaur.</li>
-                        <li><strong>Add a Starting Block:</strong> Every program needs an event beginning, such as <code>“When green flag clicked”</code>.</li>
-                        <li><strong>Decide What Your Sprite Should Do:</strong> Begin with something simple, like making the sprite move, spin, or glide.</li>
-                        <li><strong>Use Loops to Add Motion:</strong> Try using a repeat block to wrap your structural motion.</li>
-                        <li><strong>Add Fun Effects:</strong> Make your sprite play a sound or change costumes to feel alive!</li>
-                    </ol>
+                title: "Lesson 10: Building a Simple Program",
+                type: "project",
+                content: `
+                    <h4>1. Pick Your Sprite</h4>
+                    <p>Start by choosing a character (a “sprite”). It can be a cat, a robot, a dinosaur—anything you like. Your sprite is what the code will control.</p>
+                    <h4>2. Add a Starting Block</h4>
+                    <p>Every program needs a beginning. In block coding, use a block like: <strong>“When green flag clicked”</strong>. This tells your program when to start.</p>
+                    <h4>3. Decide What Your Sprite Should Do</h4>
+                    <p>Begin with something simple, like making the sprite move around the screen. Ask yourself: Should it walk? Spin? Glide? Jump?</p>
+                    <h4>4. Use Loops to Add Motion</h4>
+                    <p>Try using a for loop (repeat block) to repeat a motion:</p>
+                    <code>Move 10 steps\nTurn a little\nRepeat 10 times</code>
+                    <p>Then add a while loop (repeat until) if you want something to continue until the sprite reaches a wall or touches a color.</p>
+                    <h4>5. Add Fun Effects</h4>
+                    <p>You can make your sprite: Say something, Change costumes, or Play a sound. These help your program feel more alive.</p>
+                    <h4>In Short…</h4>
+                    <p>A simple program has: A starting event, Actions for the sprite, Loops to repeat movements, and Effects to make it exciting. This is the beginning of building your own games and animations!</p>
                 `
             },
             {
                 id: 11,
-                title: "Lesson 11: Transition to Python",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 11: Transitioning from Block Coding to Python</h2>
-                    <p>Python is a computer language that lets you give instructions by typing words and symbols. Unlike block coding, which uses colorful shapes that you drag and snap together, Python uses written lines of code. In Python, you type commands like <code>print("Hello!")</code> instead of dragging blocks.</p>
+                title: "Lesson 11: Intro to Python vs. Block Coding",
+                type: "quiz",
+                content: `
+                    <p>Python is a computer language that lets you give instructions by typing words and symbols. Unlike block coding, which uses colorful shapes that you drag and snap together, Python uses written lines of code to tell the computer what to do. In Python, you type commands like <code>print("Hello!")</code> instead of dragging a “say” block.</p>
+                    <p>Block coding is great for beginners because it shows you exactly where each piece fits. The blocks help you avoid mistakes since they only connect the right way. Python, however, doesn’t have blocks to guide you. Instead, you must type everything correctly. If you forget a letter, miss a quote, or use the wrong symbol, the computer won’t understand what you mean.</p>
+                    <p>Unlike block coding, Python gives you more freedom. You can create bigger projects, write your own functions, and solve problems in many different ways. It’s the same kind of language that real programmers use for games, robots, apps, and websites.</p>
+                    <p>Even though Python looks different, the thinking is the same. You still break problems into steps, use loops, and give clear instructions—just like you did with blocks. Python is your next exciting step into real-world coding!</p>
                 `,
-                questions: [
-                    { q: "What does Python use to give instructions to the computer?", a: ["Colorful blocks", "Stickers", "Typed words and symbols", "Pictures"], c: "C" },
-                    { q: "Unlike block coding, Python requires you to:", a: ["Drag blocks", "Type your instructions", "Draw shapes", "Build with LEGOs"], c: "B" },
-                    { q: "What happens in Python if you miss a letter or forget a symbol?", a: ["The computer ignores it", "The code becomes colorful", "The computer might not understand", "It still works perfectly"], c: "C" },
-                    { q: "Which type of coding helps prevent mistakes by snapping pieces together?", a: ["Python", "Block coding", "Art coding", "Robot coding"], c: "B" },
-                    { q: "Unlike Python, block coding uses:", a: ["Written sentences", "Drag-and-drop blocks", "Secret codes", "Touchscreen drawings"], c: "B" },
-                    { q: "Python gives you more:", a: ["Homework", "Freedom to create bigger projects", "Blocks to snap", "Puzzles"], c: "B" },
-                    { q: "What do Python and block coding BOTH teach you?", a: ["How to draw", "How to think logically and solve problems", "How to bake", "How to play sports"], c: "B" }
+                quiz: [
+                    { q: "What does Python use to give instructions to the computer?", options: ["Colorful blocks", "Stickers", "Typed words and symbols", "Pictures"], ans: 2 },
+                    { q: "Unlike block coding, Python requires you to:", options: ["Drag blocks", "Type your instructions", "Draw shapes", "Build with LEGOs"], ans: 1 },
+                    { q: "What happens in Python if you miss a letter or forget a symbol?", options: ["The computer ignores it", "The code becomes colorful", "The computer might not understand", "It still works perfectly"], ans: 2 },
+                    { q: "Which type of coding helps prevent mistakes by snapping pieces together?", options: ["Python", "Block coding", "Art coding", "Robot coding"], ans: 1 },
+                    { q: "Unlike Python, block coding uses:", options: ["Written sentences", "Drag-and-drop blocks", "Secret codes", "Touchscreen drawings"], ans: 1 },
+                    { q: "Python gives you more:", options: ["Homework", "Freedom to create bigger projects", "Blocks to snap", "Puzzles"], ans: 1 },
+                    { q: "What do Python and block coding BOTH teach you?", options: ["How to draw", "How to think logically and solve problems", "How to bake", "How to play sports"], ans: 1 }
                 ]
             },
             {
                 id: 12,
                 title: "Lesson 12: The Python Print Function",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 12: The Python Print Function</h2>
-                    <p>The print function tells the computer, “Show this text to the user!” To use it, you type the word <code>print</code>, followed by parentheses with quotes around words:</p>
-                    <pre>print("Hello, world!")</pre>
-                    <p>Numbers do not require quotation marks:</p>
-                    <pre>print(5)</pre>
+                type: "quiz",
+                content: `
+                    <p>Now that you know Python uses typed code instead of colorful blocks, it’s time to learn one of the most important tools in Python: the print function. Unlike block coding, where you might drag a “say” or “show message” block, Python uses the word print to make the computer display something on the screen.</p>
+                    <p>The print function tells the computer, “Show this text to the user!” To use it, you type the word print, followed by parentheses. Inside the parentheses, you put what you want the computer to show. For example:</p>
+                    <code>print("Hello, world!")</code>
+                    <p>When you run this code, the computer will display: <br>Hello, world!</p>
+                    <p>Unlike block coding, Python needs quotation marks around words you want to show. The quotes tell the computer, “These are words, not commands.” If you forget the quotes, the computer gets confused. However, numbers don’t need quotes. For example:</p>
+                    <code>print(5)\nprint("5")</code>
+                    <p>The first line prints the number 5, while the second prints the text “5.” They look similar, but the computer treats them differently.</p>
+                    <p>You can also print more than one thing at a time. Python lets you separate items with a comma:</p>
+                    <code>print("My score is", 10)</code>
+                    <p>Instead of snapping blocks together, you use typing to build your instructions. This gives you more control and helps you learn how real programmers communicate with computers.</p>
+                    <p>The print function is your first step toward creating messages, testing your code, and building real Python programs. Try making your computer talk using print—it’s fun and powerful!</p>
                 `,
-                questions: [
-                    { q: "What does the Python print function do?", a: ["Draws pictures", "Shows text or numbers on the screen", "Makes sounds", "Moves a robot"], c: "B" },
-                    { q: "Unlike block coding, Python uses __________ to show messages.", a: ["Drag-and-drop blocks", "Stickers", "Typed commands", "Buttons"], c: "C" },
-                    { q: "Which of the following is the correct way to write a print statement?", a: ["say(\"Hello\")", "print[\"Hello\"]", "print(\"Hello\")", "show(\"Hello\")"], c: "C" },
-                    { q: "Why do we use quotation marks in print statements?", a: ["To make code look fancy", "To tell the computer the text is NOT a command", "To skip a line", "To hide the message"], c: "B" },
-                    { q: "Which one will print a number as a number?", a: ["print(\"8\")", "print(8)", "print(number 8)", "print<8>"], c: "B" },
-                    { q: "What happens if you forget the quotation marks around text?", a: ["The computer will decorate it", "The code still works perfectly", "The computer might get confused", "The text disappears"], c: "C" },
-                    { q: "Numbers printed with quotes are treated as:", a: ["Commands", "Text", "Mistakes", "Pictures"], c: "B" },
-                    { q: "Which code prints two things at once?", a: ["print(\"Hi\" + \"Bye\")", "print(\"Hi\", \"Bye\")", "print(\"Hi\" \"Bye\")", "print(\"Hi\" bye)"], c: "B" },
-                    { q: "What symbol do you always need after the word print?", a: ["Brackets []", "Quotation marks first", "Parentheses ()", "Colons ::"], c: "C" },
-                    { q: "The print function is helpful because it lets you:", a: ["Test your code and show messages", "Change computer colors", "Make cartoons", "Add new blocks"], c: "A" }
+                quiz: [
+                    { q: "What does the Python print function do?", options: ["Draws pictures", "Shows text or numbers on the screen", "Makes sounds", "Moves a robot"], ans: 1 },
+                    { q: "Unlike block coding, Python uses __________ to show messages.", options: ["Drag-and-drop blocks", "Stickers", "Typed commands", "Buttons"], ans: 2 },
+                    { q: "Which of the following is the correct way to write a print statement?", options: ["say(\"Hello\")", "print[\"Hello\"]", "print(\"Hello\")", "show(\"Hello\")"], ans: 2 },
+                    { q: "Why do we use quotation marks in print statements?", options: ["To make code look fancy", "To tell the computer the text is NOT a command", "To skip a line", "To hide the message"], ans: 1 },
+                    { q: "Which one will print a number as a number?", options: ["print(\"8\")", "print(8)", "print(number 8)", "print<8>"], ans: 1 },
+                    { q: "What happens if you forget the quotation marks around text?", options: ["The computer will decorate it", "The code still works perfectly", "The computer might get confused", "The text disappears"], ans: 2 },
+                    { q: "Numbers printed with quotes are treated as:", options: ["Commands", "Text", "Mistakes", "Pictures"], ans: 1 },
+                    { q: "Which code prints two things at once?", options: ["print(\"Hi\" + \"Bye\")", "print(\"Hi\", \"Bye\")", "print(\"Hi\" \"Bye\")", "print(\"Hi\" bye)"], ans: 1 },
+                    { q: "What symbol do you always need after the word print?", options: ["Brackets []", "Quotation marks first", "Parentheses ()", "Colons ::"], ans: 2 },
+                    { q: "The print function is helpful because it lets you:", options: ["Test your code and show messages", "Change computer colors", "Make cartoons", "Add new blocks"], ans: 0 }
                 ]
             },
             {
                 id: 13,
-                title: "Lesson 13: Variables & Conditionals",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 13: Variables and Conditionals in Python</h2>
-                    <p>In Python, you create variables cleanly by typing their assignment:</p>
-                    <pre>score = 0\nname = "Alex"</pre>
-                    <p>Python conditionals utilize a colon (<code>:</code>) and indentation to track structural block scoping execution:</p>
-                    <pre>if score > 10:\n    print("Great job!")\nelse:\n    print("Keep trying!")</pre>
+                title: "Lesson 13: Variables & Conditionals in Python",
+                type: "quiz",
+                content: `
+                    <p>Now that you understand how variables and conditionals work in Python, it’s time to learn how Python handles them with typed commands instead of blocks.</p>
+                    <h4>Variables in Python</h4>
+                    <p>In block coding, you might have created a variable using a block like “set score to 0.” In Python, you do the same thing, but you type it instead. Here’s how you make a variable in Python:</p>
+                    <code>score = 0\nname = "Alex"</code>
+                    <p>Python does not use a special block—you simply type the name, an equals sign, and the value. Python also needs quotation marks around words, but not around numbers. You can update a variable like this:</p>
+                    <code>score = score + 5</code>
+                    <h4>Conditionals in Python</h4>
+                    <p>Conditionals help the computer make decisions. Here is what an IF statement looks like in Python:</p>
+                    <code>if score &gt; 10:\n    print("Great job!")</code>
+                    <p>Unlike block coding, Python uses a colon (:) after the condition and indentation (spaces at the beginning of the next line) to show what should happen if the condition is true. You can also use else for what happens when the condition is NOT true:</p>
+                    <code>if score &gt; 10:\n    print("Great job!")\nelse:\n    print("Keep trying!")</code>
                 `,
-                questions: [
-                    { q: "What is a variable used for in Python?", a: ["To draw pictures", "To store information", "To play music", "To move characters"], c: "B" },
-                    { q: "Which of the following is the correct way to create a variable in Python?", a: ["set score to 5", "score = 5", "score → 5", "makeVariable(score, 5)"], c: "B" },
-                    { q: "Which item needs quotation marks in Python?", a: ["10", "3.5", " \"Alex\" ", "100"], c: "C" },
-                    { q: "What does this code do?\nscore = score + 1", a: ["Deletes the variable", "Decreases the score", "Updates the score by adding 1", "Stops the program"], c: "C" },
-                    { q: "What is a conditional used for?", a: ["Saving pictures", "Making choices in code", "Coloring the screen", "Moving sprites"], c: "B" },
-                    { q: "What symbol MUST come after an IF statement in Python?", a: ["?", "()", ";", ":"], c: "D" },
-                    { q: "In Python, what shows which lines belong to the IF statement?", a: ["Bigger text", "Indentation (spaces at the beginning)", "Bright colors", "All caps"], c: "B" },
-                    { q: "Which of the following is a correct IF statement?", a: ["if score > 10", "if score > 10 then", "if score > 10:", "IF (score > 10):"], c: "C" },
-                    { q: "What does the else part of a conditional do?", a: ["Runs if the IF condition is false", "Makes the program repeat", "Deletes the variable", "Stops the computer"], c: "A" },
-                    { q: "How is Python different from block coding when using variables and conditionals?", a: ["Python uses typed commands instead of snapping blocks", "Python uses only pictures", "Python has no variables", "Python cannot make decisions"], c: "A" }
+                quiz: [
+                    { q: "What is a variable used for in Python?", options: ["To draw pictures", "To store information", "To play music", "To move characters"], ans: 1 },
+                    { q: "Which of the following is the correct way to create a variable in Python?", options: ["set score to 5", "score = 5", "score → 5", "makeVariable(score, 5)"], ans: 1 },
+                    { q: "Which item needs quotation marks in Python?", options: ["10", "3.5", "\"Alex\"", "100"], ans: 2 },
+                    { q: "What does this code do? score = score + 1", options: ["Deletes the variable", "Decreases the score", "Updates the score by adding 1", "Stops the program"], ans: 2 },
+                    { q: "What is a conditional used for?", options: ["Saving pictures", "Making choices in code", "Coloring the screen", "Moving sprites"], ans: 1 },
+                    { q: "What symbol MUST come after an IF statement in Python?", options: ["?", "()", ";", ":"], ans: 3 },
+                    { q: "In Python, what shows which lines belong to the IF statement?", options: ["Bigger text", "Indentation (spaces at the beginning)", "Bright colors", "All caps"], ans: 1 },
+                    { q: "Which of the following is a correct IF statement?", options: ["if score > 10", "if score > 10 then", "if score > 10:", "IF (score > 10):"], ans: 2 },
+                    { q: "What does the else part of a conditional do?", options: ["Runs if the IF condition is false", "Makes the program repeat", "Deletes the variable", "Stops the computer"], ans: 0 },
+                    { q: "How is Python different from block coding when using variables and conditionals?", options: ["Python uses typed commands instead of snapping blocks", "Python uses only pictures", "Python has no variables", "Python cannot make decisions"], ans: 0 }
                 ]
             },
             {
                 id: 14,
-                title: "Lesson 14: The Input Function",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 14: The Python input() Function</h2>
-                    <p>Python uses the <code>input()</code> function to gather keyboard input data. It returns input data as text strings:</p>
-                    <pre>name = input("What is your name? ")</pre>
-                    <p>To convert this string into a valid number, wrap it inside an <code>int()</code> function cast statement:</p>
-                    <pre>age = int(input("How old are you? "))</pre>
+                title: "Lesson 14: The Python input() Function",
+                type: "quiz",
+                content: `
+                    <p>Now that you know how variables and conditionals work in Python, it’s time to learn another powerful tool: the input() function. Unlike block coding—where you might use a block like “ask [name]” and “wait”—Python uses the input function to get information from the user.</p>
+                    <p>The input function lets the computer pause and wait for someone to type something. Whatever the person types becomes a string (text), and you can store it inside a variable. Here’s what it looks like:</p>
+                    <code>name = input("What is your name? ")</code>
+                    <p>When this code runs, the computer shows the question and waits. After the user types their name, Python saves it in the variable name.</p>
+                    <p>You can also use input with numbers, but you must convert the text into a number using the <code>int()</code> function:</p>
+                    <code>age = int(input("How old are you? "))</code>
+                    <p>The int() tells Python to turn the text into an integer (a whole number). This is useful when you want to compare values using conditionals. For example:</p>
+                    <code>if age &gt; 10:\n    print("You’re older than 10!")</code>
+                    <p>The input function helps your programs become interactive, allowing users to enter answers, choose options, and make your code respond just like a real game or app!</p>
                 `,
-                questions: [
-                    { q: "What does the input() function do?", a: ["Draws a picture", "Waits for the user to type something", "Makes music", "Stops the program"], c: "B" },
-                    { q: "Unlike block coding, Python uses __________ to ask questions.", a: ["Drag-and-drop blocks", "Buttons", "Typed commands", "Stickers"], c: "C" },
-                    { q: "What type of data does input() return by default?", a: ["Numbers", "Pictures", "Strings (text)", "Sounds"], c: "C" },
-                    { q: "Which line correctly asks a user for their name?", a: ["ask(\"What is your name?\")", "input{\"What is your name?\"}", "name = input(\"What is your name? \")", "name = ask(\"Your name\")"], c: "C" },
-                    { q: "What do parentheses () mean in input()?", a: ["They are required for the function to work", "They decorate the code", "They compare numbers", "They snap blocks together"], c: "A" },
-                    { q: "Why do we use quotation marks inside input()?", a: ["To tell Python the text is a message", "To erase the message", "To make the text bigger", "To turn text into numbers"], c: "A" },
-                    { q: "What does int() do in this code?\nage = int(input(\"How old are you? \"))", a: ["Makes the user type faster", "Turns the input into a number", "Prints the number", "Changes the question"], c: "B" },
-                    { q: "What happens after Python shows the question in input()?", a: ["It crashes", "It shows a picture", "It waits for the user to type", "It skips the question"], c: "C" },
-                    { q: "Which is an example of using input with a conditional?", a: ["print(input)", "if input > 10:", "if age > 10: print(\"You're older than 10!\")", "input(\"Choose a color\") then if"], c: "C" },
-                    { q: "Why is input() useful?", a: ["It makes programs interactive", "It only prints messages", "It stores pictures", "It builds websites automatically"], c: "A" }
+                quiz: [
+                    { q: "What does the input() function do?", options: ["Draws a picture", "Waits for the user to type something", "Makes music", "Stops the program"], ans: 1 },
+                    { q: "Unlike block coding, Python uses __________ to ask questions.", options: ["Drag-and-drop blocks", "Buttons", "Typed commands", "Stickers"], ans: 2 },
+                    { q: "What type of data does input() return by default?", options: ["Numbers", "Pictures", "Strings (text)", "Sounds"], ans: 2 },
+                    { q: "Which line correctly asks a user for their name?", options: ["ask(\"What is your name?\")", "input{\"What is your name?\"}", "name = input(\"What is your name? \")", "name = ask(\"Your name\")"], ans: 2 },
+                    { q: "What do parentheses () mean in input()?", options: ["They are required for the function to work", "They decorate the code", "They compare numbers", "They snap blocks together"], ans: 0 },
+                    { q: "Why do we use quotation marks inside input()?", options: ["To tell Python the text is a message", "To erase the message", "To make the text bigger", "To turn text into numbers"], ans: 0 },
+                    { q: "What does int() do in this code? age = int(input('How old are you? '))", options: ["Makes the user type faster", "Turns the input into a number", "Prints the number", "Changes the question"], ans: 1 },
+                    { q: "What happens after Python shows the question in input()?", options: ["It crashes", "It shows a picture", "It waits for the user to type", "It skips the question"], ans: 2 },
+                    { q: "Which is an example of using input with a conditional?", options: ["print(input)", "if input > 10:", "if age > 10: print(\"You're older than 10!\")", "input(\"Choose a color\") then if"], ans: 2 },
+                    { q: "Why is input() useful?", options: ["It makes programs interactive", "It only prints messages", "It stores pictures", "It builds websites automatically"], ans: 0 }
                 ]
             },
             {
                 id: 15,
                 title: "Lesson 15: For Loops in Python",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 15: For Loops in Python</h2>
+                type: "quiz",
+                content: `
+                    <p>A for loop is a tool in Python that helps you repeat actions without typing the same line over and over. You used repeat blocks in block coding, such as “repeat 10 times,” to make characters move, say messages, or change variables. Python does the same thing, but instead of snapping blocks together, you type your loop.</p>
                     <p>A basic Python for loop looks like this:</p>
-                    <pre>for i in range(5):\n    print("Hello!")</pre>
-                    <p>The loop variable <code>i</code> automatically keeps track of the iteration index counter sequentially, starting at 0 and processing upwards.</p>
+                    <code>for i in range(5):\n    print("Hello!")</code>
+                    <p>This tells the computer: “Repeat this action 5 times.” Unlike block coding, Python uses a colon (:) at the end of the loop line and indentation (spaces at the beginning of the next lines) to show what should repeat. The loop variable i changes each time the loop runs, starting at 0 and going up.</p>
+                    <p>In block coding, the loop automatically hides this counter. Python, however, shows it to you, which gives you more control. You can use the loop variable to print numbers, move through lists, or create patterns:</p>
+                    <code>for i in range(3):\n    print("Loop number:", i)</code>
+                    <p>Unlike block coding, Python loops can handle text, numbers, lists, and even user input. They are more flexible and powerful, helping you build real programs with repeating actions.</p>
                 `,
-                questions: [
-                    { q: "What is a for loop used for in Python?", a: ["Drawing pictures", "Repeating actions multiple times", "Playing sounds", "Stopping the program"], c: "B" },
-                    { q: "Unlike block coding, Python for loops require:", a: ["A drag-and-drop block", "Typed commands with a colon and indentation", "Stickers", "Buttons"], c: "B" },
-                    { q: "What symbol is needed at the end of the loop line?", a: ["?", ": (colon)", ";", "()"], c: "B" },
-                    { q: "What does range(5) do in a for loop?", a: ["Repeats the action 0 times", "Repeats the action 5 times", "Makes 5 pictures", "Counts backwards only"], c: "B" },
-                    { q: "In this code, what is i?\nfor i in range(3):\n    print(\"Hello\")", a: ["The loop variable that changes each time", "A number to multiply", "A picture", "A sound"], c: "A" },
-                    { q: "How many times will this run?\nfor i in range(4):\n    print(\"Hi\")", a: ["3", "4", "5", "2"], c: "B" },
-                    { q: "How do you show what should repeat inside a loop?", a: ["Use indentation (spaces)", "Use parentheses", "Write in capital letters", "Add quotation marks"], c: "A" },
-                    { q: "Which is correct Python syntax for a for loop?", a: ["for i in range(5) print(\"Hello\")", "for i in range(5): print(\"Hello\")", "for i: range(5) print(\"Hello\")", "for i = 5 print(\"Hello\")"], c: "B" },
-                    { q: "Unlike block coding, Python for loops let you:", a: ["Only repeat actions with pictures", "Repeat actions with numbers, text, and lists", "Only move characters", "Only ask questions"], c: "B" },
-                    { q: "What will this print?\nfor i in range(3):\n    print(\"Number\", i)", a: ["Number 1, Number 2, Number 3", "Number 0, Number 1, Number 2", "Number 1, Number 2", "Number 0, Number 1, Number 2, Number 3"], c: "B" },
-                    { q: "Why are for loops important for Python coders?", a: ["They make programs colorful", "They allow repeated actions and more control than block loops", "They decorate the screen", "They erase mistakes automatically"], c: "B" }
+                quiz: [
+                    { q: "What is a for loop used for in Python?", options: ["Drawing pictures", "Repeating actions multiple times", "Playing sounds", "Stopping the program"], ans: 1 },
+                    { q: "Unlike block coding, Python for loops require:", options: ["A drag-and-drop block", "Typed commands with a colon and indentation", "Stickers", "Buttons"], ans: 1 },
+                    { q: "What symbol is needed at the end of the loop line?", options: ["?", ": (colon)", ";", "()"], ans: 1 },
+                    { q: "What does range(5) do in a for loop?", options: ["Repeats the action 0 times", "Repeats the action 5 times", "Makes 5 pictures", "Counts backwards only"], ans: 1 },
+                    { q: "In this code, what is i? for i in range(3): print('Hello')", options: ["The loop variable that changes each time", "A number to multiply", "A picture", "A sound"], ans: 0 },
+                    { q: "How many times will this run? for i in range(4): print('Hi')", options: ["3", "4", "5", "2"], ans: 1 },
+                    { q: "How do you show what should repeat inside a loop?", options: ["Use indentation (spaces)", "Use parentheses", "Write in capital letters", "Add quotation marks"], ans: 0 },
+                    { q: "Which is correct Python syntax for a for loop?", options: ["for i in range(5) print(\"Hello\")", "for i in range(5): print(\"Hello\")", "for i: range(5) print(\"Hello\")", "for i = 5 print(\"Hello\")"], ans: 1 },
+                    { q: "Unlike block coding, Python for loops let you:", options: ["Only repeat actions with pictures", "Repeat actions with numbers, text, and lists", "Only move characters", "Only ask questions"], ans: 1 },
+                    { q: "What will this print? for i in range(3): print('Number', i)", options: ["Number 1, Number 2, Number 3", "Number 0, Number 1, Number 2", "Number 1, Number 2", "Number 0, Number 1, Number 2, Number 3"], ans: 1 },
+                    { q: "Why are for loops important for Python coders?", options: ["They make programs colorful", "They allow repeated actions and more control than block loops", "They decorate the screen", "They erase mistakes automatically"], ans: 1 }
                 ]
             },
             {
                 id: 16,
-                title: "Lesson 16: The While Loop",
-                type: "lesson_quiz",
-                html: `
-                    <h2>Lesson 16: The While Loop in Python</h2>
-                    <p>A while loop handles structural conditional looping configurations. It executes iteratively as long as a targeted statement remains true.</p>
-                    <pre>count = 0\nwhile count < 3:\n    print("Welcome!")\n    count = count + 1</pre>
-                    <p style="color: var(--danger-color)"><strong>Crucial Security Rule:</strong> You must update tracking parameters inside your loop body to avoid infinite freeze executions!</p>
+                title: "Lesson 16: What Is a While Loop?",
+                type: "quiz",
+                content: `
+                    <p>A while loop tells the computer to keep repeating an action as long as something is true. Think about it like this: “While I am thirsty, I want to drink”. You don’t know how many times you’ll drink, you just continue until you are no longer thirsty. That is the fundamental of a while loop.</p>
+                    <p>A Simple While Loop Example:</p>
+                    <code>count = 0\n\nwhile count &lt; 3:\n    print("Welcome!")\n    count = count + 1</code>
+                    <p>This will print WELCOME three times.</p>
+                    <h4>How While Loops Compare to For Loops</h4>
+                    <ul>
+                        <li><strong>For Loop:</strong> Repeats a set number of times, uses range(), good when you know the total execution count beforehand.</li>
+                        <li><strong>While Loop:</strong> Repeats until a condition is false, uses a conditional logic tracker (<, ==, !=), good when you don't know the count beforehand.</li>
+                    </ul>
+                    <div class="side-note-box">
+                        <h4>Important Rule</h4>
+                        <p>A while loop must change something inside the loop, or it will run forever! Running without an update step creates an infinite loop breakdown error.</p>
+                    </div>
                 `,
-                questions: [
-                    { q: "What does a while loop do?", a: ["Runs code", "Repeats code while a condition is true", "Starts the program", "Draws pictures"], c: "B" },
-                    { q: "Reflecting conditional logic, which loop is best when you do NOT know how many times the code should run?", a: ["for loop", "print loop", "while loop", "range loop"], c: "C" },
-                    { q: "What word starts a while loop in Python?", a: ["loop", "repeat", "while", "then"], c: "C" },
-                    { q: "What symbol is required at the end of the while loop line?", a: [".", ";", ": (colon)", "()"], c: "C" },
-                    { q: "Why is indentation important in a while loop?", a: ["It makes the code colorful", "It shows what code should repeat", "It makes the loop faster", "It ends the program"], c: "B" },
-                    { q: "What is the problem with this code?\ncount = 0\nwhile count < 3:\n    print(\"Hello\")", a: ["It will print nothing", "It will stop after one time", "It will run forever", "It has a spelling error"], c: "C" },
-                    { q: "What line is missing to fix the code above?", a: ["count = 0", "print(\"Hello\")", "count = count + 1", "while count < 3"], c: "C" },
-                    { q: "How many times will this loop run?\ncount = 1\nwhile count <= 3:\n    print(count)\n    count += 1", a: ["2", "3", "4", "Forever"], c: "B" },
-                    { q: "What will this code print?\ncount = 0\nwhile count < 2:\n    print(\"Hi\")\n    count += 1", a: ["Hi (1 time)", "Hi (2 times)", "Hi (3 times)", "Nothing"], c: "B" },
-                    { q: "Which comparison could be used in a while loop condition?", a: ["<", "==", "!=", "All of the above"], c: "D" },
-                    { q: "When should you use a while loop instead of a for loop?", a: ["When repeating a set number of times", "When waiting for a condition to change", "When printing numbers only", "When using pictures"], c: "B" },
-                    { q: "What is the main danger of a while loop?", a: ["It can erase your code", "It can run forever if nothing changes", "It cannot use numbers", "It only works once"], c: "B" }
+                quiz: [
+                    { q: "What does a while loop do?", options: ["Runs code", "Repeats code while a condition is true", "Starts the program", "Draws pictures"], ans: 1 },
+                    { q: "Which loop is best when you do NOT know how many times the code should run?", options: ["for loop", "print loop", "while loop", "range loop"], ans: 2 },
+                    { q: "What word starts a while loop in Python?", options: ["loop", "repeat", "while", "then"], ans: 2 },
+                    { q: "What symbol is required at the end of the while loop line?", options: [".", ";", ": (colon)", "()"], ans: 2 },
+                    { q: "Why is indentation important in a while loop?", options: ["It makes the code colorful", "It shows what code should repeat", "It makes the loop faster", "It ends the program"], ans: 1 },
+                    { q: "What is the problem with this code? count = 0; while count < 3: print('Hello')", options: ["It will print nothing", "It will stop after one time", "It will run forever", "It has a spelling error"], ans: 2 },
+                    { q: "What line is missing to fix the code above?", options: ["count = 0", "print(\"Hello\")", "count = count + 1", "while count < 3"], ans: 2 },
+                    { q: "How many times will this loop run? count = 1; while count <= 3: print(count); count += 1", options: ["2", "3", "4", "Forever"], ans: 1 },
+                    { q: "What will this code print? count = 0; while count < 2: print('Hi'); count += 1", options: ["Hi (1 time)", "Hi (2 times)", "Hi (3 times)", "Nothing"], ans: 1 },
+                    { q: "Which comparison could be used in a while loop condition?", options: ["<", "==", "!=", "All of the above"], ans: 3 },
+                    { q: "When should you use a while loop instead of a for loop?", options: ["When repeating a set number of times", "When waiting for a condition to change", "When printing numbers only", "When using pictures"], ans: 1 },
+                    { q: "What is the main danger of a while loop?", options: ["It can erase your code", "It can run forever if nothing changes", "It cannot use numbers", "It only works once"], ans: 1 }
                 ]
             },
             {
                 id: 17,
-                title: "Lesson 17: Story Building Game",
-                type: "lesson_only",
-                html: `
-                    <h2>Lesson 17: Creating Your First Python Program</h2>
-                    <p>Let's compile our dynamic tools into a multi-variable text production program layout matrix script:</p>
-                    <pre>print("Welcome to the Story Building Game!")\n\nname = input("Once upon a time, a kid named: ")\nplace = input("Lived in a: ")\njourney = input("On their journey they encountered a: ")\n\nprint("The ", journey, " attacked them!")\nclimax = input("But then they: ")\nprint("Because they ", climax, " the ", journey, " was defeated!")</pre>
+                title: "Lesson 17: Project - Story Building Game",
+                type: "project",
+                content: `
+                    <p>In this lesson, you will learn how Python can help you create stories by asking the user questions and then putting the answers together. This is similar to story games you may have played where you fill in words and see a silly story at the end.</p>
+                    <p><strong>STEP 1:</strong> Create an introduction using print functions:</p>
+                    <code>print("Welcome to the Story Building Game!")\nprint("In this game you have to fill in the blanks with whatever you desire.")</code>
+                    <p><strong>STEP 2:</strong> Create input functions for user creativity and assign them to variables:</p>
+                    <code>name=input("Once upon a time, a kid named: ")\nplace=input("Lived in a: ")\ntraveling_to=input("One day they went on an adventure to: ")\njourney=input("On their journey there they encountered a: ")</code>
+                    <p><strong>STEP 3:</strong> Use print outputs to piece the narrative elements dynamically together:</p>
+                    <code>print("The", journey, "attacked them and they seem to be defeated.")\nclimax=input("But then they: ")\nprint("Because they", climax, "the", journey, "was defeated")</code>
                 `
             },
             {
                 id: 18,
-                title: "Lesson 18: Multi-Function Calculator",
-                type: "lesson_only",
-                html: `
-                    <h2>Lesson 18: Building a Multi-Function Calculator</h2>
-                    <p>This code constructs a terminal-based calculator utilizing standard operations alongside numeric decimal casting transformations via the <code>float()</code> function framework:</p>
-                    <pre>print("Welcome to the Calculator")\n\nnum1 = float(input("Enter the 1st number: "))\nnum2 = float(input("Enter the 2nd number: "))\n\nsum = num1 + num2\ndifference = num1 - num2\nproduct = num1 * num2\ndivision = num1 / num2\npower = num1 ** num2\n\nprint("Sum: ", sum)\nprint("Difference: ", difference)\nprint("Product: ", product)\nprint("Quotient: ", division)\nprint("Power (Exponent): ", power)</pre>
+                title: "Lesson 18: Project - Advanced Calculator",
+                type: "project",
+                content: `
+                    <p>We will be making a calculator program capable of addition, subtraction, multiplication, division, and exponents.</p>
+                    <div class="side-note-box">
+                        <h4>SIDE NOTE</h4>
+                        <p>If you want the program to wait before printing or doing the next part of the code you must import time at the top and then do time.sleep(). In the parenthesis you can do however many seconds you want. print("-----------------") is useful to separate lines of code.</p>
+                        <code>import time\n\ntime.sleep(3)\nprint("-----------------------------")</code>
+                    </div>
+                    <p><strong>STEP ONE:</strong> Build the application title introduction:</p>
+                    <code>print("Welcome to the Calculator")</code>
+                    <p><strong>STEP TWO:</strong> Process typed user values and calculate arithmetic transformations:</p>
+                    <code>num1=float(input("Enter the 1st number: "))\nnum2=float(input("Enter the 2nd number: "))\nsum=num1+num2\ndifference=num1-num2\nproduct=num1*num2\ndivision=num1/num2\npower=num1**num2\n\nprint("sum of numbers", sum)\nprint("difference of numbers", difference)\nprint("product of numbers", product)\nprint("quotient of numbers", division)\nprint("power", power)</code>
                 `
             },
             {
                 id: 19,
-                title: "Lesson 19: Rock, Paper, Scissors",
-                type: "lesson_only",
-                html: `
-                    <h2>Lesson 19: Building a Rock, Paper, Scissors Game</h2>
-                    <p>This dynamic script utilizes the core <code>random</code> library array selector methods to configure automated computer logic selections loop structures:</p>
-                    <pre>import random\n\nplay_again = "yes"\nwhile play_again == "yes":\n    player = input("Choose rock, paper, or scissors: ")\n    choices = ["rock", "paper", "scissors"]\n    computer = random.choice(choices)\n    \n    print("Computer chose:", computer)\n    if player == computer:\n        print("It's a tie!")\n    elif player == "rock" and computer == "scissors":\n        print("You win!")\n    else:\n        print("Computer wins!")\n        \n    play_again = input("Play again? (yes/no): ")</pre>
+                title: "Lesson 19: Project - Rock, Paper, Scissors",
+                type: "project",
+                content: `
+                    <h4>How the Game Works</h4>
+                    <p>Rock beats Scissors | Scissors beats Paper | Paper beats Rock</p>
+                    <p><strong>Step 1: Importing Random Choices</strong></p>
+                    <code>import random</code>
+                    <p><strong>Step 2: Getting the Player's Choice</strong></p>
+                    <code>player = input("Choose rock, paper, or scissors: ")</code>
+                    <p><strong>Step 3: Computer Makes a Choice</strong></p>
+                    <code>choices = ["rock", "paper", "scissors"]\ncomputer = random.choice(choices)\nprint("Computer chose:", computer)</code>
+                    <p><strong>Step 4: Deciding the Winner using control branches</strong></p>
+                    <code>if player == computer:\n    print("It's a tie!")\nelif player == "rock" and computer == "scissors":\n    print("You win!")\nelif player == "paper" and computer == "rock":\n    print("You win!")\nelif player == "scissors" and computer == "paper":\n    print("You win!")\nelse:\n    print("Computer wins!")</code>
+                    <p><strong>Step 5: Playing Again with a While Loop wrapping</strong></p>
+                    <code>play_again = "yes"\nwhile play_again == "yes":\n    # ... choice code and validation branches inside loop ...\n    play_again = input("Play again? (yes/no): ")</code>
                 `
             },
             {
                 id: 20,
-                title: "Lesson 20: Final Project Submission",
-                type: "final_project",
-                html: `
-                    <h2>FINAL LESSON: Course Completion Sandbox</h2>
-                    <p>In order to pass this course, you will make your own game in Python and it will be graded for accuracy. Be creative in what you make!</p>
-                    <p>When you have completely resolved your production workspace files, engage the submission button widget infrastructure below to register your structural profile parameters into our core systems:</p>
-                    <div style="text-align:center; margin: 40px 0;">
-                        <button class="btn-success" style="font-size:1.3rem; padding: 15px 40px;" onclick="triggerTkinterPopup()">I am done</button>
-                    </div>
-                `
-            },
-            {
-                id: 21,
-                title: "Contact Us",
-                type: "contact_page",
-                html: `
-                    <h2>Contact Our Support Team</h2>
-                    <p>Have questions about the lessons, found a bug in the code editor, or need help with your final grading? Drop us a line below!</p>
-                    <form class="contact-form" onsubmit="handleContactSubmit(event)">
-                        <div class="form-group">
-                            <label for="contact-name">Your Name:</label>
-                            <input type="text" id="contact-name" placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-email">Your Email Address:</label>
-                            <input type="email" id="contact-email" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-message">Message or Question:</label>
-                            <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 10px;">Send Message</button>
-                    </form>
-                    <div class="feedback-message correct" id="contact-success" style="margin-top: 20px;">✓ Thank you! Your message has been sent successfully.</div>
+                title: "Lesson 20: Final Exam Capstone",
+                type: "final",
+                content: `
+                    <p style="color: #10b981; font-weight: 700; font-size: 1.25rem;">YOU HAVE REACHED THE FINAL LESSON OF THE TECHNOLOGY PART!</p>
+                    <p>In order to pass this course, you will make your own game in python and it will be graded for accuracy. Be creative in what you make.</p>
+                    <p>Type out or submit your core custom game script inside the IDE text box block module container display below:</p>
                 `
             }
         ];
 
-        let currentModuleIndex = 0;
+        // System State parameters 
+        let activeLessonId = 1;
+        let unlockedLessons = [1]; 
 
-        // Initializes the sidebar items dynamically
+        function switchMainTab(tabId) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
         function buildSidebar() {
-            const menu = document.getElementById('menu-list');
-            menu.innerHTML = '';
-            courseData.forEach((mod, idx) => {
-                const li = document.createElement('li');
-                li.className = `sidebar-item ${idx === currentModuleIndex ? 'active' : ''}`;
-                li.onclick = () => switchModule(idx);
+            const container = document.getElementById('sidebar-buttons');
+            container.innerHTML = '';
+            
+            courseData.forEach((lesson) => {
+                const btn = document.createElement('button');
+                btn.className = `sidebar-item ${lesson.id === activeLessonId ? 'active' : ''}`;
                 
-                let badgeText = 'Read';
-                if (mod.type === 'lesson_quiz') badgeText = 'Quiz';
-                if (mod.type === 'final_project') badgeText = 'Final';
-                if (mod.type === 'contact_page') badgeText = 'Info';
+                const isUnlocked = unlockedLessons.includes(lesson.id);
+                btn.disabled = !isUnlocked;
                 
-                li.innerHTML = `<span>${mod.title}</span> <span class="badge">${badgeText}</span>`;
-                menu.appendChild(li);
+                let icon = isUnlocked ? '🔓' : '🔒';
+                if (unlockedLessons.includes(lesson.id + 1)) {
+                    icon = '✅';
+                } else if (lesson.id === 20 && unlockedLessons.includes(20)) {
+                    icon = '🏁';
+                }
+                
+                btn.innerHTML = `<span>${lesson.title}</span> <span class="status-icon">${icon}</span>`;
+                btn.onclick = () => {
+                    activeLessonId = lesson.id;
+                    buildSidebar();
+                    renderLesson();
+                };
+                container.appendChild(btn);
             });
         }
 
-        // Swaps modules when a menu option is selected
-        function switchModule(index) {
-            currentModuleIndex = index;
-            buildSidebar();
-            renderContent();
-        }
-
-        // Renders content and quizzes to the workspace screen area
-        function renderContent() {
-            const pane = document.getElementById('content-pane');
-            const mod = courseData[currentModuleIndex];
+        function renderLesson() {
+            const container = document.getElementById('lesson-panel-container');
+            const data = courseData.find(l => l.id === activeLessonId);
             
-            let htmlContent = `<div>${mod.html}</div>`;
+            let interactiveBlockHTML = '';
 
-            if (mod.type === 'lesson_quiz' && mod.questions) {
-                htmlContent += `<div class="quiz-section"><h3>Module Review Quiz</h3>`;
-                mod.questions.forEach((q, qIdx) => {
-                    htmlContent += `
-                        <div class="quiz-card" id="q-card-${qIdx}">
-                            <p class="question-text">${qIdx + 1}. ${q.q}</p>
-                            <div class="options-group">
-                    `;
-                    q.a.forEach((opt, oIdx) => {
-                        let letterCode = String.fromCharCode(65 + oIdx); 
-                        let displayValue = q.a.length === 2 ? opt : `${letterCode}) ${opt}`;
-                        let valueAttribute = q.a.length === 2 ? opt : letterCode;
-
-                        htmlContent += `
-                            <label class="option-label">
-                                <input type="radio" name="mod-q-${qIdx}" value="${valueAttribute}" onclick="gradeQuestion(${qIdx}, '${valueAttribute}')">
-                                ${displayValue}
-                            </label>
+            if (data.type === 'quiz') {
+                let quizHTML = '';
+                data.quiz.forEach((item, qIdx) => {
+                    let optionsHTML = '';
+                    item.options.forEach((opt, oIdx) => {
+                        optionsHTML += `
+                            <li>
+                                <label class="option-label">
+                                    <input type="radio" name="q_${data.id}_${qIdx}" value="${oIdx}">
+                                    ${opt}
+                                </label>
+                            </li>
                         `;
                     });
-                    htmlContent += `
-                            </div>
-                            <div class="feedback-message" id="feedback-${qIdx}"></div>
+
+                    quizHTML += `
+                        <div class="question-block">
+                            <div class="question-text">${qIdx + 1}. ${item.q}</div>
+                            <ul class="options-list">${optionsHTML}</ul>
                         </div>
                     `;
                 });
-                htmlContent += `</div>`;
+
+                interactiveBlockHTML = `
+                    <div class="quiz-container">
+                        <h3>Interactive Lesson Quiz</h3>
+                        <form id="quiz-form-${data.id}" onsubmit="gradeQuiz(event, ${data.id})">
+                            ${quizHTML}
+                            <button type="submit" class="submit-btn">Submit Quiz for Grading</button>
+                        </form>
+                        <div id="feedback-${data.id}" class="quiz-feedback"></div>
+                    </div>
+                `;
+            } else if (data.type === 'project') {
+                interactiveBlockHTML = `
+                    <div class="quiz-container">
+                        <h3>Workshop Project Verification</h3>
+                        <div class="project-input-zone">
+                            <p style="margin-bottom:0.75rem; color:var(--text-muted);">Paste or write your Python practice implementation below:</p>
+                            <textarea class="project-textarea" placeholder="# Type code here..."></textarea>
+                            <button type="button" class="submit-btn" onclick="verifyProject(${data.id})">Mark Project Module Completed</button>
+                        </div>
+                        <div id="feedback-${data.id}" class="quiz-feedback"></div>
+                    </div>
+                `;
+            } else if (data.type === 'final') {
+                interactiveBlockHTML = `
+                    <div class="quiz-container">
+                        <h3>Course Sandbox Submission Portal</h3>
+                        <div class="project-input-zone">
+                            <textarea class="project-textarea" placeholder="import random\n# Build your custom game engine..."></textarea>
+                            <div style="text-align: center; margin-top: 2rem;">
+                                <button type="button" class="done-btn" onclick="triggerFinalCompletionPopup()">I am done</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
             }
 
-            // Controls navigation button layouts footer
-            htmlContent += `
-                <div class="nav-buttons">
-                    <button class="btn-secondary" onclick="movePrev()" ${currentModuleIndex === 0 ? 'style="visibility:hidden;"' : ''}>Previous</button>
-                    <button class="btn-primary" onclick="moveNext()" ${currentModuleIndex === courseData.length - 1 ? 'style="visibility:hidden;"' : ''}>Next Lesson</button>
-                </div>
+            container.innerHTML = `
+                <h2>${data.title}</h2>
+                <hr style="border:0; height:1px; background:var(--border-color); margin: 1.5rem 0 2rem 0;">
+                <div class="lesson-content">${data.content}</div>
+                ${interactiveBlockHTML}
             `;
-
-            pane.innerHTML = htmlContent;
-            pane.scrollTop = 0;
         }
 
-        // Automated multi-choice scoring feedback engine
-        window.gradeQuestion = function(qIdx, selectedValue) {
-            const mod = courseData[currentModuleIndex];
-            const question = mod.questions[qIdx];
-            const feedbackBox = document.getElementById(`feedback-${qIdx}`);
-            const card = document.getElementById(`q-card-${qIdx}`);
+        function gradeQuiz(e, lessonId) {
+            e.preventDefault();
+            const data = courseData.find(l => l.id === lessonId);
+            let totalQuestions = data.quiz.length;
+            let correctCount = 0;
 
-            feedbackBox.style.display = "block";
-            if (selectedValue === question.c) {
-                feedbackBox.textContent = "✓ Correct Answer!";
-                feedbackBox.className = "feedback-message correct";
-                card.style.borderLeft = "4px solid var(--success-color)";
+            data.quiz.forEach((item, qIdx) => {
+                const selected = document.querySelector(`input[name="q_${lessonId}_${qIdx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.ans) {
+                    correctCount++;
+                }
+            });
+
+            let finalScore = Math.round((correctCount / totalQuestions) * 100);
+            const feedbackBox = document.getElementById(`feedback-${lessonId}`);
+            
+            if (finalScore >= 80) {
+                feedbackBox.className = "quiz-feedback success";
+                feedbackBox.innerHTML = `🎉 Pass! Score: ${finalScore}%. Excellent work! The next syllabus concept has been successfully unlocked.`;
+                if (!unlockedLessons.includes(lessonId + 1) && lessonId < courseData.length) {
+                    unlockedLessons.push(lessonId + 1);
+                }
+                buildSidebar();
             } else {
-                feedbackBox.textContent = `✗ Incorrect. Target key option code requires: ${question.c}`;
-                feedbackBox.className = "feedback-message incorrect";
-                card.style.borderLeft = "4px solid var(--danger-color)";
+                feedbackBox.className = "quiz-feedback error";
+                feedbackBox.innerHTML = `❌ Score: ${finalScore}%. You need an 80% or higher to progress to the next syllabus module. Review the text files above and try again!`;
             }
+            feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Handle contact form mock submission
-        window.handleContactSubmit = function(event) {
-            event.preventDefault();
-            const successBox = document.getElementById('contact-success');
-            successBox.style.display = 'block';
-            event.target.reset(); 
+        function verifyProject(lessonId) {
+            const feedbackBox = document.getElementById(`feedback-${lessonId}`);
+            feedbackBox.className = "quiz-feedback success";
+            feedbackBox.innerHTML = `🎉 Project Saved! Code baseline parsed successfully. Next curriculum step is unlocked.`;
+            
+            if (!unlockedLessons.includes(lessonId + 1) && lessonId < courseData.length) {
+                unlockedLessons.push(lessonId + 1);
+            }
+            buildSidebar();
+            feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        window.movePrev = function() {
-            if (currentModuleIndex > 0) switchModule(currentModuleIndex - 1);
+        function triggerFinalCompletionPopup() {
+            document.getElementById('completion-modal').style.display = 'flex';
         }
 
-        window.moveNext = function() {
-            if (currentModuleIndex < courseData.length - 1) switchModule(currentModuleIndex + 1);
+        function closeCompletionModal() {
+            document.getElementById('completion-modal').style.display = 'none';
         }
 
-        // Simulated Tkinter Desktop App Window Launcher Logic Actions
-        window.triggerTkinterPopup = function() {
-            document.getElementById('popup-overlay').classList.add('show');
-        }
-
-        window.closePopup = function() {
-            document.getElementById('popup-overlay').classList.remove('show');
-        }
-
-        // Initialize App Execution State
+        // Run Setup Engine
         buildSidebar();
-        renderContent();
+        renderLesson();
     </script>
 </body>
 </html>
