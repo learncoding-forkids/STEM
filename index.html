@@ -412,6 +412,12 @@
                 <button class="start-btn" onclick="startCurriculum()">Start online lessons</button>
             </div>
 
+            <div id="lessons-launch-screen" class="start-panel" style="display: none;">
+                <h2>Module Blueprint Ready</h2>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Your personalized curriculum track has initialized successfully. Click below to enter Lesson 1.</p>
+                <button class="start-btn" onclick="loadFirstLessonDirectly()">Start Lesson 1</button>
+            </div>
+
             <div id="lessons-content-area" style="display: none;">
                 
                 <div class="progress-container">
@@ -440,7 +446,6 @@
     </main>
 
     <script>
-        // Data bank containing all 20 modules mapped directly to the template structure
         const lessonsData = [
             {
                 id: 1,
@@ -454,15 +459,15 @@
                     <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. Coding is essential for every person to learn and develop. The number one rule of coding is to find unique solutions to problems.</p>
                 `,
                 questions: [
-                    { id: "q1", text: "What is the core idea of coding?", options: { A: "Conditionals", B: "Giving detailed plans to a robot", C: "Solving equations", D: "Computing equations" }, correct: "B" },
-                    { id: "q2", text: "True or False: There is only one coding language.", options: { True: "True", False: "False" }, correct: "False" },
-                    { id: "q3", text: "What is block coding made up of?", options: { A: "Lines of code", B: "Arithmetic code", C: "Sets of code", D: "Linear code" }, correct: "C" },
-                    { id: "q4", text: "Do all blocks in block coding have the same purpose?", options: { A: "Yes", B: "No" }, correct: "B" },
-                    { id: "q5", text: "What is it called when a computer performs blocks in order?", options: { A: "Sequence", B: "Order", C: "Method", D: "Pathway" }, correct: "A" },
-                    { id: "q6", text: "What is coding used for?", options: { A: "Solve problems", B: "Social media", C: "Make websites", D: "All of the above" }, correct: "D" },
-                    { id: "q7", text: "What is debugging?", options: { A: "Fixing mistakes", B: "Finalizing an idea" }, correct: "A" },
-                    { id: "q8", text: "True or False: Mistakes in coding are okay.", options: { True: "True", False: "False" }, correct: "True" },
-                    { id: "q9", text: "What is the number one rule of coding?", options: { A: "Find unique ways to solve a problem", B: "Make robots" }, correct: "A" }
+                    { id: "l1_q1", text: "What is the core idea of coding?", options: { A: "Conditionals", B: "Giving detailed plans to a robot", C: "Solving equations", D: "Computing equations" }, correct: "B" },
+                    { id: "l1_q2", text: "True or False: There is only one coding language.", options: { True: "True", False: "False" }, correct: "False" },
+                    { id: "l1_q3", text: "What is block coding made up of?", options: { A: "Lines of code", B: "Arithmetic code", C: "Sets of code", D: "Linear code" }, correct: "C" },
+                    { id: "l1_q4", text: "Do all blocks in block coding have the same purpose?", options: { A: "Yes", B: "No" }, correct: "B" },
+                    { id: "l1_q5", text: "What is it called when a computer performs blocks in order?", options: { A: "Sequence", B: "Order", C: "Method", D: "Pathway" }, correct: "A" },
+                    { id: "l1_q6", text: "What is coding used for?", options: { A: "Solve problems", B: "Social media", C: "Make websites", D: "All of the above" }, correct: "D" },
+                    { id: "l1_q7", text: "What is debugging?", options: { A: "Fixing mistakes", B: "Finalizing an idea" }, correct: "A" },
+                    { id: "l1_q8", text: "True or False: Mistakes in coding are okay.", options: { True: "True", False: "False" }, correct: "True" },
+                    { id: "l1_q9", text: "What is the number one rule of coding?", options: { A: "Find unique ways to solve a problem", B: "Make robots" }, correct: "A" }
                 ]
             },
             {
@@ -478,9 +483,9 @@
                     <p>Just like block models, your goal with text-based engines is to find clean, elegant solutions to complicated automation problems!</p>
                 `,
                 questions: [
-                    { id: "q1", text: "What type of programming language is Python?", options: { A: "Visual Block-based", B: "Text-based", C: "Graphical layout only" }, correct: "B" },
-                    { id: "q2", text: "What type of mistake is a code structural typo called in Python?", options: { A: "Syntax Error", B: "Block Error", C: "Robot Mistake" }, correct: "A" },
-                    { id: "q3", text: "What feature functions as a 'data storage locker' inside an engineering program?", options: { A: "A script tag", B: "A sequence order box", C: "A Variable" }, correct: "C" }
+                    { id: "l2_q1", text: "What type of programming language is Python?", options: { A: "Visual Block-based", B: "Text-based", C: "Graphical layout only" }, correct: "B" },
+                    { id: "l2_q2", text: "What type of mistake is a code structural typo called in Python?", options: { A: "Syntax Error", B: "Block Error", C: "Robot Mistake" }, correct: "A" },
+                    { id: "l2_q3", text: "What feature functions as a 'data storage locker' inside an engineering program?", options: { A: "A script tag", B: "A sequence order box", C: "A Variable" }, correct: "C" }
                 ]
             },
             {
@@ -493,8 +498,8 @@
                     <p>Be careful: trying to concatenate strings directly with bare numbers will prompt the system interpreter engine to break with a data mismatch exception.</p>
                 `,
                 questions: [
-                    { id: "q1", text: "What data wrapper represents text parameters in Python?", options: { A: "Integer", B: "String", C: "Boolean" }, correct: "B" },
-                    { id: "q2", text: "What operation merges two disparate text string pieces into a single unified continuous segment?", options: { A: "Concatenation", B: "Slicing", C: "Factoring" }, correct: "A" }
+                    { id: "l3_q1", text: "What data wrapper represents text parameters in Python?", options: { A: "Integer", B: "String", C: "Boolean" }, correct: "B" },
+                    { id: "l3_q2", text: "What operation merges two disparate text string pieces into a single unified continuous segment?", options: { A: "Concatenation", B: "Slicing", C: "Factoring" }, correct: "A" }
                 ]
             },
             {
@@ -504,11 +509,11 @@
                     <p>Python parses numbers through distinct quantitative configurations: whole units or fractional values.</p>
                     <p>An <strong>Integer</strong> (<code>int</code>) represents an absolute whole number without a fractional fractional remainder element (e.g., -5, 0, 42).</p>
                     <p>A <strong>Float</strong> (<code>float</code>) represents explicit floating-point values tracking decimals precisely (e.g., 3.14, -0.001, 2.0).</p>
-                    <pre>items_count = 12       # Integer type\nunit_price = 19.99     # Float type\ntotal_cost = items_count * unit_price</pre>
+                    <pre>items_count = 12\nunit_price = 19.99\ntotal_cost = items_count * unit_price</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "Which assignment value natively resolves as an explicit Float data type parameter?", options: { A: "x = 5", B: "x = 5.0", C: "x = '5.0'" }, correct: "B" },
-                    { id: "q2", text: "What keyword abbreviation identifies clean whole value integer fields inside code engines?", options: { A: "integer", B: "intg", C: "int" }, correct: "C" }
+                    { id: "l4_q1", text: "Which assignment value natively resolves as an explicit Float data type parameter?", options: { A: "x = 5", B: "x = 5.0", C: "x = '5.0'" }, correct: "B" },
+                    { id: "l4_q2", text: "What keyword abbreviation identifies clean whole value integer fields inside code engines?", options: { A: "integer", B: "intg", C: "int" }, correct: "C" }
                 ]
             },
             {
@@ -521,8 +526,8 @@
                     <pre>result = (10 + 5) * 2\nprint(result) # Outputs: 30</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What mathematical assignment character manages script multiplication processing calculations?", options: { A: "x", B: "*", C: "^" }, correct: "B" },
-                    { id: "q2", text: "What baseline evaluation format type is always generated by a clean single-slash division rule?", options: { A: "Integer", B: "Float", C: "String" }, correct: "B" }
+                    { id: "l5_q1", text: "What mathematical assignment character manages script multiplication processing calculations?", options: { A: "x", B: "*", C: "^" }, correct: "B" },
+                    { id: "l5_q2", text: "What baseline evaluation format type is always generated by a clean single-slash division rule?", options: { A: "Integer", B: "Float", C: "String" }, correct: "B" }
                 ]
             },
             {
@@ -533,11 +538,11 @@
                     <p>The <strong>Modulo</strong> operator (<code>%</code>) returns the remainder left over from a division problem.</p>
                     <p>The <strong>Floor Division</strong> operator (<code>//</code>) divides two values and truncates the fractional decimal entirely, rounding down to the nearest whole integer.</p>
                     <p>The <strong>Exponentiation</strong> operator (<code>**</code>) calculates power transformations (e.g., base raised to an exponent exponent).</p>
-                    <pre>remainder = 10 % 3   # 1\nfloor_div = 10 // 3   # 3\npower_val = 2 ** 3    # 8</pre>
+                    <pre>remainder = 10 % 3\nfloor_div = 10 // 3\npower_val = 2 ** 3</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What configuration operator extracts the remainder from structural integer division operations?", options: { A: "//", B: "%", C: "**" }, correct: "B" },
-                    { id: "q2", text: "What evaluation output does 5 ** 2 generate inside a terminal session environment?", options: { A: "10", B: "25", C: "7" }, correct: "B" }
+                    { id: "l6_q1", text: "What configuration operator extracts the remainder from structural integer division operations?", options: { A: "//", B: "%", C: "**" }, correct: "B" },
+                    { id: "l6_q2", text: "What evaluation output does 5 ** 2 generate inside a terminal session environment?", options: { A: "10", B: "25", C: "7" }, correct: "B" }
                 ]
             },
             {
@@ -546,11 +551,11 @@
                 content: `
                     <p>To accept data straight from a user, we use the built-in global <code>input()</code> function.</p>
                     <p><strong>Crucial Rule:</strong> The <code>input()</code> instruction capturing mechanism converts all recorded inbound strokes strictly into a <code>string</code> structure, regardless of what the user typed. If you need numerical digits for math formulas, you must explicitly convert them using target typecast definitions.</p>
-                    <pre>user_age = input("Enter your age: ")\n# Conversion to integer typecast required for logic operations:\nreal_age = int(user_age)</pre>
+                    <pre>user_age = input("Enter your age: ")\nreal_age = int(user_age)</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What type profile is natively returned by the base default input() framework function?", options: { A: "Integer", B: "String", C: "Float" }, correct: "B" },
-                    { id: "q2", text: "What utility command method wraps string data vectors to convert them cleanly into formal mathematical integers?", options: { A: "str()", B: "float()", C: "int()" }, correct: "C" }
+                    { id: "l7_q1", text: "What type profile is natively returned by the base default input() framework function?", options: { A: "Integer", B: "String", C: "Float" }, correct: "B" },
+                    { id: "l7_q2", text: "What utility command method wraps string data vectors to convert them cleanly into formal mathematical integers?", options: { A: "str()", B: "float()", C: "int()" }, correct: "C" }
                 ]
             },
             {
@@ -562,8 +567,8 @@
                     <pre>is_active = True\nhas_clearance = False</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "Which option represents a perfectly formatted legal Boolean literal initialization statement?", options: { A: "is_valid = true", B: "is_valid = True", C: "is_valid = 'True'" }, correct: "B" },
-                    { id: "q2", text: "How many absolute evaluation conditional value state tracks are covered by standard Boolean variables?", options: { A: "1", B: "2", C: "Infinite" }, correct: "B" }
+                    { id: "l8_q1", text: "Which option represents a perfectly formatted legal Boolean literal initialization statement?", options: { A: "is_valid = true", B: "is_valid = True", C: "is_valid = 'True'" }, correct: "B" },
+                    { id: "l8_q2", text: "How many absolute evaluation conditional value state tracks are covered by standard Boolean variables?", options: { A: "1", B: "2", C: "Infinite" }, correct: "B" }
                 ]
             },
             {
@@ -576,8 +581,8 @@
                     <pre>check_val = (10 == 5 * 2) # Resolves to: True</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "Which expression token verifies absolute parameter equality check matching?", options: { A: "=", B: "==", C: "===" }, correct: "B" },
-                    { id: "q2", text: "What is the structural output configuration for expression segment evaluating (15 != 15)?", options: { A: "True", B: "False", C: "Syntax Error" }, correct: "False" }
+                    { id: "l9_q1", text: "Which expression token verifies absolute parameter equality check matching?", options: { A: "=", B: "==", C: "===" }, correct: "B" },
+                    { id: "l9_q2", text: "What is the structural output configuration for expression segment evaluating (15 != 15)?", options: { A: "True", B: "False", C: "Syntax Error" }, correct: "False" }
                 ]
             },
             {
@@ -589,8 +594,8 @@
                     <pre>score = 95\nif score >= 90:\n    print("Performance Level: A")</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What syntax punctuation token must terminate all standard conditional block statement headers?", options: { A: ";", B: ".", C: ":" }, correct: "C" },
-                    { id: "q2", text: "How does the Python parsing engine determine where conditional block contents begin and end?", options: { A: "Curly Braces {}", B: "Indentation alignment blocks", C: "Parentheses ()" }, correct: "B" }
+                    { id: "l10_q1", text: "What syntax punctuation token must terminate all standard conditional block statement headers?", options: { A: ";", B: ".", C: ":" }, correct: "C" },
+                    { id: "l10_q2", text: "How does the Python parsing engine determine where conditional block contents begin and end?", options: { A: "Curly Braces {}", B: "Indentation alignment blocks", C: "Parentheses ()" }, correct: "B" }
                 ]
             },
             {
@@ -602,21 +607,21 @@
                     <pre>age = 16\nif age >= 18:\n    print("Access Unlocked")\nelse:\n    print("Access Denied: Age Threshold Unmet")</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "True or False: An independent else statement block can specify logical condition rules directly inside its header.", options: { True: "True", False: "False" }, correct: "False" },
-                    { id: "q2", text: "When does code nested inside an else execution fallback pathway trigger?", options: { A: "When parent checking condition fails", B: "When checking condition passes" }, correct: "A" }
+                    { id: "l11_q1", text: "True or False: An independent else statement block can specify logical condition rules directly inside its header.", options: { True: "True", False: "False" }, correct: "False" },
+                    { id: "l11_q2", text: "When does code nested inside an else execution fallback pathway trigger?", options: { A: "When parent checking condition fails", B: "When checking condition passes" }, correct: "A" }
                 ]
             },
             {
                 id: 12,
-                title: "Lesson 12: Cascading Multi-Test Control Routes (elif Chains)",
+                title: "Lesson 12: Multi-Test Control Routes (elif Chains)",
                 content: `
                     <p>To evaluate multiple conditions sequentially, use the <code>elif</code> keyword (short for "else if").</p>
                     <p>Python runs these checks from top to bottom. As soon as one condition evaluates to <code>True</code>, its corresponding block executes, and the rest of the chain is skipped.</p>
-                    <pre>status_code = 404\nif status_code == 200:\n    print("Success")\nelif status_code == 404:\n    print("Resource Missing")\nelse:\n    print("General Internal System Warning")</pre>
+                    <pre>status_code = 404\nif status_code == 200:\n    print("Success")\nelif status_code == 404:\n    print("Resource Missing")\nelse:\n    print("General Warning")</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "Which keyword handles multi-tier conditional routing checks in Python?", options: { A: "elseif", B: "elif", C: "else if" }, correct: "B" },
-                    { id: "q2", text: "True or False: Python runs multiple matching blocks inside an elif chain if more than one condition is true.", options: { True: "True", False: "False" }, correct: "False" }
+                    { id: "l12_q1", text: "Which keyword handles multi-tier conditional routing checks in Python?", options: { A: "elseif", B: "elif", C: "else if" }, correct: "B" },
+                    { id: "l12_q2", text: "True or False: Python runs multiple matching blocks inside an elif chain if more than one condition is true.", options: { True: "True", False: "False" }, correct: "False" }
                 ]
             },
             {
@@ -630,267 +635,236 @@
                     <pre>if operational == True and security_clearance == True:\n    print("Launch Engine Activated")</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "Which logical operator requires both condition inputs to evaluate as True?", options: { A: "or", B: "and", C: "not" }, correct: "B" },
-                    { id: "q2", text: "What is the structural boolean output state for calculation (True or False)?", options: { A: "True", B: "False" }, correct: "True" }
+                    { id: "l13_q1", text: "Which operator requires ALL conditions to resolve as True?", options: { A: "or", B: "and", C: "not" }, correct: "B" },
+                    { id: "l13_q2", text: "What does the 'not' logical operation perform?", options: { A: "Multiplies numbers", B: "Inverts Boolean evaluations", C: "Loops instructions" }, correct: "B" }
                 ]
             },
             {
                 id: 14,
-                title: "Lesson 14: Loop Operations & Iteration Controls (while Frameworks)",
+                title: "Lesson 14: Automated Interation Loops (while Systems)",
                 content: `
-                    <p>Loops execute a block of code multiple times as long as a specified condition remains <code>True</code>.</p>
-                    <p><strong>Crucial Rule:</strong> The code inside a <code>while</code> loop must update the variables in the condition expression. If the condition never becomes <code>False</code>, the program will get stuck in an <em>infinite loop</em>, consuming system resources until it crashes.</p>
-                    <pre>counter = 1\nwhile counter <= 3:\n    print(counter)\n    counter = counter + 1</pre>
+                    <p>A <code>while</code> loop continuously executes a targeted programmatic block as long as its core condition remains evaluated as <code>True</code>.</p>
+                    <p>You must manipulate the checking boundary variable inside the loop block architecture to prevent setting off an endless, destructive execution pattern called an <em>infinite loop</em>.</p>
+                    <pre>counter = 0\nwhile counter < 3:\n    print("Processing index")\n    counter = counter + 1</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What system risk occurs if a loop's conditional tracking matrix fails to ever resolve into a False output state?", options: { A: "Syntax Mismatch Error", B: "An Infinite Loop", C: "Automatic Script File Erasure" }, correct: "B" },
-                    { id: "q2", text: "How many loop iterations occur when processing: x = 1; while x < 1: print(x); x+=1?", options: { A: "0", B: "1", C: "Infinite" }, correct: "A" }
+                    { id: "l14_q1", text: "What criteria keeps a basic while loop system iterating indefinitely?", options: { A: "Its evaluation condition stays True", B: "Its variable drops to 0", C: "A syntax exception occurs" }, correct: "A" },
+                    { id: "l14_q2", text: "What occurs if you forget to increment or alter the logic boundaries inside an iteration statement?", options: { A: "Immediate memory clear", B: "An Infinite Loop blueprint", C: "Syntax conversion" }, correct: "B" }
                 ]
             },
             {
                 id: 15,
-                title: "Lesson 15: Sequence Target Loops (for Loops & range() Generators)",
+                title: "Lesson 15: Sequence Iterations (for Loop Containers)",
                 content: `
-                    <p>A <code>for</code> loop iterates over a defined sequence, such as a string, list, or numeric range generated by the <code>range()</code> function.</p>
-                    <p>The <code>range(start, stop)</code> function generates numbers starting from the <code>start</code> value up to, but <strong>not including</strong>, the <code>stop</code> boundary integer.</p>
-                    <pre>for target_number in range(1, 5):\n    print(target_number) # Prints values: 1, 2, 3, 4</pre>
+                    <p>A <code>for</code> loop steps structural sequence fields over defined elements directly. It extracts indices or list items consecutively without tracking incremental arithmetic boundaries manually.</p>
+                    <p>The global built-in <code>range(start, stop)</code> tool is commonly utilized to automate loops over numerical parameters securely.</p>
+                    <pre>for index in range(0, 5):\n    print(index)  # Iterates integers 0 through 4 cleanly</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What specific integers are printed by processing loop signature sequence: for x in range(1, 4): print(x)?", options: { A: "1, 2, 3, 4", B: "1, 2, 3", C: "2, 3, 4" }, correct: "B" },
-                    { id: "q2", text: "Which loop type is ideal for iterating over a predefined sequence or range of numbers?", options: { A: "while loop", B: "for loop" }, correct: "B" }
+                    { id: "l15_q1", text: "Which mechanism extracts sequences consecutively without checking counter variables manually?", options: { A: "while routes", B: "for loops", C: "if statements" }, correct: "B" },
+                    { id: "l15_q2", text: "What integer range values are generated when running range(0, 3)?", options: { A: "0, 1, 2, 3", B: "0, 1, 2", C: "1, 2, 3" }, correct: "B" }
                 ]
             },
             {
                 id: 16,
-                title: "Lesson 16: Sequential Array Lists & Index Addressing Layouts",
+                title: "Lesson 16: Python Structured Data Lists",
                 content: `
-                    <p>A <strong>List</strong> is an ordered collection of values enclosed in square brackets (<code>[]</code>), with values separated by commas.</p>
-                    <p>Python lists use <strong>zero-indexed positioning</strong>. This means the first element sits at index position <code>0</code>, the second element at index <code>1</code>, and so forth.</p>
-                    <pre>inventory = ["Shield", "Potion", "Sword"]\nprint(inventory[0])  # Outputs: Shield\nprint(inventory[2])  # Outputs: Sword</pre>
+                    <p>A <strong>List</strong> is an ordered, modifiable collection enclosed in square brackets (<code>[]</code>). Lists handle varied information storage arrays within a single variable wrapper.</p>
+                    <p>Individual entries inside list configurations are read via zero-based structural numbering indices. This means your first item resides at position <code>0</code>, the second at index <code>1</code>, and so forth.</p>
+                    <pre>languages = ["Python", "Java", "C++"]\nprint(languages[0])  # Outputs: Python</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What array layout tracking index address represents the initial first entry inside an engineering list block?", options: { A: "1", B: "0", C: "-1" }, correct: "B" },
-                    { id: "q2", text: "Which symbol syntax envelope establishes array collections as explicit Python List parameters?", options: { A: "Parentheses ()", B: "Square brackets []", C: "Curly braces {}" }, correct: "B" }
+                    { id: "l16_q1", text: "What explicit punctuation characters wrap standard vector list structures in Python?", options: { A: "Curly Brackets {}", B: "Parentheses ()", C: "Square Brackets []" }, correct: "C" },
+                    { id: "l16_q2", text: "What index key retrieves the absolute first item in an ordered array container list?", options: { A: "1", B: "0", C: "-1" }, correct: "B" }
                 ]
             },
             {
                 id: 17,
-                title: "Lesson 17: List Element Modification Routines (append, insert, pop)",
+                title: "Lesson 17: Dynamic List Operations",
                 content: `
-                    <p>You can modify lists dynamically using built-in list methods:</p>
-                    <p>The <code>.append(item)</code> method adds an element to the end of a list.</p>
-                    <p>The <code>.insert(index, item)</code> method injects an element at a specific index position, shifting existing elements to the right.</p>
-                    <p>The <code>.pop(index)</code> method removes and returns the element at the specified index.</p>
-                    <pre>items = ["Alpha", "Beta"]\nitems.append("Gamma") # List is now: ["Alpha", "Beta", "Gamma"]</pre>
+                    <p>You can adjust list structures dynamically during execution using utility method extensions:</p>
+                    <p>Use <code>.append(item)</code> to insert a fresh parameter at the end of your list layout.</p>
+                    <p>Use <code>.remove(item)</code> to search for and eliminate an explicit entry value profile.</p>
+                    <p>Use the global <code>len(your_list)</code> tool to count the items inside a list structure.</p>
+                    <pre>scores = [88, 92]\nscores.append(79)  # scores becomes [88, 92, 79]</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "Which array mutation tracking method adds an item to the end of a list?", options: { A: "insert()", B: "pop()", C: "append()" }, correct: "C" },
-                    { id: "q2", text: "What does calling the .pop(0) instruction perform against an active variable array dataset?", options: { A: "Empties whole list", B: "Deletes the absolute first item", C: "Appends duplicate clone entries" }, correct: "B" }
+                    { id: "l17_q1", text: "Which structural method injects a fresh data parameter right onto the back edge of a list structure?", options: { A: ".pop()", B: ".append()", C: ".insert_front()" }, correct: "B" },
+                    { id: "l17_q2", text: "What core global functional tracking system counts total components stored inside an active list?", options: { A: "count()", B: "len()", C: "size()" }, correct: "B" }
                 ]
             },
             {
                 id: 18,
-                title: "Lesson 18: Function Templates & Subroutine Block Architectures",
+                title: "Lesson 18: Custom Encapsulation Functions",
                 content: `
-                    <p>Functions are reusable, isolated blocks of code designed to perform a specific task. They prevent code duplication and keep codebases organized.</p>
-                    <p>Define a function using the <code>def</code> keyword, followed by a custom function name, parentheses for arguments, and a colon.</p>
-                    <pre>def run_diagnostics():\n    print("System Diagnostics Operational")\n    print("All Matrix Parameters Stable")\n\n# Execution invocation:\nrun_diagnostics()</pre>
+                    <p><strong>Functions</strong> are reusable code blocks designed to perform specific operations without duplicating instructions across your codebase.</p>
+                    <p>Functions are declared using the <code>def</code> keyword followed by a unique function name and trailing parameters within a standard parenthesis frame.</p>
+                    <pre>def display_notification():\n    print("System Operation Confirmed")\n\ndisplay_notification()  # Executes the code block above</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "Which architectural engine keyword acts as the entry block marker declaring custom reusable script subroutines?", options: { A: "function", B: "def", C: "proc" }, correct: "B" },
-                    { id: "q2", text: "True or False: Defining a function executes its internal code immediately without needing a separate invocation call.", options: { True: "True", False: "False" }, correct: "False" }
+                    { id: "l18_q1", text: "What explicit signature token statement initializes reusable function blocks in Python?", options: { A: "function", B: "def", C: "routine" }, correct: "B" },
+                    { id: "l18_q2", text: "True or False: Declaring a function executes its block immediately without needing a separate invocation call.", options: { True: "True", False: "False" }, correct: "False" }
                 ]
             },
             {
                 id: 19,
-                title: "Lesson 19: Functional Scope Parameters & Value Returns",
+                title: "Lesson 19: Arguments & Data Returns",
                 content: `
-                    <p>Functions accept inputs called <strong>parameters</strong>, and send results back to the main program using the <code>return</code> statement.</p>
-                    <p>The <code>return</code> statement passes an evaluation value back to where the function was called, and immediately exits the function block. Any code placed below a <code>return</code> statement inside the same function is unreachable and will not execute.</p>
-                    <pre>def compute_cube(number):\n    return number * number * number\n\noutput_score = compute_cube(3) # Holds calculation balance: 27</pre>
+                    <p>Functions process inbound variable parameters via **arguments**, and return updated evaluations back to the main thread via the <code>return</code> keyword.</p>
+                    <p>The execution of a <code>return</code> statement passes the calculated data out and exits the function instantly, ignoring any code written below it inside that block.</p>
+                    <pre>def calculate_cube(number):\n    return number * number * number\n\noutput = calculate_cube(3)  # output stores 27</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What statement instruction mechanism hands an internal function calculation value back out to the main parent script?", options: { A: "output", B: "return", C: "send" }, correct: "B" },
-                    { id: "q2", text: "True or False: Script statement instructions written directly below an active operational return command inside a routine block execute normally.", options: { True: "True", False: "False" }, correct: "False" }
+                    { id: "l19_q1", text: "What specialized keyword passes calculated logic fields out of local function layers?", options: { A: "export", B: "send", C: "return" }, correct: "C" },
+                    { id: "l19_q2", text: "What parameters receive inbound programmatic values right inside function definition headers?", options: { A: "Variables", B: "Arguments/Parameters", C: "Return fields" }, correct: "B" }
                 ]
             },
             {
                 id: 20,
-                title: "Lesson 20: Comprehensive Object-Oriented Capstone Architecture",
+                title: "Lesson 20: Comprehensive Object Architectures (Dictionaries)",
                 content: `
-                    <p>Object-Oriented Programming (OOP) organizes software design around data objects rather than functions or logic routines.</p>
-                    <p>A <strong>Class</strong> serves as a structural blueprint for creating objects. Objects are concrete instances of a class that encapsulate both properties (attributes) and behaviors (methods).</p>
-                    <pre>class CombatUnit:\n    def __init__(self, designation):\n        self.name = designation\n\n    def alert(self):\n        return self.name + " online."\n\nunit_instance = CombatUnit("Apex-01")\nprint(unit_instance.alert())</pre>
+                    <p>A **Dictionary** (<code>dict</code>) manages unsorted collections structured as matched **key-value pairs** inside curly braces (<code>{}</code>).</p>
+                    <p>Instead of relying on numeric indices, you look up value records directly using their unique key assignments (typically clear text string keys).</p>
+                    <pre>student = {"name": "Alex", "grade": 12}\nprint(student["name"])  # Outputs: Alex</pre>
                 `,
                 questions: [
-                    { id: "q1", text: "What development pattern structure acts as an absolute blueprint engine for instantiating custom data object layouts?", options: { A: "Method list", B: "Class definition", C: "Scope framework" }, correct: "B" },
-                    { id: "q2", text: "What specific identifier keyword represents the immediate active target object instance inside Class configuration models?", options: { A: "this", B: "self", C: "object" }, correct: "B" }
+                    { id: "l20_q1", text: "What organizational alignment pattern forms mapping structures inside Python dictionaries?", options: { A: "Index arrays", B: "Key-Value pairings", C: "Tuple streams" }, correct: "B" },
+                    { id: "l20_q2", text: "Which bracket wrap syntax instantiates standard raw object dictionary properties explicitly?", options: { A: "Curly Brackets {}", B: "Square Brackets []", C: "Parentheses ()" }, correct: "A" }
                 ]
             }
         ];
 
-        // Core App Routing Controller Matrix
-        function switchTab(tabName) {
-            const contactTab = document.getElementById('contact-tab');
-            const lessonsTab = document.getElementById('lessons-tab');
-            const btnContact = document.getElementById('btn-contact');
-            const btnLessons = document.getElementById('btn-lessons');
+        let highestUnlockedLesson = 1;
 
-            btnContact.classList.remove('active');
-            btnLessons.classList.remove('active');
-            contactTab.classList.remove('active');
-            lessonsTab.classList.remove('active');
+        function switchTab(tabName) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
             if (tabName === 'contact') {
-                contactTab.classList.add('active');
-                btnContact.classList.add('active');
+                document.getElementById('contact-tab').classList.add('active');
+                document.getElementById('btn-contact').classList.add('active');
             } else if (tabName === 'lessons') {
-                lessonsTab.classList.add('active');
-                btnLessons.classList.add('active');
+                document.getElementById('lessons-tab').classList.add('active');
+                document.getElementById('btn-lessons').classList.add('active');
             }
-        }
-
-        // Initialize and generate DOM elements across the full 20 modules sequence
-        function initCurriculumDOM() {
-            const holder = document.getElementById('active-lessons-holder');
-            holder.innerHTML = ""; // Safe flush clear
-
-            lessonsData.forEach((lesson, index) => {
-                const isFirst = index === 0;
-                const isEven = (lesson.id % 2 === 0);
-                
-                // Outer parent card wrapper template
-                const container = document.createElement('div');
-                container.id = `lesson-${lesson.id}-container`;
-                container.className = "lesson-container";
-                container.style.display = isFirst ? "block" : "none";
-
-                // Lock tracking placeholder engine template card
-                if (!isFirst) {
-                    const lockDiv = document.createElement('div');
-                    lockDiv.id = `lesson-${lesson.id}-lock`;
-                    lockDiv.className = "locked-lesson";
-                    lockDiv.innerHTML = `
-                        <h3>🔒 ${lesson.title}</h3>
-                        <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson ${lesson.id - 1} Quiz to unlock this block!</p>
-                    `;
-                    holder.appendChild(lockDiv);
-                }
-
-                // Inner content structure string mapping
-                let quizHTML = `
-                    <div class="quiz-section ${isEven ? 'even-lesson' : ''}">
-                        <h3>${lesson.title} Knowledge Check</h3>
-                        <form id="quiz-form-l${lesson.id}">
-                `;
-
-                lesson.questions.forEach((q) => {
-                    quizHTML += `
-                        <div class="question-block">
-                            <p class="question-text">${q.text}</p>
-                            <div class="options-group">
-                    `;
-                    for (let optKey in q.options) {
-                        quizHTML += `
-                            <label class="option-label">
-                                <input type="radio" name="l${lesson.id}q${q.id}" value="${optKey}"> 
-                                ${optKey === 'True' || optKey === 'False' ? '' : optKey + '. '}${q.options[optKey]}
-                            </label>
-                        `;
-                    }
-                    quizHTML += `
-                            </div>
-                        </div>
-                    `;
-                });
-
-                quizHTML += `
-                            <button type="button" class="submit-btn ${isEven ? 'even-btn' : ''}" onclick="gradeLesson(${lesson.id})">Submit Quiz</button>
-                        </form>
-                        <div id="results-l${lesson.id}" class="results-box"></div>
-                    </div>
-                `;
-
-                container.innerHTML = `
-                    <div class="lesson-header">${lesson.title}</div>
-                    <div class="lesson-text">${lesson.content}</div>
-                    ${quizHTML}
-                `;
-
-                holder.appendChild(container);
-            });
         }
 
         function startCurriculum() {
             document.getElementById('lessons-welcome').style.display = 'none';
+            document.getElementById('lessons-launch-screen').style.display = 'block';
+        }
+
+        function loadFirstLessonDirectly() {
+            document.getElementById('lessons-launch-screen').style.display = 'none';
             document.getElementById('lessons-content-area').style.display = 'block';
-            updateProgressBar(5); // Lesson 1 baseline activation point (5% per module increments)
+            renderLessons();
         }
 
-        function updateProgressBar(percentage) {
-            document.getElementById('progress-bar-fill').style.width = percentage + '%';
-            document.getElementById('progress-text').innerText = percentage + '% Completed';
+        function renderLessons() {
+            const holder = document.getElementById('active-lessons-holder');
+            holder.innerHTML = '';
+
+            lessonsData.forEach((lesson, index) => {
+                const isEven = (index + 1) % 2 === 0;
+                
+                if (lesson.id > highestUnlockedLesson) {
+                    const lockedDiv = document.createElement('div');
+                    lockedDiv.className = 'locked-lesson';
+                    lockedDiv.innerHTML = `<h3>🔒 Lesson ${lesson.id} Locked</h3><p style="margin-top:0.5rem; font-size:0.95rem;">Successfully pass the comprehensive query checks on Lesson ${lesson.id - 1} to process this branch.</p>`;
+                    holder.appendChild(lockedDiv);
+                    return;
+                }
+
+                const lessonDiv = document.createElement('div');
+                lessonDiv.className = 'lesson-container';
+                lessonDiv.id = `lesson-block-${lesson.id}`;
+
+                let quizHTML = '';
+                lesson.questions.forEach((q) => {
+                    let optionsHTML = '';
+                    for (const [key, val] of Object.entries(q.options)) {
+                        optionsHTML += `
+                            <label class="option-label">
+                                <input type="radio" name="${q.id}" value="${key}">
+                                <span><strong>${key}:</strong> ${val}</span>
+                            </label>
+                        `;
+                    }
+
+                    quizHTML += `
+                        <div class="question-block" data-qid="${q.id}" data-correct="${q.correct}">
+                            <div class="question-text">${q.text}</div>
+                            <div class="options-group">${optionsHTML}</div>
+                        </div>
+                    `;
+                });
+
+                lessonDiv.innerHTML = `
+                    <div class="lesson-header">${lesson.title}</div>
+                    <div class="lesson-text">${lesson.content}</div>
+                    <div class="quiz-section ${isEven ? 'even-lesson' : ''}">
+                        <h3>Module Diagnostic Verification</h3>
+                        ${quizHTML}
+                        <button class="submit-btn ${isEven ? 'even-btn' : ''}" onclick="verifyQuiz(${lesson.id})">Evaluate Submissions</button>
+                        <div id="results-${lesson.id}" class="results-box"></div>
+                    </div>
+                `;
+                holder.appendChild(lessonDiv);
+            });
+
+            updateProgressBar();
         }
 
-        // Globalized Dynamic Grading and State Progression Rules Processor
-        function gradeLesson(lessonId) {
-            const lesson = lessonsData.find(l => l.id === lessonId);
-            const form = document.getElementById(`quiz-form-l${lessonId}`);
-            let score = 0;
-            let total = lesson.questions.length;
+        function verifyQuiz(lessonId) {
+            const container = document.getElementById(`lesson-block-${lessonId}`);
+            const questionBlocks = container.querySelectorAll('.question-block');
+            let perfectScore = true;
 
-            lesson.questions.forEach((q) => {
-                const checked = form.querySelector(`input[name="l${lessonId}q${q.id}"]:checked`);
-                if (checked && checked.value === q.correct) {
-                    score++;
+            questionBlocks.forEach(block => {
+                const correctAns = block.getAttribute('data-correct');
+                const qid = block.getAttribute('data-qid');
+                const selectedOpt = block.querySelector(`input[name="${qid}"]:checked`);
+
+                if (!selectedOpt || selectedOpt.value !== correctAns) {
+                    perfectScore = false;
                 }
             });
 
-            const percentage = Math.round((score / total) * 100);
-            const resultsBox = document.getElementById(`results-l${lessonId}`);
-            resultsBox.style.display = 'block';
+            const outBox = document.getElementById(`results-${lessonId}`);
+            outBox.style.display = 'block';
 
-            if (percentage >= 80) {
-                resultsBox.className = "results-box pass";
+            if (perfectScore) {
+                outBox.className = "results-box pass";
+                outBox.textContent = "✔ Diagnostic Checked: 100% Correct. Lesson parameters integrated successfully!";
                 
-                if (lessonId === 20) {
-                    resultsBox.innerHTML = `Passed Lesson 20! Your Score: ${percentage}% (${score}/${total}). <br> Ultimate milestone reached! The complete curriculum parameters have been achieved!`;
-                    document.getElementById('course-complete-container').style.display = 'block';
-                    updateProgressBar(100);
-                } else {
-                    resultsBox.innerHTML = `Passed! Your Score: ${percentage}% (${score}/${total}). <br> Excellent work! Lesson ${lessonId + 1} has been unlocked below.`;
-                    
-                    // Reveal the subsequent module and hide its lock block shield
-                    const nextLock = document.getElementById(`lesson-${lessonId + 1}-lock`);
-                    const nextContainer = document.getElementById(`lesson-${lessonId + 1}-container`);
-                    if (nextLock) nextLock.style.display = 'none';
-                    if (nextContainer) nextContainer.style.display = 'block';
-                    
-                    // Increment the progression layout value evenly by 5% increments matching 20 components linear mapping
-                    updateProgressBar(lessonId * 5);
+                if (lessonId === highestUnlockedLesson) {
+                    if (highestUnlockedLesson < lessonsData.length) {
+                        highestUnlockedLesson++;
+                        setTimeout(() => { renderLessons(); }, 1200);
+                    } else {
+                        setTimeout(() => {
+                            document.getElementById('active-lessons-holder').style.display = 'none';
+                            document.getElementById('course-complete-container').style.display = 'block';
+                            updateProgressBar(true);
+                        }, 1200);
+                    }
                 }
             } else {
-                resultsBox.className = "results-box fail";
-                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${total}). <br> You need an 80% or higher to unlock the next lesson block. Review the text instructions above and try again!`;
-                
-                // If a user fails a quiz block down the chain, reset downstream access to enforce mastery pipeline sequences
-                for (let i = lessonId + 1; i <= 20; i++) {
-                    const lockDiv = document.getElementById(`lesson-${i}-lock`);
-                    const contDiv = document.getElementById(`lesson-${i}-container`);
-                    if (lockDiv) lockDiv.style.display = 'block';
-                    if (contDiv) contDiv.style.display = 'none';
-                }
-                document.getElementById('course-complete-container').style.display = 'none';
-                updateProgressBar(Math.max(5, (lessonId - 1) * 5));
+                outBox.className = "results-box fail";
+                outBox.textContent = "❌ Check Matrix Deficiencies: Some answers are incorrect or unselected. Debug structural choices and try again.";
             }
-
-            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Program boot initializer invocation loop
-        window.addEventListener('DOMContentLoaded', () => {
-            initCurriculumDOM();
-        });
+        function updateProgressBar(forceComplete = false) {
+            const bar = document.getElementById('progress-bar-fill');
+            const txt = document.getElementById('progress-text');
+            
+            let percentage = Math.round(((highestUnlockedLesson - 1) / lessonsData.length) * 100);
+            if (forceComplete) percentage = 100;
+
+            bar.style.width = percentage + '%';
+            txt.textContent = percentage + '% Completed';
+        }
     </script>
 </body>
 </html>
