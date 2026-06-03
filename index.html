@@ -3,867 +3,859 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Coding Tutoring</title>
+    <title>Technology Coding Course</title>
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --panel-dark: #1e293b;
-            --accent-blue: #38bdf8;
-            --accent-green: #4ade80;
-            --accent-red: #f87171;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --text-color: #333;
+            --sidebar-width: 280px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--panel-dark);
-            border-bottom: 1px solid #334155;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200://0px;
-            margin: 0 auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            height: 100vh;
+            overflow: hidden;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo span {
-            color: var(--accent-blue);
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .tab-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 0.375rem;
-        }
-
-        .tab-btn:hover {
-            color: var(--text-main);
-            background-color: #334155;
-        }
-
-        .tab-btn.active {
-            color: var(--bg-dark);
-            background-color: var(--accent-blue);
-            font-weight: 600;
-        }
-
-        .content-section {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 1rem;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border-radius: 1rem;
-            border: 1px solid #334155;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .contact-card {
-            background-color: var(--panel-dark);
-            border: 1px solid #334155;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .contact-card h2 {
-            margin-bottom: 1.5rem;
-            color: var(--accent-blue);
-        }
-
-        .email-list {
+        /* Sidebar Styling */
+        #sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
+            color: white;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-        }
-
-        .email-link {
-            display: block;
-            background-color: #334155;
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-
-        .email-link:hover {
-            background-color: #475569;
-            color: var(--accent-blue);
-        }
-
-        .start-panel {
-            text-align: center;
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid #334155;
-            border-radius: 1rem;
-        }
-
-        .start-btn {
-            background-color: var(--accent-blue);
-            color: var(--bg-dark);
-            border: none;
-            padding: 1rem 3rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            margin-top: 2rem;
-            transition: transform 0.2s, opacity 0.2s;
-            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
-        }
-
-        .start-btn:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-        }
-
-        .progress-container {
-            background-color: var(--panel-dark);
-            border: 1px solid #334155;
-            border-radius: 0.75rem;
-            padding: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .progress-bar-bg {
-            background-color: #0f172a;
-            border-radius: 1rem;
-            height: 12px;
-            width: 100%;
-            overflow: hidden;
-            border: 1px solid #334155;
-        }
-
-        .progress-bar-fill {
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
             height: 100%;
-            width: 0%;
-            transition: width 0.5s ease-in-out;
-            border-radius: 1rem;
+            flex-shrink: 0;
         }
 
-        .lesson-container {
-            background-color: var(--panel-dark);
-            border: 1px solid #334155;
-            border-radius: 1rem;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+        .sidebar-header {
+            padding: 20px;
+            background-color: #1a252f;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #34495e;
         }
 
-        .lesson-header {
-            color: var(--accent-blue);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #334155;
-            padding-bottom: 0.5rem;
-            text-transform: uppercase;
+        .sidebar-menu {
+            list-style: none;
+            overflow-y: auto;
+            flex-grow: 1;
         }
 
-        .lesson-text {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #e2e8f0;
+        .sidebar-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #34495e;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .lesson-text p {
-            margin-bottom: 1rem;
+        .sidebar-item:hover {
+            background-color: var(--secondary-color);
         }
 
-        .lesson-text pre {
-            background-color: #0f172a;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            color: var(--accent-green);
+        .sidebar-item.active {
+            background-color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* Main Content Styling */
+        #main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* Code Block Styling */
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px 20px;
+            border-radius: 6px;
             font-family: 'Courier New', Courier, monospace;
-            margin-bottom: 1rem;
-            border: 1px solid #334155;
             overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.4;
         }
 
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #eef2f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #c7254e;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* Quiz Box Styling */
         .quiz-section {
-            background-color: #111827;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            border-left: 4px solid var(--accent-blue);
+            margin-top: 40px;
+            border-top: 2px solid #eee;
+            padding-top: 30px;
         }
 
-        .quiz-section.even-lesson {
-            border-left: 4px solid var(--accent-green);
-        }
-
-        .quiz-section h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-        }
-
-        .question-block {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #1e293b;
+        .quiz-card {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
         }
 
         .question-text {
             font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #f1f5f9;
+            margin-bottom: 12px;
         }
 
         .options-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 8px;
         }
 
         .option-label {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            background-color: var(--panel-dark);
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
+            gap: 10px;
+            background: white;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             cursor: pointer;
             transition: background 0.2s;
-            border: 1px solid transparent;
         }
 
         .option-label:hover {
-            background-color: #334155;
+            background: #edf7ff;
         }
 
-        .option-label input[type="radio"] {
-            accent-color: var(--accent-blue);
-            width: 1.1rem;
-            height: 1.1rem;
+        /* Contact Form Styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .submit-btn {
-            background-color: var(--accent-blue);
-            color: var(--bg-dark);
-            border: none;
-            padding: 0.75rem 2rem;
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             font-size: 1rem;
-            font-weight: 700;
-            border-radius: 0.5rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Buttons Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
             transition: opacity 0.2s;
-            display: block;
-            width: 100%;
-            margin-top: 1rem;
         }
 
-        .submit-btn.even-btn {
-            background-color: var(--accent-green);
-        }
-
-        .submit-btn:hover {
+        button:hover {
             opacity: 0.9;
         }
 
-        .results-box {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
+        .btn-primary { background-color: var(--accent-color); color: white; }
+        .btn-secondary { background-color: #95a5a6; color: white; }
+        .btn-success { background-color: var(--success-color); color: white; }
+
+        /* Custom Tkinter Modal Simulator */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tkinter-window {
+            background: #f0f0f0;
+            border: 2px solid #777;
+            border-radius: 3px;
+            width: 320px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-family: sans-serif;
+        }
+
+        .tkinter-titlebar {
+            background: linear-gradient(to bottom, #4a90e2, #2176ff);
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .tkinter-body {
+            padding: 20px;
+            text-align: center;
+            background: #f0f0f0;
+        }
+
+        .tkinter-btn {
+            background: #e1e1e1;
+            border: 1px solid #adadad;
+            color: black;
+            padding: 5px 20px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: inset 0 1px 0 white;
+        }
+
+        .tkinter-btn:active {
+            background: #c1c1c1;
+        }
+
+        /* Grading and Feedback elements */
+        .feedback-message {
+            margin-top: 15px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 4px;
             display: none;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.2rem;
         }
-
-        .results-box.pass {
-            background-color: rgba(74, 222, 128, 0.15);
-            color: var(--accent-green);
-            border: 1px solid var(--accent-green);
-        }
-
-        .results-box.fail {
-            background-color: rgba(248, 113, 113, 0.15);
-            color: var(--accent-red);
-            border: 1px solid var(--accent-red);
-        }
-
-        .locked-lesson {
-            background-color: #0f172a;
-            border: 2px dashed #334155;
-            border-radius: 1rem;
-            padding: 3rem;
-            text-align: center;
-            color: var(--text-muted);
-            margin-top: 2rem;
-        }
+        .correct { background-color: #d4edda; color: #155724; }
+        .incorrect { background-color: #f8d7da; color: #721c24; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                &lt;/&gt; ApexCoding<span>Tutoring</span>
-            </div>
-            <nav class="nav-tabs">
-                <button id="btn-contact" class="tab-btn active" onclick="switchTab('contact')">Contact Services</button>
-                <button id="btn-lessons" class="tab-btn" onclick="switchTab('lessons')">Online Lessons</button>
-            </nav>
-        </div>
-    </header>
+    <nav id="sidebar">
+        <div class="sidebar-header">Coding Curriculum</div>
+        <ul class="sidebar-menu" id="menu-list"></ul>
+    </nav>
 
-    <main>
-        <section id="contact-tab" class="content-section active">
-            <div class="hero">
-                <h1>Master Coding with 1-on-1 Mentorship</h1>
-                <p>Unlock your potential. We provide personalized coding tutoring services tailored to your pace, skill level, and goals.</p>
-            </div>
-            
-            <div class="contact-card">
-                <h2>Get in Touch Today</h2>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Ready to begin your journey? Contact our expert instructors directly to book a session:</p>
-                <div class="email-list">
-                    <a href="mailto:saleel.khisti@gmail.com" class="email-link">✉ Email Saleel Khisti</a>
-                    <a href="mailto:viha.koparde@gmail.com" class="email-link">✉ Email Viha Koparde</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="lessons-tab" class="content-section">
-            
-            <div id="lessons-welcome" class="start-panel">
-                <h2>Interactive Curriculum</h2>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Step-by-step coding modules built to take you from a beginner to an expert programmer.</p>
-                <button class="start-btn" onclick="startCurriculum()">Start online lessons</button>
-            </div>
-
-            <div id="lessons-launch-screen" class="start-panel" style="display: none;">
-                <h2>Module Blueprint Ready</h2>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Your personalized curriculum track has initialized successfully. Click below to enter Lesson 1.</p>
-                <button class="start-btn" onclick="loadFirstLessonDirectly()">Start Lesson 1</button>
-            </div>
-
-            <div id="lessons-content-area" style="display: none;">
-                
-                <div class="progress-container">
-                    <div class="progress-info">
-                        <span>Course Completion Tracker</span>
-                        <span id="progress-text">0% Completed</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div id="progress-bar-fill" class="progress-bar-fill"></div>
-                    </div>
-                </div>
-                
-                <div id="active-lessons-holder"></div>
-
-                <div id="course-complete-container" class="lesson-container" style="display: none; background: linear-gradient(135deg, #111827 0%, #1e293b 100%); border-color: var(--accent-green);">
-                    <div class="lesson-header" style="color: var(--accent-green); text-align: center; border: none;">🎓 COURSE COMPLETE!</div>
-                    <div class="lesson-text" style="text-align: center;">
-                        <p style="font-size: 1.3rem;">🎉 <strong>Congratulations! You have completed all 20 online curriculum blocks!</strong></p>
-                        <p style="margin-top: 1rem; color: var(--text-muted);">You tracked a perfect progression score through foundational blocks, core script engineering paradigms, conditional data routers, loops, data lists, algorithms, and comprehensive objects.</p>
-                        <p style="margin-top: 1rem;">To take your training parameters further into advanced software architecture, framework design, or custom personal projects, book your live 1-on-1 private mentoring slots by contacting your instructors on the <strong>Contact Services</strong> tab!</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
+    <main id="main-content">
+        <div class="container" id="content-pane"></div>
     </main>
 
+    <div class="modal-overlay" id="popup-overlay">
+        <div class="tkinter-window">
+            <div class="tkinter-titlebar">
+                <span>Success!</span>
+                <span style="cursor:pointer" onclick="closePopup()">×</span>
+            </div>
+            <div class="tkinter-body">
+                <p style="font-size: 13px; font-family: sans-serif; margin-bottom:0;">YOU HAVE FINISHED THE CODING LESSONS!</p>
+                <button class="tkinter-btn" onclick="closePopup()">OK</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const lessonsData = [
-            {
-                id: 1,
-                title: "Lesson 1: Introduction to Coding",
-                content: `
-                    <p>So...you want to learn coding, well here is how to start. We will begin with basic block coding.</p>
-                    <p>Coding is giving a robot instructions for it to follow. In the world of coding, there are many "languages" to learn or different ways to write code. We will be focusing on block and python coding. Coding is providing detailed and formatted plans to a robot. This is the core idea of coding for all languages.</p>
-                    <p>Block coding consists of prepared sets of code. Each block has a unique purpose such as, "Hello," or "What is your name?" When you structure the blocks correctly, the computer performs them in order. This is called a sequence. Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error.</p>
-                    <p>Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it. Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent an accurate solution. Mistakes are ok though, they are just a part of the coding process.</p>
-                    <p>Computers can't guess what you want to code. If you just say "make a calculator" the computer won't know what to do. You must break the task into steps.</p>
-                    <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. Coding is essential for every person to learn and develop. The number one rule of coding is to find unique solutions to problems.</p>
-                `,
-                questions: [
-                    { id: "l1_q1", text: "What is the core idea of coding?", options: { A: "Conditionals", B: "Giving detailed plans to a robot", C: "Solving equations", D: "Computing equations" }, correct: "B" },
-                    { id: "l1_q2", text: "True or False: There is only one coding language.", options: { True: "True", False: "False" }, correct: "False" },
-                    { id: "l1_q3", text: "What is block coding made up of?", options: { A: "Lines of code", B: "Arithmetic code", C: "Sets of code", D: "Linear code" }, correct: "C" },
-                    { id: "l1_q4", text: "Do all blocks in block coding have the same purpose?", options: { A: "Yes", B: "No" }, correct: "B" },
-                    { id: "l1_q5", text: "What is it called when a computer performs blocks in order?", options: { A: "Sequence", B: "Order", C: "Method", D: "Pathway" }, correct: "A" },
-                    { id: "l1_q6", text: "What is coding used for?", options: { A: "Solve problems", B: "Social media", C: "Make websites", D: "All of the above" }, correct: "D" },
-                    { id: "l1_q7", text: "What is debugging?", options: { A: "Fixing mistakes", B: "Finalizing an idea" }, correct: "A" },
-                    { id: "l1_q8", text: "True or False: Mistakes in coding are okay.", options: { True: "True", False: "False" }, correct: "True" },
-                    { id: "l1_q9", text: "What is the number one rule of coding?", options: { A: "Find unique ways to solve a problem", B: "Make robots" }, correct: "A" }
-                ]
-            },
-            {
-                id: 2,
-                title: "Lesson 2: Introduction to Python Text-Based Code",
-                content: `
-                    <p>Now that you understand block configurations and sequences, it is time to transition into written, text-based programming using the <strong>Python</strong> language.</p>
-                    <p>In Python, instead of dragging visual logical elements together, you type functional commands line-by-line. The rules of logical layout and structure still strictly apply. If you write code elements out of sequence, or format your written text incorrectly, the machine will fail to understand your intentions. This is called a <em>syntax error</em>.</p>
-                    <p>To display standard output to your program terminal dashboard, use the built-in <code>print()</code> instruction system:</p>
-                    <pre>print("Hello, World!")</pre>
-                    <p>Variables serve as named data storage boxes in your software. They allow the engine to remember values like points, calculations, or status profiles. For example:</p>
-                    <pre>score = 100\nprint(score)</pre>
-                `,
-                questions: [
-                    { id: "l2_q1", text: "What structural programming framework does Python utilize?", options: { A: "Visual Block configurations", B: "Text-based writing statements", C: "Image dragging layers" }, correct: "B" },
-                    { id: "l2_q2", text: "What formatting error breaks Python code processing rules?", options: { A: "Syntax Error", B: "Block Placement Error", C: "Logic Gap Exception" }, correct: "A" },
-                    { id: "l2_q3", text: "What container component acts as a named data storage cell?", options: { A: "A print statement", B: "A loop system", C: "A Variable" }, correct: "C" }
-                ]
-            },
-            {
-                id: 3,
-                title: "Lesson 3: String Data Types & Text Manipulation",
-                content: `
-                    <p>In Python, any textual or alphanumeric content wrapped inside explicit quotation marks is parsed as a <strong>String</strong> data type (represented as <code>str</code>).</p>
-                    <p>Strings are immutable sequences of character units. You can join multiple text pieces into a continuous element through an operation called <em>concatenation</em> using the <code>+</code> operator.</p>
-                    <pre>first_name = "Apex"\nlast_name = "Coder"\nfull_name = first_name + " " + last_name\nprint(full_name) # Outputs: Apex Coder</pre>
-                    <p>Attempting to concatenate raw text directly with numbers will cause a runtime type assignment exception.</p>
-                `,
-                questions: [
-                    { id: "l3_q1", text: "What Python data type represents standard written text content blocks?", options: { A: "Integer", B: "String", C: "Boolean" }, correct: "B" },
-                    { id: "l3_q2", text: "What operation joins separate text strings together into a unified sequence?", options: { A: "Concatenation", B: "Parsing", C: "Division" }, correct: "A" }
-                ]
-            },
+        // Database Matrix Containing Lessons & Associated Valid Answer Parameters
+        const courseData = [
             {
                 id: 4,
-                title: "Lesson 4: Numerical Data Types (Integers vs. Floats)",
-                content: `
-                    <p>Python parses arithmetic parameters through two primary formats depending on whether a decimal point is present.</p>
-                    <p>An <strong>Integer</strong> (<code>int</code>) handles whole numeric representations containing no fractional balance components (e.g., -5, 0, 100).</p>
-                    <p>A <strong>Float</strong> (<code>float</code>) explicitly logs fractional numeric values tracking precise floating-point decimals (e.g., 3.14, -0.5, 4.0).</p>
-                    <pre>items_count = 12\nunit_price = 19.99\ntotal_cost = items_count * unit_price</pre>
+                title: "Lesson 4: How Variables Work",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 4: How Variables Work in a Program</h2>
+                    <p>Now that we have learned what a variable is, let’s take the next step and learn how variables work when we use them in coding. Remember, a variable is like a box with a label that stores information. But how do we actually use this box in a program?</p>
+                    <p>First, let’s think about how we use labels in real life. Imagine you have three boxes:</p>
+                    <ul>
+                        <li>One labeled <strong>Snacks</strong></li>
+                        <li>One labeled <strong>Toys</strong></li>
+                        <li>One labeled <strong>Art Supplies</strong></li>
+                    </ul>
+                    <p>Because of the labels, you know what belongs in each box. If you want to find your crayons, you don’t look in the snack box, you look in the Art Supplies box. The label guides you. Variables work just like that. The name of the variable tells the computer what kind of information we are storing.</p>
+                    <p>Now, inside each box, the objects can be changed. You might have cookies in the snack box today and chips tomorrow. The box remains the same, but the contents change. This is exactly what happens with variables. The value inside the variable can be changed anytime we need.</p>
+                    <p>Let’s look at an example in a game. Imagine we want to keep track of our score:</p>
+                    <pre>score = 0</pre>
+                    <p>This means we made a variable called score, and we put the number 0 inside the box. If you earn points, we change the value.</p>
+                    <pre>score = score + 1</pre>
+                    <p>This means we take what is already in the score box, add one, and put the new number back into the same box. The label score stays the same, but the number inside changes.</p>
+                    <p>Variables can hold all kinds of information, not just numbers. They can also store:</p>
+                    <ul>
+                        <li>Names, Words, Colors</li>
+                        <li>Yes-or-no answers, Messages</li>
+                    </ul>
+                    <p>Variables are important because they let the computer keep track of changing information. Without variables, the computer would forget everything as soon as it happened.</p>
                 `,
                 questions: [
-                    { id: "l4_q1", text: "Which variable initialization represents a clean Float numerical type?", options: { A: "x = 5", B: "x = 5.0", C: "x = '5'" }, correct: "B" },
-                    { id: "l4_q2", text: "What short keyword flags clean, whole numerical parameters without fractions?", options: { A: "integer", B: "float", C: "int" }, correct: "C" }
+                    { q: "What is a variable most like?", a: ["A shoe you wear", "A box with a label", "A snack you eat", "A crayon"], c: "B" },
+                    { q: "What does the label on the box (variable name) tell us?", a: ["How heavy the box is", "What should go inside the box", "Who owns the box", "How old the box is"], c: "B" },
+                    { q: "If you have a box labeled “Art Supplies,” where should your crayons go?", a: ["Snack box", "Toy box", "Art Supplies box", "Trash can"], c: "C" },
+                    { q: "What can change in a variable?", a: ["The label", "The size of the box", "The contents inside the box", "The color of the box"], c: "C" },
+                    { q: "In a game, which variable is used to remember points?", a: ["toyBox", "score", "cookies", "crayons"], c: "B" },
+                    { q: "Which of these can a variable store?", a: ["Only numbers", "Only food", "Only toys", "Numbers, names, colors, and more"], c: "D" },
+                    { q: "Why are variables important in coding?", a: ["They help the computer remember information", "They make the computer go faster", "They stop the computer from sleeping", "They make the game colorful"], c: "A" }
                 ]
             },
             {
                 id: 5,
-                title: "Lesson 5: Basic Arithmetic Processing Operations",
-                content: `
-                    <p>Python relies on standard operational symbols to compute calculations across your math routines:</p>
-                    <p><code>+</code> (Addition), <code>-</code> (Subtraction), <code>*</code> (Multiplication), and <code>/</code> (Division).</p>
-                    <p>Note that standard division processing with a single slash always converts the output value into a <code>float</code> format, even if the result divides evenly into a whole value.</p>
-                    <pre>result = (10 + 5) * 2\nprint(result) # Outputs: 30</pre>
+                title: "Lesson 5: Introduction to Conditionals",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 5: Introduction to Conditionals</h2>
+                    <p>Conditionals help computers decide what to do. Just like you make choices every day, computers do too, but they need clear rules to follow.</p>
+                    <p>A conditional is like saying <strong>“If this happens, then do that.”</strong></p>
+                    <p>For example, imagine you are outside and you feel raindrops. You might think: <em>If it is snowing, then put on a jacket.</em> You made a decision based on a condition!</p>
+                    <p>In coding, a conditional might look like this:</p>
+                    <pre>if score > 20:\n    say "Nice!"</pre>
+                    <p>If the condition is not true, the computer will not do that action. Sometimes we use the word <code>else</code> to tell the computer what to do if the condition is not met:</p>
+                    <pre>if it is raining:\n    take an umbrella\nelse:\n    wear sunglasses</pre>
                 `,
                 questions: [
-                    { id: "l5_q1", text: "What character handles multiplication calculations in Python scripts?", options: { A: "x", B: "*", C: "^" }, correct: "B" },
-                    { id: "l5_q2", text: "What standard data type is consistently generated from a single-slash division rule?", options: { A: "Integer", B: "Float", C: "String" }, correct: "B" }
+                    { q: "What do conditionals help computers do?", a: ["Draw pictures", "Make decisions", "Go to sleep", "Make music"], c: "B" },
+                    { q: "A conditional is like saying:", a: ["“Do everything at once.”", "“If this happens, then do that.”", "“Never change anything.”", "“Always repeat forever.”"], c: "B" },
+                    { q: "True or False: You make decisions every day, just like computers do.", a: ["True", "False"], c: "True" },
+                    { q: "Which is an example of a conditional in real life?", a: ["If it’s raining, take an umbrella", "Eat lunch", "Jump up and down", "Say hello"], c: "A" },
+                    { q: "In the code 'if score > 30: say “Fabulous!”', what must be true for the computer to say “Fabulous!”?", a: ["Score is less than 10", "Score is exactly 30", "Score is greater than 30", "Score is 30"], c: "C" },
+                    { q: "If the score is 19 in the example, what happens?", a: ["The computer says “Nice!”", "The computer says nothing", "The computer shuts down", "The score resets"], c: "B" },
+                    { q: "The word else tells the computer:", a: ["What to do if the condition is not true", "To restart the program", "To play music", "To ignore everything"], c: "A" },
+                    { q: "If it is raining: take an umbrella. Else: wear sunglasses. What happens if it is not raining?", a: ["Take an umbrella", "Wear sunglasses", "Stand still", "Go inside"], c: "B" },
+                    { q: "Where are conditionals used?", a: ["Only in video games", "Only in robots", "In games, robots, and apps", "Nowhere"], c: "C" },
+                    { q: "Conditionals help programs:", a: ["React to what is happening", "Stay the same", "Erase variables", "Make sounds only"], c: "A" },
+                    { q: "Conditionals decide an output based on the ________.", a: ["Time", "Circumstance", "Color", "Shape"], c: "B" }
                 ]
             },
             {
                 id: 6,
-                title: "Lesson 6: Advanced Math Operators (Modulo, Floor Division, Exponents)",
-                content: `
-                    <p>Python provides specialized math tools for advanced evaluation tasks:</p>
-                    <p>The <strong>Modulo</strong> operator (<code>%</code>) extracts the mathematical remainder left over following integer division.</p>
-                    <p>The <strong>Floor Division</strong> operator (<code>//</code>) divides values and drops the trailing decimal remainder completely, rounding down to the nearest whole integer.</p>
-                    <p>The <strong>Exponentiation</strong> operator (<code>**</code>) handles power calculations (base raised to an exponent exponent).</p>
-                    <pre>remainder = 10 % 3\nfloor_div = 10 // 3\npower_val = 2 ** 3</pre>
+                title: "Lesson 6: When and How to Use Conditionals",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 6: When and How to Use Conditionals</h2>
+                    <p>Conditionals are used in coding when we want a computer to make a choice. Instead of doing the exact same action every time, a conditional allows the computer to check what is happening and then decide what to do.</p>
+                    <pre>if button is pressed:\n    jump</pre>
+                    <p>This tells the computer that it should only make the character jump if the button is pressed. If the button is not pressed, nothing happens.</p>
+                    <pre>if button is pressed:\n    jump\nelse:\n    walk</pre>
                 `,
                 questions: [
-                    { id: "l6_q1", text: "What syntax tool evaluates the remaining balance leftover after an integer division process?", options: { A: "//", B: "%", C: "**" }, correct: "B" },
-                    { id: "l6_q2", text: "What evaluation output does the execution expression 5 ** 2 return?", options: { A: "10", B: "25", C: "7" }, correct: "B" }
+                    { q: "What do conditionals allow a computer to do?", a: ["Draw pictures", "Make choices", "Sleep", "Repeat forever"], c: "B" },
+                    { q: "A conditional follows the rule:", a: ["“Do everything at once.”", "“If something is true, then do something.”", "“Never change anything.”", "“Repeat until stopped.”"], c: "B" },
+                    { q: "True or False: Conditionals make computers do the same action every time.", a: ["True", "False"], c: "False" },
+                    { q: "In this code, when will the character jump?\nif button is pressed:\n    jump", a: ["Always", "Only if the button is pressed", "When the game ends", "After walking"], c: "B" },
+                    { q: "If the condition is not true, what happens?", a: ["The action does not run", "The computer guesses", "The program explodes", "The computer falls asleep"], c: "A" },
+                    { q: "What does the word else do?", a: ["Repeats code forever", "Gives a second choice if the first condition is not true", "Stops the program", "Makes the screen brighter"], c: "B" },
+                    { q: "In this code, what happens if the button is NOT pressed?\nif button is pressed:\n    jump\nelse:\n    walk", a: ["Jump", "Walk", "Do nothing", "Restart the game"], c: "B" },
+                    { q: "Conditionals help programs:", a: ["React to what is happening", "Stay the same all the time", "Erase all code", "Turn off automatically"], c: "A" },
+                    { q: "True or False: Conditionals are used when we want the computer to check something before acting.", a: ["True", "False"], c: "True" },
+                    { q: "In real life, which is like a conditional?", a: ["If it’s cold, wear a jacket", "Eat lunch every day no matter what", "Always run", "Never look outside"], c: "A" },
+                    { q: "The action in a conditional depends on:", a: ["Random guessing", "The situation or condition", "The color of the screen", "The time of day"], c: "B" }
                 ]
             },
             {
                 id: 7,
-                title: "Lesson 7: Dynamic User Keyboard Inputs via input()",
-                content: `
-                    <p>To acquire dynamic interactive inputs from users, use the globally available <code>input()</code> function.</p>
-                    <p><strong>Crucial Rule:</strong> The <code>input()</code> command converts all inbound captured characters into a <code>string</code> structure, regardless of what the user typed. If you require numbers for arithmetic operations, you must typecast them explicitly.</p>
-                    <pre>user_age = input("Enter your age: ")\nreal_age = int(user_age)</pre>
+                title: "Lesson 7: Introduction to Loops",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 7: Introduction to Loops</h2>
+                    <p>In coding, we often want the computer to repeat something. Imagine you are playing a game and your character keeps walking forward, or a robot keeps moving its arm up and down. Instead of writing the same line of code over and over, we use a loop.</p>
+                    <p>A loop is a way to tell the computer, “Do this action again and again.” It saves time and keeps our code neat.</p>
+                    <p>A <strong>for loop</strong> repeats something a certain number of times. A <strong>while loop</strong> repeats as long as something remains true.</p>
                 `,
                 questions: [
-                    { id: "l7_q1", text: "What base data profile type is returned by the default input() function call?", options: { A: "Integer", B: "String", C: "Float" }, correct: "B" },
-                    { id: "l7_q2", text: "What validation wrapper changes typed string records into functional mathematical integers?", options: { A: "str()", B: "float()", C: "int()" }, correct: "C" }
+                    { q: "What is a loop used for in coding?", a: ["To stop all actions", "To repeat actions", "To make code colorful", "To erase code"], c: "B" },
+                    { q: "Why do we use loops?", a: ["To write the same code over and over", "To make code messy", "To save time and keep code neat", "To slow down a program"], c: "C" },
+                    { q: "True or False: Loops help the computer repeat instructions automatically.", a: ["True", "False"], c: "True" },
+                    { q: "If you wanted a character to clap 10 times, what would a loop help you avoid?", a: ["Writing “clap” 10 times", "Writing “jump”", "Using conditionals", "Making a new character"], c: "A" },
+                    { q: "A for loop repeats something:", a: ["A random number of times", "A certain number of times", "Only once", "Forever"], c: "B" },
+                    { q: "A while loop repeats something:", a: ["Only if you press a button", "Only once", "As long as something is true", "When the game ends"], c: "C" },
+                    { q: "Which statement describes a loop?", a: ["“Do this action again and again.”", "“Do this action only once.”", "“Never repeat anything.”", "“Stop all code.”"], c: "A" },
+                    { q: "Where are loops helpful?", a: ["In games", "In robots", "In animations and apps", "All of the above"], c: "D" },
+                    { q: "True or False: Loops make programs slower and harder to understand.", a: ["True", "False"], c: "False" },
+                    { q: "Loops help make code:", a: ["Longer and confusing", "Efficient and simpler", "Only work in video games", "Useless"], c: "B" }
                 ]
             },
             {
                 id: 8,
-                title: "Lesson 8: Boolean Logic Matrices (True vs. False)",
-                content: `
-                    <p>A <strong>Boolean</strong> data type tracks evaluation states: either <code>True</code> or <code>False</code>.</p>
-                    <p>Note that both valid states require strict casing initialization properties. Typing lowercase references like <code>true</code> or <code>false</code> will result in a script crash.</p>
-                    <pre>is_active = True\nhas_clearance = False</pre>
+                title: "Lesson 8: What Is a For Loop?",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 8: What Is a For Loop?</h2>
+                    <p>A for loop is a tool in coding that lets you repeat actions and functions without writing the same instruction multiple times. It’s like telling your computer, “Do this ten times!”</p>
+                    <p>In block coding, it usually looks like this:</p>
+                    <pre>repeat (10)\n→ move 10 steps\n→ turn 15 degrees</pre>
+                    <p>This loop tells the computer to repeat the actions inside the block 10 times quickly and cleanly.</p>
                 `,
                 questions: [
-                    { id: "l8_q1", text: "Which initialization code line sets up a valid Boolean type reference?", options: { A: "is_valid = true", B: "is_valid = True", C: "is_valid = 'True'" }, correct: "B" },
-                    { id: "l8_q2", text: "How many absolute logical assessment values can a standard Boolean type track?", options: { A: "1", B: "2", C: "Infinite" }, correct: "B" }
+                    { q: "What are for loops used for in coding?", a: ["Making sound", "Repeating actions automatically", "Moving sprites", "Adding new characters"], c: "B" },
+                    { q: "Why are for loops so important in coding?", a: ["They make your code complex", "They let you repeat actions without copying blocks", "They delete blocks", "They speed up your program"], c: "B" },
+                    { q: "In block coding, where do you put the actions you want repeated?", a: ["Inside the conditionals block", "Inside the loop block", "In the sprite", "At the bottom of the screen"], c: "B" },
+                    { q: "If you want an action to be done 10 times, which block would you use?", a: ["repeat (10)", "do (10)", "play music (10)", "forever"], c: "A" },
+                    { q: "What happens when a loop runs?", a: ["The code resets", "The actions inside the loop run again", "The sprite disappears ", "The sprite appears"], c: "B" },
+                    { q: "True or False: A for loop can also keep your code efficient.", a: ["True", "False"], c: "A" },
+                    { q: "True or False: You must drag the same block multiple times when using a for loop.", a: ["True", "False"], c: "B" },
+                    { q: "Which is an example of an action being repeated?", a: ["Moving 10 steps again and again", "Choosing a new sprite", "Naming your project", "Choosing a backdrop"], c: "A" },
+                    { q: "Why does having loops instead of repeated lines of code save time?", a: ["You write fewer blocks", "You get extra sprites", "Your computer becomes faster", "It makes levels for you"], c: "A" },
+                    { q: "What kinds of projects can loops help you create?", a: ["Games", "Animations", "Interactive stories", "All of the above"], c: "D" }
                 ]
             },
             {
                 id: 9,
-                title: "Lesson 9: Evaluation Operators (Comparisons)",
-                content: `
-                    <p>Comparison tools evaluate programmatic relationships and return Boolean answers:</p>
-                    <p><code>==</code> (Equality verification check), <code>!=</code> (Inequality check), <code>&gt;</code> (Greater than), <code>&lt;</code> (Less than), <code>&gt;=</code> (Greater or equal), and <code>&lt;=</code> (Less or equal).</p>
-                    <p><strong>Warning:</strong> Do not confuse the equality comparison check <code>==</code> with the single equals assignment symbol <code>=</code> which assigns values to variables.</p>
-                    <pre>check_val = (10 == 5 * 2) # Resolves to: True</pre>
+                title: "Lesson 9: The While Loop",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 9: The While Loop</h2>
+                    <p>A while loop also repeats actions, but it works in a different way. Instead of repeating a set number of times, a while loop repeats as long as a condition is true: <strong>“Keep doing this until something changes.”</strong></p>
+                    <p>Imagine you’re filling a balloon with air. You keep blowing while the balloon is not full. Once it is full, you stop.</p>
+                    <pre>repeat until (balloon is full)\n→ add air</pre>
                 `,
                 questions: [
-                    { id: "l9_q1", text: "Which expression symbol checks for exact equality match conditions inside evaluations?", options: { A: "=", B: "==", C: "===" }, correct: "B" },
-                    { id: "l9_q2", text: "What is the structural evaluation output of the code segment (15 != 15)?", options: { True: "True", False: "False" }, correct: "False" }
+                    { q: "What makes a while loop different from a for loop?", a: ["It only works on Fridays", "It repeats until a condition changes", "It runs only one time", "It plays sounds automatically"], c: "B" },
+                    { q: "A while loop repeats actions…", a: ["A set number of times", "Only when the project starts", "As long as a condition is true", "Only if you click the sprite"], c: "C" },
+                    { q: "Which example best shows a while loop?", a: ["Jump 10 times", "Move until you reach the wall", "Say “Hello” five times", "Turn 15 degrees once"], c: "B" },
+                    { q: "What does the condition in a while loop do?", a: ["Stops the whole project", "Decides when the loop should end", "Makes sprites larger", "Creates new blocks"], c: "B" },
+                    { q: "In block coding, a while loop might look like:", a: ["repeat (10)", "forever", "repeat until (condition)", "switch costume"], c: "C" },
+                    { q: "Which is a good use of a while loop?", a: ["Say “Hi” exactly 3 times", "Move forward while the space key is pressed", "Change costumes once", "Pick a random number"], c: "B" },
+                    { q: "True or False: A while loop can run different numbers of times depending on what happens in the program.", a: ["True", "False"], c: "A" },
+                    { q: "What would make a while loop stop running?", a: ["The condition becomes true", "The sprite changes color", "You name the project", "A new sprite appears"], c: "A" },
+                    { q: "Which situation describes a condition?", a: ["“Repeat 12 times”", "“Move forever”", "“When the timer reaches 0”", "“Choose a new sound”"], c: "C" },
+                    { q: "Which loop is better for repeating a specific number of times?", a: ["While loop", "Forever loop", "For loop", "Costume loop"], c: "C" },
+                    { q: "Which loop is better for repeating until something changes?", a: ["For loop", "While loop", "Repeat (10)", "Say block"], c: "B" }
                 ]
             },
             {
                 id: 10,
-                title: "Lesson 10: Conditional Branch Processing Logic (if Blocks)",
-                content: `
-                    <p>Conditional structures allow your scripts to react differently based on current values. An <code>if</code> block evaluates an expression condition; if it evaluates as <code>True</code>, the code blocks indented directly under it execute.</p>
-                    <p>Python handles structural groupings via clear line spacing indents instead of braces. Block headers require a trailing colon character (<code>:</code>) symbol.</p>
-                    <pre>score = 95\nif score >= 90:\n    print("Performance Level: A")</pre>
-                `,
-                questions: [
-                    { id: "l10_q1", text: "What syntax punctuation token must terminate all standard conditional control block headers?", options: { A: ";", B: ".", C: ":" }, correct: "C" },
-                    { id: "l10_q2", text: "How does Python identify lines belonging directly to an activated if block?", options: { A: "By enclosing them in braces {}", B: "By uniform indentation spacing blocks", C: "By parenthesis wrappers ()" }, correct: "B" }
-                ]
+                title: "Lesson 10: Your First Program",
+                type: "lesson_only",
+                html: `
+                    <h2>Lesson 10: Building Your First Simple Program</h2>
+                    <ol>
+                        <li><strong>Pick Your Sprite:</strong> Choose a character (a “sprite”) like a cat, a robot, or a dinosaur.</li>
+                        <li><strong>Add a Starting Block:</strong> Every program needs an event beginning, such as <code>“When green flag clicked”</code>.</li>
+                        <li><strong>Decide What Your Sprite Should Do:</strong> Begin with something simple, like making the sprite move, spin, or glide.</li>
+                        <li><strong>Use Loops to Add Motion:</strong> Try using a repeat block to wrap your structural motion.</li>
+                        <li><strong>Add Fun Effects:</strong> Make your sprite play a sound or change costumes to feel alive!</li>
+                    </ol>
+                `
             },
             {
                 id: 11,
-                title: "Lesson 11: Alternate Execution Control Blocks (else Statements)",
-                content: `
-                    <p>The <code>else</code> keyword defines a fallback block. It executes if, and only if, all preceding conditional equations evaluate as <code>False</code>.</p>
-                    <p>An <code>else</code> block cannot track separate, distinct logical equations independently, and must stay aligned with its original parent <code>if</code> context statement block.</p>
-                    <pre>age = 16\nif age >= 18:\n    print("Access Unlocked")\nelse:\n    print("Access Denied: Age Threshold Unmet")</pre>
+                title: "Lesson 11: Transition to Python",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 11: Transitioning from Block Coding to Python</h2>
+                    <p>Python is a computer language that lets you give instructions by typing words and symbols. Unlike block coding, which uses colorful shapes that you drag and snap together, Python uses written lines of code. In Python, you type commands like <code>print("Hello!")</code> instead of dragging blocks.</p>
                 `,
                 questions: [
-                    { id: "l11_q1", text: "True or False: An isolated else statement block can specify logic condition checks directly inside its header signature.", options: { True: "True", False: "False" }, correct: "False" },
-                    { id: "l11_q2", text: "When does code nested inside an else execution fallback pathway trigger?", options: { A: "When parent checking condition fails", B: "When checking condition passes" }, correct: "A" }
+                    { q: "What does Python use to give instructions to the computer?", a: ["Colorful blocks", "Stickers", "Typed words and symbols", "Pictures"], c: "C" },
+                    { q: "Unlike block coding, Python requires you to:", a: ["Drag blocks", "Type your instructions", "Draw shapes", "Build with LEGOs"], c: "B" },
+                    { q: "What happens in Python if you miss a letter or forget a symbol?", a: ["The computer ignores it", "The code becomes colorful", "The computer might not understand", "It still works perfectly"], c: "C" },
+                    { q: "Which type of coding helps prevent mistakes by snapping pieces together?", a: ["Python", "Block coding", "Art coding", "Robot coding"], c: "B" },
+                    { q: "Unlike Python, block coding uses:", a: ["Written sentences", "Drag-and-drop blocks", "Secret codes", "Touchscreen drawings"], c: "B" },
+                    { q: "Python gives you more:", a: ["Homework", "Freedom to create bigger projects", "Blocks to snap", "Puzzles"], c: "B" },
+                    { q: "What do Python and block coding BOTH teach you?", a: ["How to draw", "How to think logically and solve problems", "How to bake", "How to play sports"], c: "B" }
                 ]
             },
             {
                 id: 12,
-                title: "Lesson 12: Multi-Test Control Routes (elif Chains)",
-                content: `
-                    <p>To check multiple conditions sequentially, use the <code>elif</code> keyword (short for "else if").</p>
-                    <p>Python runs these checks from top to bottom. As soon as one condition evaluates to <code>True</code>, its code runs, and the rest of the chain is skipped entirely.</p>
-                    <pre>status_code = 404\nif status_code == 200:\n    print("Success")\nelif status_code == 404:\n    print("Resource Missing")\nelse:\n    print("General Warning")</pre>
+                title: "Lesson 12: The Python Print Function",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 12: The Python Print Function</h2>
+                    <p>The print function tells the computer, “Show this text to the user!” To use it, you type the word <code>print</code>, followed by parentheses with quotes around words:</p>
+                    <pre>print("Hello, world!")</pre>
+                    <p>Numbers do not require quotation marks:</p>
+                    <pre>print(5)</pre>
                 `,
                 questions: [
-                    { id: "l12_q1", text: "Which keyword handles multi-tier conditional evaluation statements inside Python?", options: { A: "elseif", B: "elif", C: "else if" }, correct: "B" },
-                    { id: "l12_q2", text: "True or False: Python runs multiple matching blocks inside an elif chain if more than one condition is true.", options: { True: "True", False: "False" }, correct: "False" }
+                    { q: "What does the Python print function do?", a: ["Draws pictures", "Shows text or numbers on the screen", "Makes sounds", "Moves a robot"], c: "B" },
+                    { q: "Unlike block coding, Python uses __________ to show messages.", a: ["Drag-and-drop blocks", "Stickers", "Typed commands", "Buttons"], c: "C" },
+                    { q: "Which of the following is the correct way to write a print statement?", a: ["say(\"Hello\")", "print[\"Hello\"]", "print(\"Hello\")", "show(\"Hello\")"], c: "C" },
+                    { q: "Why do we use quotation marks in print statements?", a: ["To make code look fancy", "To tell the computer the text is NOT a command", "To skip a line", "To hide the message"], c: "B" },
+                    { q: "Which one will print a number as a number?", a: ["print(\"8\")", "print(8)", "print(number 8)", "print<8>"], c: "B" },
+                    { q: "What happens if you forget the quotation marks around text?", a: ["The computer will decorate it", "The code still works perfectly", "The computer might get confused", "The text disappears"], c: "C" },
+                    { q: "Numbers printed with quotes are treated as:", a: ["Commands", "Text", "Mistakes", "Pictures"], c: "B" },
+                    { q: "Which code prints two things at once?", a: ["print(\"Hi\" + \"Bye\")", "print(\"Hi\", \"Bye\")", "print(\"Hi\" \"Bye\")", "print(\"Hi\" bye)"], c: "B" },
+                    { q: "What symbol do you always need after the word print?", a: ["Brackets []", "Quotation marks first", "Parentheses ()", "Colons ::"], c: "C" },
+                    { q: "The print function is helpful because it lets you:", a: ["Test your code and show messages", "Change computer colors", "Make cartoons", "Add new blocks"], c: "A" }
                 ]
             },
             {
                 id: 13,
-                title: "Lesson 13: Logical Compound Operators (and / or / not)",
-                content: `
-                    <p>Use logical compound operators to combine multiple conditions within a single statement:</p>
-                    <p>The <code>and</code> operator requires <strong>all</strong> conditions to be true.</p>
-                    <p>The <code>or</code> operator requires <strong>at least one</strong> condition to be true.</p>
-                    <p>The <code>not</code> operator inverts a Boolean value (turning <code>True</code> to <code>False</code> and vice versa).</p>
-                    <pre>if operational == True and security_clearance == True:\n    print("Launch Engine Activated")</pre>
+                title: "Lesson 13: Variables & Conditionals",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 13: Variables and Conditionals in Python</h2>
+                    <p>In Python, you create variables cleanly by typing their assignment:</p>
+                    <pre>score = 0\nname = "Alex"</pre>
+                    <p>Python conditionals utilize a colon (<code>:</code>) and indentation to track structural block scoping execution:</p>
+                    <pre>if score > 10:\n    print("Great job!")\nelse:\n    print("Keep trying!")</pre>
                 `,
                 questions: [
-                    { id: "l13_q1", text: "Which operator requires ALL conditions to resolve as True?", options: { A: "or", B: "and", C: "not" }, correct: "B" },
-                    { id: "l13_q2", text: "What does the 'not' logical operation perform?", options: { A: "Multiplies numbers", B: "Inverts Boolean evaluations", C: "Loops instructions" }, correct: "B" }
+                    { q: "What is a variable used for in Python?", a: ["To draw pictures", "To store information", "To play music", "To move characters"], c: "B" },
+                    { q: "Which of the following is the correct way to create a variable in Python?", a: ["set score to 5", "score = 5", "score → 5", "makeVariable(score, 5)"], c: "B" },
+                    { q: "Which item needs quotation marks in Python?", a: ["10", "3.5", " \"Alex\" ", "100"], c: "C" },
+                    { q: "What does this code do?\nscore = score + 1", a: ["Deletes the variable", "Decreases the score", "Updates the score by adding 1", "Stops the program"], c: "C" },
+                    { q: "What is a conditional used for?", a: ["Saving pictures", "Making choices in code", "Coloring the screen", "Moving sprites"], c: "B" },
+                    { q: "What symbol MUST come after an IF statement in Python?", a: ["?", "()", ";", ":"], c: "D" },
+                    { q: "In Python, what shows which lines belong to the IF statement?", a: ["Bigger text", "Indentation (spaces at the beginning)", "Bright colors", "All caps"], c: "B" },
+                    { q: "Which of the following is a correct IF statement?", a: ["if score > 10", "if score > 10 then", "if score > 10:", "IF (score > 10):"], c: "C" },
+                    { q: "What does the else part of a conditional do?", a: ["Runs if the IF condition is false", "Makes the program repeat", "Deletes the variable", "Stops the computer"], c: "A" },
+                    { q: "How is Python different from block coding when using variables and conditionals?", a: ["Python uses typed commands instead of snapping blocks", "Python uses only pictures", "Python has no variables", "Python cannot make decisions"], c: "A" }
                 ]
             },
             {
                 id: 14,
-                title: "Lesson 14: Automated Iteration Loops (while Systems)",
-                content: `
-                    <p>A <code>while</code> loop continuously executes a targeted block of code as long as its core condition remains evaluated as <code>True</code>.</p>
-                    <p>You must modify the loop variables within the block to eventually make the condition false. Otherwise, you will create an endless, system-stalling cycle called an <em>infinite loop</em>.</p>
-                    <pre>counter = 0\nwhile counter < 3:\n    print("Processing index")\n    counter = counter + 1</pre>
+                title: "Lesson 14: The Input Function",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 14: The Python input() Function</h2>
+                    <p>Python uses the <code>input()</code> function to gather keyboard input data. It returns input data as text strings:</p>
+                    <pre>name = input("What is your name? ")</pre>
+                    <p>To convert this string into a valid number, wrap it inside an <code>int()</code> function cast statement:</p>
+                    <pre>age = int(input("How old are you? "))</pre>
                 `,
                 questions: [
-                    { id: "l14_q1", text: "What criteria keeps a basic while loop system iterating indefinitely?", options: { A: "Its evaluation condition stays True", B: "Its variable drops to 0", C: "A syntax exception occurs" }, correct: "A" },
-                    { id: "l14_q2", text: "What occurs if you forget to increment or alter the logic boundaries inside an iteration statement?", options: { A: "Immediate memory clear", B: "An Infinite Loop blueprint", C: "Syntax conversion" }, correct: "B" }
+                    { q: "What does the input() function do?", a: ["Draws a picture", "Waits for the user to type something", "Makes music", "Stops the program"], c: "B" },
+                    { q: "Unlike block coding, Python uses __________ to ask questions.", a: ["Drag-and-drop blocks", "Buttons", "Typed commands", "Stickers"], c: "C" },
+                    { q: "What type of data does input() return by default?", a: ["Numbers", "Pictures", "Strings (text)", "Sounds"], c: "C" },
+                    { q: "Which line correctly asks a user for their name?", a: ["ask(\"What is your name?\")", "input{\"What is your name?\"}", "name = input(\"What is your name? \")", "name = ask(\"Your name\")"], c: "C" },
+                    { q: "What do parentheses () mean in input()?", a: ["They are required for the function to work", "They decorate the code", "They compare numbers", "They snap blocks together"], c: "A" },
+                    { q: "Why do we use quotation marks inside input()?", a: ["To tell Python the text is a message", "To erase the message", "To make the text bigger", "To turn text into numbers"], c: "A" },
+                    { q: "What does int() do in this code?\nage = int(input(\"How old are you? \"))", a: ["Makes the user type faster", "Turns the input into a number", "Prints the number", "Changes the question"], c: "B" },
+                    { q: "What happens after Python shows the question in input()?", a: ["It crashes", "It shows a picture", "It waits for the user to type", "It skips the question"], c: "C" },
+                    { q: "Which is an example of using input with a conditional?", a: ["print(input)", "if input > 10:", "if age > 10: print(\"You're older than 10!\")", "input(\"Choose a color\") then if"], c: "C" },
+                    { q: "Why is input() useful?", a: ["It makes programs interactive", "It only prints messages", "It stores pictures", "It builds websites automatically"], c: "A" }
                 ]
             },
             {
                 id: 15,
-                title: "Lesson 15: Sequence Iterations (for Loop Containers)",
-                content: `
-                    <p>A <code>for</code> loop steps through sequential items directly. It extracts indices or elements consecutively without tracking increment metrics manually.</p>
-                    <p>The built-in <code>range(start, stop)</code> function is commonly used to generate a sequence of numbers to loop through.</p>
-                    <pre>for index in range(0, 5):\n    print(index)  # Iterates integers 0 through 4 cleanly</pre>
+                title: "Lesson 15: For Loops in Python",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 15: For Loops in Python</h2>
+                    <p>A basic Python for loop looks like this:</p>
+                    <pre>for i in range(5):\n    print("Hello!")</pre>
+                    <p>The loop variable <code>i</code> automatically keeps track of the iteration index counter sequentially, starting at 0 and processing upwards.</p>
                 `,
                 questions: [
-                    { id: "l15_q1", text: "Which mechanism extracts sequences consecutively without checking counter variables manually?", options: { A: "while routes", B: "for loops", C: "if statements" }, correct: "B" },
-                    { id: "l15_q2", text: "What integer range values are generated when running range(0, 3)?", options: { A: "0, 1, 2, 3", B: "0, 1, 2", C: "1, 2, 3" }, correct: "B" }
+                    { q: "What is a for loop used for in Python?", a: ["Drawing pictures", "Repeating actions multiple times", "Playing sounds", "Stopping the program"], c: "B" },
+                    { q: "Unlike block coding, Python for loops require:", a: ["A drag-and-drop block", "Typed commands with a colon and indentation", "Stickers", "Buttons"], c: "B" },
+                    { q: "What symbol is needed at the end of the loop line?", a: ["?", ": (colon)", ";", "()"], c: "B" },
+                    { q: "What does range(5) do in a for loop?", a: ["Repeats the action 0 times", "Repeats the action 5 times", "Makes 5 pictures", "Counts backwards only"], c: "B" },
+                    { q: "In this code, what is i?\nfor i in range(3):\n    print(\"Hello\")", a: ["The loop variable that changes each time", "A number to multiply", "A picture", "A sound"], c: "A" },
+                    { q: "How many times will this run?\nfor i in range(4):\n    print(\"Hi\")", a: ["3", "4", "5", "2"], c: "B" },
+                    { q: "How do you show what should repeat inside a loop?", a: ["Use indentation (spaces)", "Use parentheses", "Write in capital letters", "Add quotation marks"], c: "A" },
+                    { q: "Which is correct Python syntax for a for loop?", a: ["for i in range(5) print(\"Hello\")", "for i in range(5): print(\"Hello\")", "for i: range(5) print(\"Hello\")", "for i = 5 print(\"Hello\")"], c: "B" },
+                    { q: "Unlike block coding, Python for loops let you:", a: ["Only repeat actions with pictures", "Repeat actions with numbers, text, and lists", "Only move characters", "Only ask questions"], c: "B" },
+                    { q: "What will this print?\nfor i in range(3):\n    print(\"Number\", i)", a: ["Number 1, Number 2, Number 3", "Number 0, Number 1, Number 2", "Number 1, Number 2", "Number 0, Number 1, Number 2, Number 3"], c: "B" },
+                    { q: "Why are for loops important for Python coders?", a: ["They make programs colorful", "They allow repeated actions and more control than block loops", "They decorate the screen", "They erase mistakes automatically"], c: "B" }
                 ]
             },
             {
                 id: 16,
-                title: "Lesson 16: Python Structured Data Lists",
-                content: `
-                    <p>A <strong>List</strong> is an ordered, modifiable collection enclosed in square brackets (<code>[]</code>). Lists handle varied information items within a single variable wrapper.</p>
-                    <p>Individual elements inside a list are accessed using zero-based numbering indices. This means your first item resides at index <code>0</code>, the second at index <code>1</code>, and so on.</p>
-                    <pre>languages = ["Python", "Java", "C++"]\nprint(languages[0])  # Outputs: Python</pre>
+                title: "Lesson 16: The While Loop",
+                type: "lesson_quiz",
+                html: `
+                    <h2>Lesson 16: The While Loop in Python</h2>
+                    <p>A while loop handles structural conditional looping configurations. It executes iteratively as long as a targeted statement remains true.</p>
+                    <pre>count = 0\nwhile count < 3:\n    print("Welcome!")\n    count = count + 1</pre>
+                    <p style="color: var(--danger-color)"><strong>Crucial Security Rule:</strong> You must update tracking parameters inside your loop body to avoid infinite freeze executions!</p>
                 `,
                 questions: [
-                    { id: "l16_q1", text: "What explicit punctuation characters wrap standard vector list structures in Python?", options: { A: "Curly Brackets {}", B: "Parentheses ()", C: "Square Brackets []" }, correct: "C" },
-                    { id: "l16_q2", text: "What index key retrieves the absolute first item in an ordered array container list?", options: { A: "1", B: "0", C: "-1" }, correct: "B" }
+                    { q: "What does a while loop do?", a: ["Runs code", "Repeats code while a condition is true", "Starts the program", "Draws pictures"], c: "B" },
+                    { q: "Reflecting conditional logic, which loop is best when you do NOT know how many times the code should run?", a: ["for loop", "print loop", "while loop", "range loop"], c: "C" },
+                    { q: "What word starts a while loop in Python?", a: ["loop", "repeat", "while", "then"], c: "C" },
+                    { q: "What symbol is required at the end of the while loop line?", a: [".", ";", ": (colon)", "()"], c: "C" },
+                    { q: "Why is indentation important in a while loop?", a: ["It makes the code colorful", "It shows what code should repeat", "It makes the loop faster", "It ends the program"], c: "B" },
+                    { q: "What is the problem with this code?\ncount = 0\nwhile count < 3:\n    print(\"Hello\")", a: ["It will print nothing", "It will stop after one time", "It will run forever", "It has a spelling error"], c: "C" },
+                    { q: "What line is missing to fix the code above?", a: ["count = 0", "print(\"Hello\")", "count = count + 1", "while count < 3"], c: "C" },
+                    { q: "How many times will this loop run?\ncount = 1\nwhile count <= 3:\n    print(count)\n    count += 1", a: ["2", "3", "4", "Forever"], c: "B" },
+                    { q: "What will this code print?\ncount = 0\nwhile count < 2:\n    print(\"Hi\")\n    count += 1", a: ["Hi (1 time)", "Hi (2 times)", "Hi (3 times)", "Nothing"], c: "B" },
+                    { q: "Which comparison could be used in a while loop condition?", a: ["<", "==", "!=", "All of the above"], c: "D" },
+                    { q: "When should you use a while loop instead of a for loop?", a: ["When repeating a set number of times", "When waiting for a condition to change", "When printing numbers only", "When using pictures"], c: "B" },
+                    { q: "What is the main danger of a while loop?", a: ["It can erase your code", "It can run forever if nothing changes", "It cannot use numbers", "It only works once"], c: "B" }
                 ]
             },
             {
                 id: 17,
-                title: "Lesson 17: Dynamic List Operations",
-                content: `
-                    <p>You can modify list structures dynamically during program execution using built-in list methods:</p>
-                    <p>Use <code>.append(item)</code> to insert a new element at the end of your list.</p>
-                    <p>Use <code>.remove(item)</code> to locate and delete a specific item value from the collection.</p>
-                    <p>Use the global <code>len(your_list)</code> function to count the current number of items inside a list.</p>
-                    <pre>scores = [88, 92]\nscores.append(79)  # scores becomes [88, 92, 79]</pre>
-                `,
-                questions: [
-                    { id: "l17_q1", text: "Which structural method injects a fresh data parameter right onto the back edge of a list structure?", options: { A: ".pop()", B: ".append()", C: ".insert_front()" }, correct: "B" },
-                    { id: "l17_q2", text: "What core global functional tracking system counts total components stored inside an active list?", options: { A: "count()", B: "len()", C: "size()" }, correct: "B" }
-                ]
+                title: "Lesson 17: Story Building Game",
+                type: "lesson_only",
+                html: `
+                    <h2>Lesson 17: Creating Your First Python Program</h2>
+                    <p>Let's compile our dynamic tools into a multi-variable text production program layout matrix script:</p>
+                    <pre>print("Welcome to the Story Building Game!")\n\nname = input("Once upon a time, a kid named: ")\nplace = input("Lived in a: ")\njourney = input("On their journey they encountered a: ")\n\nprint("The ", journey, " attacked them!")\nclimax = input("But then they: ")\nprint("Because they ", climax, " the ", journey, " was defeated!")</pre>
+                `
             },
             {
                 id: 18,
-                title: "Lesson 18: Custom Encapsulation Functions",
-                content: `
-                    <p><strong>Functions</strong> are reusable code blocks designed to perform specific operations without duplicating instructions across your codebase.</p>
-                    <p>Functions are declared using the <code>def</code> keyword followed by a unique function name and trailing parameters within a standard parenthesis frame.</p>
-                    <pre>def display_notification():\n    print("System Operation Confirmed")\n\ndisplay_notification()  # Executes the code block above</pre>
-                `,
-                questions: [
-                    { id: "l18_q1", text: "What explicit signature token statement initializes reusable function blocks in Python?", options: { A: "function", B: "def", C: "routine" }, correct: "B" },
-                    { id: "l18_q2", text: "True or False: Declaring a function executes its block immediately without needing a separate invocation call.", options: { True: "True", False: "False" }, correct: "False" }
-                ]
+                title: "Lesson 18: Multi-Function Calculator",
+                type: "lesson_only",
+                html: `
+                    <h2>Lesson 18: Building a Multi-Function Calculator</h2>
+                    <p>This code constructs a terminal-based calculator utilizing standard operations alongside numeric decimal casting transformations via the <code>float()</code> function framework:</p>
+                    <pre>print("Welcome to the Calculator")\n\nnum1 = float(input("Enter the 1st number: "))\nnum2 = float(input("Enter the 2nd number: "))\n\nsum = num1 + num2\ndifference = num1 - num2\nproduct = num1 * num2\ndivision = num1 / num2\npower = num1 ** num2\n\nprint("Sum: ", sum)\nprint("Difference: ", difference)\nprint("Product: ", product)\nprint("Quotient: ", division)\nprint("Power (Exponent): ", power)</pre>
+                `
             },
             {
                 id: 19,
-                title: "Lesson 19: Arguments & Data Returns",
-                content: `
-                    <p>Functions process inbound variable parameters via **arguments**, and return updated evaluations back to the main thread via the <code>return</code> keyword.</p>
-                    <p>The execution of a <code>return</code> statement passes the calculated data out and exits the function instantly, ignoring any code written below it inside that block.</p>
-                    <pre>def calculate_cube(number):\n    return number * number * number\n\noutput = calculate_cube(3)  # output stores 27</pre>
-                `,
-                questions: [
-                    { id: "l19_q1", text: "What specialized keyword passes calculated logic fields out of local function layers?", options: { A: "export", B: "send", C: "return" }, correct: "C" },
-                    { id: "l19_q2", text: "What parameters receive inbound programmatic values right inside function definition headers?", options: { A: "Variables", B: "Arguments/Parameters", C: "Return fields" }, correct: "B" }
-                ]
+                title: "Lesson 19: Rock, Paper, Scissors",
+                type: "lesson_only",
+                html: `
+                    <h2>Lesson 19: Building a Rock, Paper, Scissors Game</h2>
+                    <p>This dynamic script utilizes the core <code>random</code> library array selector methods to configure automated computer logic selections loop structures:</p>
+                    <pre>import random\n\nplay_again = "yes"\nwhile play_again == "yes":\n    player = input("Choose rock, paper, or scissors: ")\n    choices = ["rock", "paper", "scissors"]\n    computer = random.choice(choices)\n    \n    print("Computer chose:", computer)\n    if player == computer:\n        print("It's a tie!")\n    elif player == "rock" and computer == "scissors":\n        print("You win!")\n    else:\n        print("Computer wins!")\n        \n    play_again = input("Play again? (yes/no): ")</pre>
+                `
             },
             {
                 id: 20,
-                title: "Lesson 20: Comprehensive Object Architectures (Dictionaries)",
-                content: `
-                    <p>A **Dictionary** (<code>dict</code>) manages unsorted collections structured as matched **key-value pairs** inside curly braces (<code>{}</code>).</p>
-                    <p>Instead of relying on numeric indices, you look up value records directly using their unique key assignments (typically clear text string keys).</p>
-                    <pre>student = {"name": "Alex", "grade": 12}\nprint(student["name"])  # Outputs: Alex</pre>
-                `,
-                questions: [
-                    { id: "l20_q1", text: "What organizational alignment pattern forms mapping structures inside Python dictionaries?", options: { A: "Index arrays", B: "Key-Value pairings", C: "Tuple streams" }, correct: "B" },
-                    { id: "l20_q2", text: "Which bracket wrap syntax instantiates standard raw object dictionary properties explicitly?", options: { A: "Curly Brackets {}", B: "Square Brackets []", C: "Parentheses ()" }, correct: "A" }
-                ]
+                title: "Lesson 20: Final Project Submission",
+                type: "final_project",
+                html: `
+                    <h2>FINAL LESSON: Course Completion Sandbox</h2>
+                    <p>In order to pass this course, you will make your own game in Python and it will be graded for accuracy. Be creative in what you make!</p>
+                    <p>When you have completely resolved your production workspace files, engage the submission button widget infrastructure below to register your structural profile parameters into our core systems:</p>
+                    <div style="text-align:center; margin: 40px 0;">
+                        <button class="btn-success" style="font-size:1.3rem; padding: 15px 40px;" onclick="triggerTkinterPopup()">I am done</button>
+                    </div>
+                `
+            },
+            {
+                id: 21,
+                title: "Contact Us",
+                type: "contact_page",
+                html: `
+                    <h2>Contact Our Support Team</h2>
+                    <p>Have questions about the lessons, found a bug in the code editor, or need help with your final grading? Drop us a line below!</p>
+                    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name:</label>
+                            <input type="text" id="contact-name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Your Email Address:</label>
+                            <input type="email" id="contact-email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message or Question:</label>
+                            <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 10px;">Send Message</button>
+                    </form>
+                    <div class="feedback-message correct" id="contact-success" style="margin-top: 20px;">✓ Thank you! Your message has been sent successfully.</div>
+                `
             }
         ];
 
-        let highestUnlockedLesson = 1;
+        let currentModuleIndex = 0;
 
-        function switchTab(tabName) {
-            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-
-            if (tabName === 'contact') {
-                document.getElementById('contact-tab').classList.add('active');
-                document.getElementById('btn-contact').classList.add('active');
-            } else if (tabName === 'lessons') {
-                document.getElementById('lessons-tab').classList.add('active');
-                document.getElementById('btn-lessons').classList.add('active');
-            }
-        }
-
-        function startCurriculum() {
-            document.getElementById('lessons-welcome').style.display = 'none';
-            document.getElementById('lessons-launch-screen').style.display = 'block';
-        }
-
-        function loadFirstLessonDirectly() {
-            document.getElementById('lessons-launch-screen').style.display = 'none';
-            document.getElementById('lessons-content-area').style.display = 'block';
-            renderLessons();
-        }
-
-        function renderLessons() {
-            const holder = document.getElementById('active-lessons-holder');
-            holder.innerHTML = '';
-
-            lessonsData.forEach((lesson, index) => {
-                const isEven = (index + 1) % 2 === 0;
+        // Initializes the sidebar items dynamically
+        function buildSidebar() {
+            const menu = document.getElementById('menu-list');
+            menu.innerHTML = '';
+            courseData.forEach((mod, idx) => {
+                const li = document.createElement('li');
+                li.className = `sidebar-item ${idx === currentModuleIndex ? 'active' : ''}`;
+                li.onclick = () => switchModule(idx);
                 
-                if (lesson.id > highestUnlockedLesson) {
-                    const lockedDiv = document.createElement('div');
-                    lockedDiv.className = 'locked-lesson';
-                    lockedDiv.innerHTML = `<h3>🔒 Lesson ${lesson.id} Locked</h3><p style="margin-top:0.5rem; font-size:0.95rem;">Successfully pass the comprehensive query checks on Lesson ${lesson.id - 1} to process this branch.</p>`;
-                    holder.appendChild(lockedDiv);
-                    return;
-                }
+                let badgeText = 'Read';
+                if (mod.type === 'lesson_quiz') badgeText = 'Quiz';
+                if (mod.type === 'final_project') badgeText = 'Final';
+                if (mod.type === 'contact_page') badgeText = 'Info';
+                
+                li.innerHTML = `<span>${mod.title}</span> <span class="badge">${badgeText}</span>`;
+                menu.appendChild(li);
+            });
+        }
 
-                const lessonDiv = document.createElement('div');
-                lessonDiv.className = 'lesson-container';
-                lessonDiv.id = `lesson-block-${lesson.id}`;
+        // Swaps modules when a menu option is selected
+        function switchModule(index) {
+            currentModuleIndex = index;
+            buildSidebar();
+            renderContent();
+        }
 
-                let quizHTML = '';
-                lesson.questions.forEach((q) => {
-                    let optionsHTML = '';
-                    for (const [key, val] of Object.entries(q.options)) {
-                        optionsHTML += `
+        // Renders content and quizzes to the workspace screen area
+        function renderContent() {
+            const pane = document.getElementById('content-pane');
+            const mod = courseData[currentModuleIndex];
+            
+            let htmlContent = `<div>${mod.html}</div>`;
+
+            if (mod.type === 'lesson_quiz' && mod.questions) {
+                htmlContent += `<div class="quiz-section"><h3>Module Review Quiz</h3>`;
+                mod.questions.forEach((q, qIdx) => {
+                    htmlContent += `
+                        <div class="quiz-card" id="q-card-${qIdx}">
+                            <p class="question-text">${qIdx + 1}. ${q.q}</p>
+                            <div class="options-group">
+                    `;
+                    q.a.forEach((opt, oIdx) => {
+                        let letterCode = String.fromCharCode(65 + oIdx); 
+                        let displayValue = q.a.length === 2 ? opt : `${letterCode}) ${opt}`;
+                        let valueAttribute = q.a.length === 2 ? opt : letterCode;
+
+                        htmlContent += `
                             <label class="option-label">
-                                <input type="radio" name="${q.id}" value="${key}">
-                                <span><strong>${key}:</strong> ${val}</span>
+                                <input type="radio" name="mod-q-${qIdx}" value="${valueAttribute}" onclick="gradeQuestion(${qIdx}, '${valueAttribute}')">
+                                ${displayValue}
                             </label>
                         `;
-                    }
-
-                    quizHTML += `
-                        <div class="question-block" data-qid="${q.id}" data-correct="${q.correct}">
-                            <div class="question-text">${q.text}</div>
-                            <div class="options-group">${optionsHTML}</div>
+                    });
+                    htmlContent += `
+                            </div>
+                            <div class="feedback-message" id="feedback-${qIdx}"></div>
                         </div>
                     `;
                 });
+                htmlContent += `</div>`;
+            }
 
-                lessonDiv.innerHTML = `
-                    <div class="lesson-header">${lesson.title}</div>
-                    <div class="lesson-text">${lesson.content}</div>
-                    <div class="quiz-section ${isEven ? 'even-lesson' : ''}">
-                        <h3>Module Diagnostic Verification</h3>
-                        ${quizHTML}
-                        <button class="submit-btn ${isEven ? 'even-btn' : ''}" onclick="verifyQuiz(${lesson.id})">Evaluate Submissions</button>
-                        <div id="results-${lesson.id}" class="results-box"></div>
-                    </div>
-                `;
-                holder.appendChild(lessonDiv);
-            });
+            // Controls navigation button layouts footer (hides next on the final contact item)
+            htmlContent += `
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="movePrev()" ${currentModuleIndex === 0 ? 'style="visibility:hidden;"' : ''}>Previous</button>
+                    <button class="btn-primary" onclick="moveNext()" ${currentModuleIndex === courseData.length - 1 ? 'style="visibility:hidden;"' : ''}>Next Lesson</button>
+                </div>
+            `;
 
-            updateProgressBar();
+            pane.innerHTML = htmlContent;
+            pane.scrollTop = 0;
         }
 
-        function verifyQuiz(lessonId) {
-            const container = document.getElementById(`lesson-block-${lessonId}`);
-            const questionBlocks = container.querySelectorAll('.question-block');
-            let perfectScore = true;
+        // Automated multi-choice scoring feedback engine
+        window.gradeQuestion = function(qIdx, selectedValue) {
+            const mod = courseData[currentModuleIndex];
+            const question = mod.questions[qIdx];
+            const feedbackBox = document.getElementById(`feedback-${qIdx}`);
+            const card = document.getElementById(`q-card-${qIdx}`);
 
-            questionBlocks.forEach(block => {
-                const correctAns = block.getAttribute('data-correct');
-                const qid = block.getAttribute('data-qid');
-                const selectedOpt = block.querySelector(`input[name="${qid}"]:checked`);
-
-                if (!selectedOpt || selectedOpt.value !== correctAns) {
-                    perfectScore = false;
-                }
-            });
-
-            const outBox = document.getElementById(`results-${lessonId}`);
-            outBox.style.display = 'block';
-
-            if (perfectScore) {
-                outBox.className = "results-box pass";
-                outBox.textContent = "✔ Diagnostic Checked: 100% Correct. Lesson parameters integrated successfully!";
-                
-                if (lessonId === highestUnlockedLesson) {
-                    if (highestUnlockedLesson < lessonsData.length) {
-                        highestUnlockedLesson++;
-                        setTimeout(() => { renderLessons(); }, 1200);
-                    } else {
-                        setTimeout(() => {
-                            document.getElementById('active-lessons-holder').style.display = 'none';
-                            document.getElementById('course-complete-container').style.display = 'block';
-                            updateProgressBar(true);
-                        }, 1200);
-                    }
-                }
+            feedbackBox.style.display = "block";
+            if (selectedValue === question.c) {
+                feedbackBox.textContent = "✓ Correct Answer!";
+                feedbackBox.className = "feedback-message correct";
+                card.style.borderLeft = "4px solid var(--success-color)";
             } else {
-                outBox.className = "results-box fail";
-                outBox.textContent = "❌ Check Matrix Deficiencies: Some answers are incorrect or unselected. Debug structural choices and try again.";
+                feedbackBox.textContent = `✗ Incorrect. Target key option code requires: ${question.c}`;
+                feedbackBox.className = "feedback-message incorrect";
+                card.style.borderLeft = "4px solid var(--danger-color)";
             }
         }
 
-        function updateProgressBar(forceComplete = false) {
-            const bar = document.getElementById('progress-bar-fill');
-            const txt = document.getElementById('progress-text');
-            
-            let percentage = Math.round(((highestUnlockedLesson - 1) / lessonsData.length) * 100);
-            if (forceComplete) percentage = 100;
-
-            bar.style.width = percentage + '%';
-            txt.textContent = percentage + '% Completed';
+        // Handle contact form mock submission
+        window.handleContactSubmit = function(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('contact-success');
+            successBox.style.display = 'block';
+            event.target.reset(); // Clears form inputs
         }
+
+        window.movePrev = function() {
+            if (currentModuleIndex > 0) switchModule(currentModuleIndex - 1);
+        }
+
+        window.moveNext = function() {
+            if (currentModuleIndex < courseData.length - 1) switchModule(currentModuleIndex + 1);
+        }
+
+        // Simulated Tkinter Desktop App Window Launcher Logic Actions
+        window.triggerTkinterPopup = function() {
+            document.getElementById('popup-overlay').classList.add('show');
+        }
+
+        window.closePopup = function() {
+            document.getElementById('popup-overlay').classList.remove('show');
+        }
+
+        // Initialize App Execution State
+        buildSidebar();
+        renderContent();
     </script>
 </body>
 </html>
