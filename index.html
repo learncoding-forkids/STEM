@@ -103,7 +103,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Home/Contact Tab Styling */
         .hero {
             text-align: center;
             padding: 4rem 1rem;
@@ -162,7 +161,6 @@
             color: var(--accent-blue);
         }
 
-        /* Start Lessons Welcome Panel */
         .start-panel {
             text-align: center;
             padding: 5rem 2rem;
@@ -190,7 +188,6 @@
             transform: translateY(-2px);
         }
 
-        /* Progress Bar Styling */
         .progress-container {
             background-color: var(--panel-dark);
             border: 1px solid #334155;
@@ -225,7 +222,6 @@
             border-radius: 1rem;
         }
 
-        /* Online Lessons Tab Styling */
         .lesson-container {
             background-color: var(--panel-dark);
             border: 1px solid #334155;
@@ -240,6 +236,7 @@
             margin-bottom: 1.5rem;
             border-bottom: 2px solid #334155;
             padding-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
         .lesson-text {
@@ -260,9 +257,9 @@
             font-family: 'Courier New', Courier, monospace;
             margin-bottom: 1rem;
             border: 1px solid #334155;
+            overflow-x: auto;
         }
 
-        /* Quiz Styling */
         .quiz-section {
             background-color: #111827;
             border-radius: 0.75rem;
@@ -270,7 +267,7 @@
             border-left: 4px solid var(--accent-blue);
         }
 
-        .quiz-section.quiz-l2 {
+        .quiz-section.even-lesson {
             border-left: 4px solid var(--accent-green);
         }
 
@@ -335,7 +332,7 @@
             margin-top: 1rem;
         }
 
-        .submit-btn.btn-l2 {
+        .submit-btn.even-btn {
             background-color: var(--accent-green);
         }
 
@@ -343,7 +340,6 @@
             opacity: 0.9;
         }
 
-        /* Results Area */
         .results-box {
             margin-top: 1.5rem;
             padding: 1.5rem;
@@ -428,181 +424,312 @@
                     </div>
                 </div>
                 
-                <div class="lesson-container">
-                    <div class="lesson-header">LESSON 1: INTRODUCTION TO CODING</div>
-                    
-                    <div class="lesson-text">
-                        <p>So...you want to learn coding, well here is how to start. We will begin with basic block coding.</p>
-                        <p>Coding is giving a robot instructions for it to follow. In the world of coding, there are many "languages" to learn or different ways to write code. We will be focusing on block and python coding. Coding is providing detailed and formatted plans to a robot. This is the core idea of coding for all languages.</p>
-                        <p>Block coding consists of prepared sets of code. Each block has a unique purpose such as, "Hello," or "What is your name?" When you structure the blocks correctly, the computer performs them in order. This is called a sequence. Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error.</p>
-                        <p>Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it. Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent an accurate solution. Mistakes are ok though, they are just a part of the coding process.</p>
-                        <p>Computers can't guess what you want to code. If you just say "make a calculator" the computer won't know what to do. You must break the task into steps.</p>
-                        <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. Coding is essential for every person to learn and develop. The number one rule of coding is to find unique solutions to problems.</p>
-                    </div>
-
-                    <div class="quiz-section">
-                        <h3>Lesson 1 Knowledge Check</h3>
-                        <form id="quiz-form-l1">
-                            
-                            <div class="question-block">
-                                <p class="question-text">1. What is the core idea of coding?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q1" value="A"> A. Conditionals</label>
-                                    <label class="option-label"><input type="radio" name="l1q1" value="B"> B. Giving detailed plans to a robot</label>
-                                    <label class="option-label"><input type="radio" name="l1q1" value="C"> C. Solving equations</label>
-                                    <label class="option-label"><input type="radio" name="l1q1" value="D"> D. Computing equations</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">2. True or False: There is only one coding language.</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q2" value="True"> True</label>
-                                    <label class="option-label"><input type="radio" name="l1q2" value="False"> False</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">3. What is block coding made up of?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q3" value="A"> A. Lines of code</label>
-                                    <label class="option-label"><input type="radio" name="l1q3" value="B"> B. Arithmetic code</label>
-                                    <label class="option-label"><input type="radio" name="l1q3" value="C"> C. Sets of code</label>
-                                    <label class="option-label"><input type="radio" name="l1q3" value="D"> D. Linear code</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">4. Do all blocks in block coding have the same purpose?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q4" value="A"> A. Yes</label>
-                                    <label class="option-label"><input type="radio" name="l1q4" value="B"> B. No</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">5. What is it called when a computer performs blocks in order?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q5" value="A"> A. Sequence</label>
-                                    <label class="option-label"><input type="radio" name="l1q5" value="B"> B. Order</label>
-                                    <label class="option-label"><input type="radio" name="l1q5" value="C"> C. Method</label>
-                                    <label class="option-label"><input type="radio" name="l1q5" value="D"> D. Pathway</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">6. What is coding used for?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q6" value="A"> A. Solve problems</label>
-                                    <label class="option-label"><input type="radio" name="l1q6" value="B"> B. Social media</label>
-                                    <label class="option-label"><input type="radio" name="l1q6" value="C"> C. Make websites</label>
-                                    <label class="option-label"><input type="radio" name="l1q6" value="D"> D. All of the above (Because coding can be used to solve problems, create apps/websites, make games, etc.)</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">7. What is debugging?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q7" value="A"> A. Fixing mistakes</label>
-                                    <label class="option-label"><input type="radio" name="l1q7" value="B"> B. Finalizing an idea</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">8. True or False: Mistakes in coding are okay.</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q8" value="True"> True</label>
-                                    <label class="option-label"><input type="radio" name="l1q8" value="False"> False</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">9. What is the number one rule of coding?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l1q9" value="A"> A. Find unique ways to solve a problem</label>
-                                    <label class="option-label"><input type="radio" name="l1q9" value="B"> B. Make robots</label>
-                                </div>
-                            </div>
-
-                            <button type="button" class="submit-btn" onclick="gradeLesson1()">Submit Quiz</button>
-                        </form>
-
-                        <div id="results-l1" class="results-box"></div>
-                    </div>
-                </div>
-
-                <div id="lesson-2-lock" class="locked-lesson">
-                    <h3>🔒 Lesson 2: Introduction to Python Text-Based Code</h3>
-                    <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson 1 Quiz to unlock this block!</p>
-                </div>
-
-                <div id="lesson-2-container" class="lesson-container" style="display: none;">
-                    <div class="lesson-header">LESSON 2: TRANSITION TO PYTHON</div>
-                    
-                    <div class="lesson-text">
-                        <p>Now that you understand block configurations and sequences, it is time to look at real text-based programming using **Python**.</p>
-                        <p>In Python, instead of dragging visual logic puzzle fragments together, you type functional actions step-by-step. The rules regarding ordering still strictly apply. If you arrange statements out of sequence, or make typos, the computer cannot process your goals correctly. This is called a <em>syntax error</em>.</p>
-                        <p>Let's look at how to display word outputs on a machine dashboard using the <code>print()</code> instruction system:</p>
-                        <pre>print("Hello, World!")</pre>
-                        <p>Variables are data lockers inside your programs. They allow the engine to remember information like scores, coordinates, user profiles, or computations. For example, setting up a numerical storage box works like this:</p>
-                        <pre>score = 100
-print(score)</pre>
-                        <p>Just like block models, your goal with text-based engines is to find clean, elegant solutions to complicated automation problems!</p>
-                    </div>
-
-                    <div class="quiz-section quiz-l2">
-                        <h3>Lesson 2 Knowledge Check</h3>
-                        <form id="quiz-form-l2">
-                            
-                            <div class="question-block">
-                                <p class="question-text">1. What type of programming language is Python?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l2q1" value="A"> A. Visual Block-based</label>
-                                    <label class="option-label"><input type="radio" name="l2q1" value="B"> B. Text-based</label>
-                                    <label class="option-label"><input type="radio" name="l2q1" value="C"> C. Graphical layout only</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">2. What type of mistake is a code structural typo called in Python?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l2q2" value="A"> A. Syntax Error</label>
-                                    <label class="option-label"><input type="radio" name="l2q2" value="B"> B. Block Error</label>
-                                    <label class="option-label"><input type="radio" name="l2q2" value="C"> C. Robot Mistake</label>
-                                </div>
-                            </div>
-
-                            <div class="question-block">
-                                <p class="question-text">3. What feature functions as a "data storage locker" inside an engineering program?</p>
-                                <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="l2q3" value="A"> A. A script tag</label>
-                                    <label class="option-label"><input type="radio" name="l2q3" value="B"> B. A sequence order box</label>
-                                    <label class="option-label"><input type="radio" name="l2q3" value="C"> C. A Variable</label>
-                                </div>
-                            </div>
-
-                            <button type="button" class="submit-btn btn-l2" onclick="gradeLesson2()">Submit Lesson 2 Quiz</button>
-                        </form>
-
-                        <div id="results-l2" class="results-box"></div>
-                    </div>
-                </div>
+                <div id="active-lessons-holder"></div>
 
                 <div id="course-complete-container" class="lesson-container" style="display: none; background: linear-gradient(135deg, #111827 0%, #1e293b 100%); border-color: var(--accent-green);">
                     <div class="lesson-header" style="color: var(--accent-green); text-align: center; border: none;">🎓 COURSE COMPLETE!</div>
                     <div class="lesson-text" style="text-align: center;">
-                        <p style="font-size: 1.3rem;">🎉 <strong>Congratulations! You have completed the active online curriculum blocks!</strong></p>
-                        <p style="margin-top: 1rem; color: var(--text-muted);">You tracked a perfect progression score through both primary language benchmarks and debugging algorithms.</p>
-                        <p style="margin-top: 1rem;">To take your training parameters further into advanced software creation, full-stack application logic, or game building, book your live 1-on-1 private mentoring slots by contacting your instructors on the <strong>Contact Services</strong> tab!</p>
+                        <p style="font-size: 1.3rem;">🎉 <strong>Congratulations! You have completed all 20 online curriculum blocks!</strong></p>
+                        <p style="margin-top: 1rem; color: var(--text-muted);">You tracked a perfect progression score through foundational blocks, core script engineering paradigms, conditional data routers, loops, data lists, algorithms, and comprehensive objects.</p>
+                        <p style="margin-top: 1rem;">To take your training parameters further into advanced software architecture, framework design, or custom personal projects, book your live 1-on-1 private mentoring slots by contacting your instructors on the <strong>Contact Services</strong> tab!</p>
                     </div>
                 </div>
 
             </div>
-
         </section>
     </main>
 
     <script>
+        // Data bank containing all 20 modules mapped directly to the template structure
+        const lessonsData = [
+            {
+                id: 1,
+                title: "Lesson 1: Introduction to Coding",
+                content: `
+                    <p>So...you want to learn coding, well here is how to start. We will begin with basic block coding.</p>
+                    <p>Coding is giving a robot instructions for it to follow. In the world of coding, there are many "languages" to learn or different ways to write code. We will be focusing on block and python coding. Coding is providing detailed and formatted plans to a robot. This is the core idea of coding for all languages.</p>
+                    <p>Block coding consists of prepared sets of code. Each block has a unique purpose such as, "Hello," or "What is your name?" When you structure the blocks correctly, the computer performs them in order. This is called a sequence. Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error.</p>
+                    <p>Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it. Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent an accurate solution. Mistakes are ok though, they are just a part of the coding process.</p>
+                    <p>Computers can't guess what you want to code. If you just say "make a calculator" the computer won't know what to do. You must break the task into steps.</p>
+                    <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. Coding is essential for every person to learn and develop. The number one rule of coding is to find unique solutions to problems.</p>
+                `,
+                questions: [
+                    { id: "q1", text: "What is the core idea of coding?", options: { A: "Conditionals", B: "Giving detailed plans to a robot", C: "Solving equations", D: "Computing equations" }, correct: "B" },
+                    { id: "q2", text: "True or False: There is only one coding language.", options: { True: "True", False: "False" }, correct: "False" },
+                    { id: "q3", text: "What is block coding made up of?", options: { A: "Lines of code", B: "Arithmetic code", C: "Sets of code", D: "Linear code" }, correct: "C" },
+                    { id: "q4", text: "Do all blocks in block coding have the same purpose?", options: { A: "Yes", B: "No" }, correct: "B" },
+                    { id: "q5", text: "What is it called when a computer performs blocks in order?", options: { A: "Sequence", B: "Order", C: "Method", D: "Pathway" }, correct: "A" },
+                    { id: "q6", text: "What is coding used for?", options: { A: "Solve problems", B: "Social media", C: "Make websites", D: "All of the above" }, correct: "D" },
+                    { id: "q7", text: "What is debugging?", options: { A: "Fixing mistakes", B: "Finalizing an idea" }, correct: "A" },
+                    { id: "q8", text: "True or False: Mistakes in coding are okay.", options: { True: "True", False: "False" }, correct: "True" },
+                    { id: "q9", text: "What is the number one rule of coding?", options: { A: "Find unique ways to solve a problem", B: "Make robots" }, correct: "A" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Lesson 2: Introduction to Python Text-Based Code",
+                content: `
+                    <p>Now that you understand block configurations and sequences, it is time to look at real text-based programming using <strong>Python</strong>.</p>
+                    <p>In Python, instead of dragging visual logic puzzle fragments together, you type functional actions step-by-step. The rules regarding ordering still strictly apply. If you arrange statements out of sequence, or make typos, the computer cannot process your goals correctly. This is called a <em>syntax error</em>.</p>
+                    <p>Let's look at how to display word outputs on a machine dashboard using the <code>print()</code> instruction system:</p>
+                    <pre>print("Hello, World!")</pre>
+                    <p>Variables are data lockers inside your programs. They allow the engine to remember information like scores, coordinates, user profiles, or computations. For example, setting up a numerical storage box works like this:</p>
+                    <pre>score = 100\nprint(score)</pre>
+                    <p>Just like block models, your goal with text-based engines is to find clean, elegant solutions to complicated automation problems!</p>
+                `,
+                questions: [
+                    { id: "q1", text: "What type of programming language is Python?", options: { A: "Visual Block-based", B: "Text-based", C: "Graphical layout only" }, correct: "B" },
+                    { id: "q2", text: "What type of mistake is a code structural typo called in Python?", options: { A: "Syntax Error", B: "Block Error", C: "Robot Mistake" }, correct: "A" },
+                    { id: "q3", text: "What feature functions as a 'data storage locker' inside an engineering program?", options: { A: "A script tag", B: "A sequence order box", C: "A Variable" }, correct: "C" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Lesson 3: String Data Types & Text Manipulation",
+                content: `
+                    <p>In Python, any alphanumeric text enveloped in quotation marks is explicitly processed as a <strong>String</strong> data type (<code>str</code>).</p>
+                    <p>Strings are immutable vectors of characters. You can merge strings together sequentially through an operation called <em>concatenation</em> using the <code>+</code> mathematical operator.</p>
+                    <pre>first_name = "Apex"\nlast_name = "Coder"\nfull_name = first_name + " " + last_name\nprint(full_name) # Outputs: Apex Coder</pre>
+                    <p>Be careful: trying to concatenate strings directly with bare numbers will prompt the system interpreter engine to break with a data mismatch exception.</p>
+                `,
+                questions: [
+                    { id: "q1", text: "What data wrapper represents text parameters in Python?", options: { A: "Integer", B: "String", C: "Boolean" }, correct: "B" },
+                    { id: "q2", text: "What operation merges two disparate text string pieces into a single unified continuous segment?", options: { A: "Concatenation", B: "Slicing", C: "Factoring" }, correct: "A" }
+                ]
+            },
+            {
+                id: 4,
+                title: "Lesson 4: Numerical Data Types (Integers vs. Floats)",
+                content: `
+                    <p>Python parses numbers through distinct quantitative configurations: whole units or fractional values.</p>
+                    <p>An <strong>Integer</strong> (<code>int</code>) represents an absolute whole number without a fractional fractional remainder element (e.g., -5, 0, 42).</p>
+                    <p>A <strong>Float</strong> (<code>float</code>) represents explicit floating-point values tracking decimals precisely (e.g., 3.14, -0.001, 2.0).</p>
+                    <pre>items_count = 12       # Integer type\nunit_price = 19.99     # Float type\ntotal_cost = items_count * unit_price</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "Which assignment value natively resolves as an explicit Float data type parameter?", options: { A: "x = 5", B: "x = 5.0", C: "x = '5.0'" }, correct: "B" },
+                    { id: "q2", text: "What keyword abbreviation identifies clean whole value integer fields inside code engines?", options: { A: "integer", B: "intg", C: "int" }, correct: "C" }
+                ]
+            },
+            {
+                id: 5,
+                title: "Lesson 5: Basic Arithmetic Processing Operations",
+                content: `
+                    <p>Python utilizes standard intuitive operational signs to perform standard math formulas on numbers:</p>
+                    <p><code>+</code> (Addition), <code>-</code> (Subtraction), <code>*</code> (Multiplication), and <code>/</code> (Division).</p>
+                    <p>Note that standard division operations using the single forward slash symbol always return a <code>float</code> output, even if the division evaluates perfectly into a whole number configuration balance.</p>
+                    <pre>result = (10 + 5) * 2\nprint(result) # Outputs: 30</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What mathematical assignment character manages script multiplication processing calculations?", options: { A: "x", B: "*", C: "^" }, correct: "B" },
+                    { id: "q2", text: "What baseline evaluation format type is always generated by a clean single-slash division rule?", options: { A: "Integer", B: "Float", C: "String" }, correct: "B" }
+                ]
+            },
+            {
+                id: 6,
+                title: "Lesson 6: Advanced Math Operators (Modulo, Floor Division, Exponents)",
+                content: `
+                    <p>Python includes advanced math tools for specific processing tasks:</p>
+                    <p>The <strong>Modulo</strong> operator (<code>%</code>) returns the remainder left over from a division problem.</p>
+                    <p>The <strong>Floor Division</strong> operator (<code>//</code>) divides two values and truncates the fractional decimal entirely, rounding down to the nearest whole integer.</p>
+                    <p>The <strong>Exponentiation</strong> operator (<code>**</code>) calculates power transformations (e.g., base raised to an exponent exponent).</p>
+                    <pre>remainder = 10 % 3   # 1\nfloor_div = 10 // 3   # 3\npower_val = 2 ** 3    # 8</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What configuration operator extracts the remainder from structural integer division operations?", options: { A: "//", B: "%", C: "**" }, correct: "B" },
+                    { id: "q2", text: "What evaluation output does 5 ** 2 generate inside a terminal session environment?", options: { A: "10", B: "25", C: "7" }, correct: "B" }
+                ]
+            },
+            {
+                id: 7,
+                title: "Lesson 7: Dynamic User Keyboard Inputs via input()",
+                content: `
+                    <p>To accept data straight from a user, we use the built-in global <code>input()</code> function.</p>
+                    <p><strong>Crucial Rule:</strong> The <code>input()</code> instruction capturing mechanism converts all recorded inbound strokes strictly into a <code>string</code> structure, regardless of what the user typed. If you need numerical digits for math formulas, you must explicitly convert them using target typecast definitions.</p>
+                    <pre>user_age = input("Enter your age: ")\n# Conversion to integer typecast required for logic operations:\nreal_age = int(user_age)</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What type profile is natively returned by the base default input() framework function?", options: { A: "Integer", B: "String", C: "Float" }, correct: "B" },
+                    { id: "q2", text: "What utility command method wraps string data vectors to convert them cleanly into formal mathematical integers?", options: { A: "str()", B: "float()", C: "int()" }, correct: "C" }
+                ]
+            },
+            {
+                id: 8,
+                title: "Lesson 8: Boolean Logic Matrices (True vs. False)",
+                content: `
+                    <p>A <strong>Boolean</strong> data type tracks binary evaluation states: either <code>True</code> or <code>False</code>.</p>
+                    <p>Note that both literal designations require absolute proper capitalization configuration signatures. Typing lowercase <code>true</code> or <code>false</code> will trigger immediate script breakdown crashes.</p>
+                    <pre>is_active = True\nhas_clearance = False</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "Which option represents a perfectly formatted legal Boolean literal initialization statement?", options: { A: "is_valid = true", B: "is_valid = True", C: "is_valid = 'True'" }, correct: "B" },
+                    { id: "q2", text: "How many absolute evaluation conditional value state tracks are covered by standard Boolean variables?", options: { A: "1", B: "2", C: "Infinite" }, correct: "B" }
+                ]
+            },
+            {
+                id: 9,
+                title: "Lesson 9: Evaluation Operators (Comparisons)",
+                content: `
+                    <p>Comparison tools evaluate specific equations and return Boolean answers:</p>
+                    <p><code>==</code> (Equality verification check), <code>!=</code> (Inequality/not equal check), <code>&gt;</code> (Greater than), <code>&lt;</code> (Less than), <code>&gt;=</code> (Greater or equal), and <code>&lt;=</code> (Less or equal).</p>
+                    <p><strong>Warning:</strong> Never mix up the double equal validation comparator <code>==</code> with the single assignment engine operator <code>=</code> which shifts value metrics to variables.</p>
+                    <pre>check_val = (10 == 5 * 2) # Resolves to: True</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "Which expression token verifies absolute parameter equality check matching?", options: { A: "=", B: "==", C: "===" }, correct: "B" },
+                    { id: "q2", text: "What is the structural output configuration for expression segment evaluating (15 != 15)?", options: { A: "True", B: "False", C: "Syntax Error" }, correct: "False" }
+                ]
+            },
+            {
+                id: 10,
+                title: "Lesson 10: Conditional Branch Processing Logic (if Blocks)",
+                content: `
+                    <p>Conditional branches allow programs to make decisions based on runtime values. An <code>if</code> block evaluates an expression condition; if that expression resolves as <code>True</code>, the code indented directly under it executes.</p>
+                    <p>Python establishes block groups using clean line spacing indent gaps instead of brackets or braces. Every control block header declaration requires a formal colon character (<code>:</code>) terminal symbol.</p>
+                    <pre>score = 95\nif score >= 90:\n    print("Performance Level: A")</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What syntax punctuation token must terminate all standard conditional block statement headers?", options: { A: ";", B: ".", C: ":" }, correct: "C" },
+                    { id: "q2", text: "How does the Python parsing engine determine where conditional block contents begin and end?", options: { A: "Curly Braces {}", B: "Indentation alignment blocks", C: "Parentheses ()" }, correct: "B" }
+                ]
+            },
+            {
+                id: 11,
+                title: "Lesson 11: Alternate Execution Control Blocks (else Statements)",
+                content: `
+                    <p>The <code>else</code> keyword defines a fallback block. It executes if, and only if, the preceding conditional check evaluates to <code>False</code>.</p>
+                    <p>An <code>else</code> clause cannot track explicit test criteria equations independently, and must stay perfectly level with its original parent <code>if</code> signature context block.</p>
+                    <pre>age = 16\nif age >= 18:\n    print("Access Unlocked")\nelse:\n    print("Access Denied: Age Threshold Unmet")</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "True or False: An independent else statement block can specify logical condition rules directly inside its header.", options: { True: "True", False: "False" }, correct: "False" },
+                    { id: "q2", text: "When does code nested inside an else execution fallback pathway trigger?", options: { A: "When parent checking condition fails", B: "When checking condition passes" }, correct: "A" }
+                ]
+            },
+            {
+                id: 12,
+                title: "Lesson 12: Cascading Multi-Test Control Routes (elif Chains)",
+                content: `
+                    <p>To evaluate multiple conditions sequentially, use the <code>elif</code> keyword (short for "else if").</p>
+                    <p>Python runs these checks from top to bottom. As soon as one condition evaluates to <code>True</code>, its corresponding block executes, and the rest of the chain is skipped.</p>
+                    <pre>status_code = 404\nif status_code == 200:\n    print("Success")\nelif status_code == 404:\n    print("Resource Missing")\nelse:\n    print("General Internal System Warning")</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "Which keyword handles multi-tier conditional routing checks in Python?", options: { A: "elseif", B: "elif", C: "else if" }, correct: "B" },
+                    { id: "q2", text: "True or False: Python runs multiple matching blocks inside an elif chain if more than one condition is true.", options: { True: "True", False: "False" }, correct: "False" }
+                ]
+            },
+            {
+                id: 13,
+                title: "Lesson 13: Logical Compound Operators (and / or / not)",
+                content: `
+                    <p>Use logical compound operators to combine multiple conditions within a single statement:</p>
+                    <p>The <code>and</code> operator requires <strong>all</strong> conditions to be true.</p>
+                    <p>The <code>or</code> operator requires <strong>at least one</strong> condition to be true.</p>
+                    <p>The <code>not</code> operator inverts a Boolean value (turning <code>True</code> to <code>False</code> and vice versa).</p>
+                    <pre>if operational == True and security_clearance == True:\n    print("Launch Engine Activated")</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "Which logical operator requires both condition inputs to evaluate as True?", options: { A: "or", B: "and", C: "not" }, correct: "B" },
+                    { id: "q2", text: "What is the structural boolean output state for calculation (True or False)?", options: { A: "True", B: "False" }, correct: "True" }
+                ]
+            },
+            {
+                id: 14,
+                title: "Lesson 14: Loop Operations & Iteration Controls (while Frameworks)",
+                content: `
+                    <p>Loops execute a block of code multiple times as long as a specified condition remains <code>True</code>.</p>
+                    <p><strong>Crucial Rule:</strong> The code inside a <code>while</code> loop must update the variables in the condition expression. If the condition never becomes <code>False</code>, the program will get stuck in an <em>infinite loop</em>, consuming system resources until it crashes.</p>
+                    <pre>counter = 1\nwhile counter <= 3:\n    print(counter)\n    counter = counter + 1</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What system risk occurs if a loop's conditional tracking matrix fails to ever resolve into a False output state?", options: { A: "Syntax Mismatch Error", B: "An Infinite Loop", C: "Automatic Script File Erasure" }, correct: "B" },
+                    { id: "q2", text: "How many loop iterations occur when processing: x = 1; while x < 1: print(x); x+=1?", options: { A: "0", B: "1", C: "Infinite" }, correct: "A" }
+                ]
+            },
+            {
+                id: 15,
+                title: "Lesson 15: Sequence Target Loops (for Loops & range() Generators)",
+                content: `
+                    <p>A <code>for</code> loop iterates over a defined sequence, such as a string, list, or numeric range generated by the <code>range()</code> function.</p>
+                    <p>The <code>range(start, stop)</code> function generates numbers starting from the <code>start</code> value up to, but <strong>not including</strong>, the <code>stop</code> boundary integer.</p>
+                    <pre>for target_number in range(1, 5):\n    print(target_number) # Prints values: 1, 2, 3, 4</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What specific integers are printed by processing loop signature sequence: for x in range(1, 4): print(x)?", options: { A: "1, 2, 3, 4", B: "1, 2, 3", C: "2, 3, 4" }, correct: "B" },
+                    { id: "q2", text: "Which loop type is ideal for iterating over a predefined sequence or range of numbers?", options: { A: "while loop", B: "for loop" }, correct: "B" }
+                ]
+            },
+            {
+                id: 16,
+                title: "Lesson 16: Sequential Array Lists & Index Addressing Layouts",
+                content: `
+                    <p>A <strong>List</strong> is an ordered collection of values enclosed in square brackets (<code>[]</code>), with values separated by commas.</p>
+                    <p>Python lists use <strong>zero-indexed positioning</strong>. This means the first element sits at index position <code>0</code>, the second element at index <code>1</code>, and so forth.</p>
+                    <pre>inventory = ["Shield", "Potion", "Sword"]\nprint(inventory[0])  # Outputs: Shield\nprint(inventory[2])  # Outputs: Sword</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What array layout tracking index address represents the initial first entry inside an engineering list block?", options: { A: "1", B: "0", C: "-1" }, correct: "B" },
+                    { id: "q2", text: "Which symbol syntax envelope establishes array collections as explicit Python List parameters?", options: { A: "Parentheses ()", B: "Square brackets []", C: "Curly braces {}" }, correct: "B" }
+                ]
+            },
+            {
+                id: 17,
+                title: "Lesson 17: List Element Modification Routines (append, insert, pop)",
+                content: `
+                    <p>You can modify lists dynamically using built-in list methods:</p>
+                    <p>The <code>.append(item)</code> method adds an element to the end of a list.</p>
+                    <p>The <code>.insert(index, item)</code> method injects an element at a specific index position, shifting existing elements to the right.</p>
+                    <p>The <code>.pop(index)</code> method removes and returns the element at the specified index.</p>
+                    <pre>items = ["Alpha", "Beta"]\nitems.append("Gamma") # List is now: ["Alpha", "Beta", "Gamma"]</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "Which array mutation tracking method adds an item to the end of a list?", options: { A: "insert()", B: "pop()", C: "append()" }, correct: "C" },
+                    { id: "q2", text: "What does calling the .pop(0) instruction perform against an active variable array dataset?", options: { A: "Empties whole list", B: "Deletes the absolute first item", C: "Appends duplicate clone entries" }, correct: "B" }
+                ]
+            },
+            {
+                id: 18,
+                title: "Lesson 18: Function Templates & Subroutine Block Architectures",
+                content: `
+                    <p>Functions are reusable, isolated blocks of code designed to perform a specific task. They prevent code duplication and keep codebases organized.</p>
+                    <p>Define a function using the <code>def</code> keyword, followed by a custom function name, parentheses for arguments, and a colon.</p>
+                    <pre>def run_diagnostics():\n    print("System Diagnostics Operational")\n    print("All Matrix Parameters Stable")\n\n# Execution invocation:\nrun_diagnostics()</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "Which architectural engine keyword acts as the entry block marker declaring custom reusable script subroutines?", options: { A: "function", B: "def", C: "proc" }, correct: "B" },
+                    { id: "q2", text: "True or False: Defining a function executes its internal code immediately without needing a separate invocation call.", options: { True: "True", False: "False" }, correct: "False" }
+                ]
+            },
+            {
+                id: 19,
+                title: "Lesson 19: Functional Scope Parameters & Value Returns",
+                content: `
+                    <p>Functions accept inputs called <strong>parameters</strong>, and send results back to the main program using the <code>return</code> statement.</p>
+                    <p>The <code>return</code> statement passes an evaluation value back to where the function was called, and immediately exits the function block. Any code placed below a <code>return</code> statement inside the same function is unreachable and will not execute.</p>
+                    <pre>def compute_cube(number):\n    return number * number * number\n\noutput_score = compute_cube(3) # Holds calculation balance: 27</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What statement instruction mechanism hands an internal function calculation value back out to the main parent script?", options: { A: "output", B: "return", C: "send" }, correct: "B" },
+                    { id: "q2", text: "True or False: Script statement instructions written directly below an active operational return command inside a routine block execute normally.", options: { True: "True", False: "False" }, correct: "False" }
+                ]
+            },
+            {
+                id: 20,
+                title: "Lesson 20: Comprehensive Object-Oriented Capstone Architecture",
+                content: `
+                    <p>Object-Oriented Programming (OOP) organizes software design around data objects rather than functions or logic routines.</p>
+                    <p>A <strong>Class</strong> serves as a structural blueprint for creating objects. Objects are concrete instances of a class that encapsulate both properties (attributes) and behaviors (methods).</p>
+                    <pre>class CombatUnit:\n    def __init__(self, designation):\n        self.name = designation\n\n    def alert(self):\n        return self.name + " online."\n\nunit_instance = CombatUnit("Apex-01")\nprint(unit_instance.alert())</pre>
+                `,
+                questions: [
+                    { id: "q1", text: "What development pattern structure acts as an absolute blueprint engine for instantiating custom data object layouts?", options: { A: "Method list", B: "Class definition", C: "Scope framework" }, correct: "B" },
+                    { id: "q2", text: "What specific identifier keyword represents the immediate active target object instance inside Class configuration models?", options: { A: "this", B: "self", C: "object" }, correct: "B" }
+                ]
+            }
+        ];
+
+        // Core App Routing Controller Matrix
         function switchTab(tabName) {
             const contactTab = document.getElementById('contact-tab');
             const lessonsTab = document.getElementById('lessons-tab');
@@ -623,10 +750,81 @@ print(score)</pre>
             }
         }
 
+        // Initialize and generate DOM elements across the full 20 modules sequence
+        function initCurriculumDOM() {
+            const holder = document.getElementById('active-lessons-holder');
+            holder.innerHTML = ""; // Safe flush clear
+
+            lessonsData.forEach((lesson, index) => {
+                const isFirst = index === 0;
+                const isEven = (lesson.id % 2 === 0);
+                
+                // Outer parent card wrapper template
+                const container = document.createElement('div');
+                container.id = `lesson-${lesson.id}-container`;
+                container.className = "lesson-container";
+                container.style.display = isFirst ? "block" : "none";
+
+                // Lock tracking placeholder engine template card
+                if (!isFirst) {
+                    const lockDiv = document.createElement('div');
+                    lockDiv.id = `lesson-${lesson.id}-lock`;
+                    lockDiv.className = "locked-lesson";
+                    lockDiv.innerHTML = `
+                        <h3>🔒 ${lesson.title}</h3>
+                        <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson ${lesson.id - 1} Quiz to unlock this block!</p>
+                    `;
+                    holder.appendChild(lockDiv);
+                }
+
+                // Inner content structure string mapping
+                let quizHTML = `
+                    <div class="quiz-section ${isEven ? 'even-lesson' : ''}">
+                        <h3>${lesson.title} Knowledge Check</h3>
+                        <form id="quiz-form-l${lesson.id}">
+                `;
+
+                lesson.questions.forEach((q) => {
+                    quizHTML += `
+                        <div class="question-block">
+                            <p class="question-text">${q.text}</p>
+                            <div class="options-group">
+                    `;
+                    for (let optKey in q.options) {
+                        quizHTML += `
+                            <label class="option-label">
+                                <input type="radio" name="l${lesson.id}q${q.id}" value="${optKey}"> 
+                                ${optKey === 'True' || optKey === 'False' ? '' : optKey + '. '}${q.options[optKey]}
+                            </label>
+                        `;
+                    }
+                    quizHTML += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                quizHTML += `
+                            <button type="button" class="submit-btn ${isEven ? 'even-btn' : ''}" onclick="gradeLesson(${lesson.id})">Submit Quiz</button>
+                        </form>
+                        <div id="results-l${lesson.id}" class="results-box"></div>
+                    </div>
+                `;
+
+                container.innerHTML = `
+                    <div class="lesson-header">${lesson.title}</div>
+                    <div class="lesson-text">${lesson.content}</div>
+                    ${quizHTML}
+                `;
+
+                holder.appendChild(container);
+            });
+        }
+
         function startCurriculum() {
             document.getElementById('lessons-welcome').style.display = 'none';
             document.getElementById('lessons-content-area').style.display = 'block';
-            updateProgressBar(15);
+            updateProgressBar(5); // Lesson 1 baseline activation point (5% per module increments)
         }
 
         function updateProgressBar(percentage) {
@@ -634,92 +832,65 @@ print(score)</pre>
             document.getElementById('progress-text').innerText = percentage + '% Completed';
         }
 
-        // LESSON 1 GRADING
-        function gradeLesson1() {
-            const answersL1 = {
-                l1q1: 'B', l1q2: 'False', l1q3: 'C', l1q4: 'B', l1q5: 'A',
-                l1q6: 'D', l1q7: 'A', l1q8: 'True', l1q9: 'A'
-            };
-
-            const form = document.getElementById('quiz-form-l1');
+        // Globalized Dynamic Grading and State Progression Rules Processor
+        function gradeLesson(lessonId) {
+            const lesson = lessonsData.find(l => l.id === lessonId);
+            const form = document.getElementById(`quiz-form-l${lessonId}`);
             let score = 0;
-            let total = Object.keys(answersL1).length;
+            let total = lesson.questions.length;
 
-            for (let key in answersL1) {
-                const checked = form.querySelector(`input[name="${key}"]:checked`);
-                if (checked && checked.value === answersL1[key]) {
+            lesson.questions.forEach((q) => {
+                const checked = form.querySelector(`input[name="l${lessonId}q${q.id}"]:checked`);
+                if (checked && checked.value === q.correct) {
                     score++;
                 }
-            }
+            });
 
             const percentage = Math.round((score / total) * 100);
-            const resultsBox = document.getElementById('results-l1');
-            const lockSection = document.getElementById('lesson-2-lock');
-            const lesson2Section = document.getElementById('lesson-2-container');
-
+            const resultsBox = document.getElementById(`results-l${lessonId}`);
             resultsBox.style.display = 'block';
 
             if (percentage >= 80) {
                 resultsBox.className = "results-box pass";
-                resultsBox.innerHTML = `Passed! Your Score: ${percentage}% (${score}/${total}). <br> Excellent work! Lesson 2 has been unlocked below.`;
                 
-                lockSection.style.display = 'none';
-                lesson2Section.style.display = 'block';
-                updateProgressBar(50); // Move progress up to half-way mark
+                if (lessonId === 20) {
+                    resultsBox.innerHTML = `Passed Lesson 20! Your Score: ${percentage}% (${score}/${total}). <br> Ultimate milestone reached! The complete curriculum parameters have been achieved!`;
+                    document.getElementById('course-complete-container').style.display = 'block';
+                    updateProgressBar(100);
+                } else {
+                    resultsBox.innerHTML = `Passed! Your Score: ${percentage}% (${score}/${total}). <br> Excellent work! Lesson ${lessonId + 1} has been unlocked below.`;
+                    
+                    // Reveal the subsequent module and hide its lock block shield
+                    const nextLock = document.getElementById(`lesson-${lessonId + 1}-lock`);
+                    const nextContainer = document.getElementById(`lesson-${lessonId + 1}-container`);
+                    if (nextLock) nextLock.style.display = 'none';
+                    if (nextContainer) nextContainer.style.display = 'block';
+                    
+                    // Increment the progression layout value evenly by 5% increments matching 20 components linear mapping
+                    updateProgressBar(lessonId * 5);
+                }
             } else {
                 resultsBox.className = "results-box fail";
-                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${total}). <br> You need an 80% or higher to unlock the next lesson. Review the text above and try again!`;
+                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${total}). <br> You need an 80% or higher to unlock the next lesson block. Review the text instructions above and try again!`;
                 
-                lockSection.style.display = 'block';
-                lesson2Section.style.display = 'none';
+                // If a user fails a quiz block down the chain, reset downstream access to enforce mastery pipeline sequences
+                for (let i = lessonId + 1; i <= 20; i++) {
+                    const lockDiv = document.getElementById(`lesson-${i}-lock`);
+                    const contDiv = document.getElementById(`lesson-${i}-container`);
+                    if (lockDiv) lockDiv.style.display = 'block';
+                    if (contDiv) contDiv.style.display = 'none';
+                }
                 document.getElementById('course-complete-container').style.display = 'none';
-                updateProgressBar(15);
-            }
-            
-            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        // LESSON 2 GRADING
-        function gradeLesson2() {
-            const answersL2 = {
-                l2q1: 'B',
-                l2q2: 'A',
-                l2q3: 'C'
-            };
-
-            const form = document.getElementById('quiz-form-l2');
-            let score = 0;
-            let total = Object.keys(answersL2).length;
-
-            for (let key in answersL2) {
-                const checked = form.querySelector(`input[name="${key}"]:checked`);
-                if (checked && checked.value === answersL2[key]) {
-                    score++;
-                }
-            }
-
-            const percentage = Math.round((score / total) * 100);
-            const resultsBox = document.getElementById('results-l2');
-            const completeSection = document.getElementById('course-complete-container');
-
-            resultsBox.style.display = 'block';
-
-            if (percentage >= 80) {
-                resultsBox.className = "results-box pass";
-                resultsBox.innerHTML = `Passed Lesson 2! Your Score: ${percentage}% (${score}/${total}). <br> Amazing job! You have fully completed the curriculum modules.`;
-                
-                completeSection.style.display = 'block';
-                updateProgressBar(100); // Complete course milestone!
-            } else {
-                resultsBox.className = "results-box fail";
-                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${total}). <br> You need an 80% or higher to graduate this block. Review the text instructions above and try again!`;
-                
-                completeSection.style.display = 'none';
-                updateProgressBar(50);
+                updateProgressBar(Math.max(5, (lessonId - 1) * 5));
             }
 
             resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
+
+        // Program boot initializer invocation loop
+        window.addEventListener('DOMContentLoaded', () => {
+            initCurriculumDOM();
+        });
     </script>
 </body>
 </html>
