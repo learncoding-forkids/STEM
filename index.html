@@ -3,173 +3,522 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM 4 KIDS</title>
+    <title>Apex Coding Tutoring</title>
     <style>
-        /* Modern Reset & Font */
+        :root {
+            --bg-dark: #0f172a;
+            --panel-dark: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #f0f4f8;
-            color: #333;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
-        /* Header Section */
         header {
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            color: white;
-            text-align: center;
-            padding: 3rem 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: var(--panel-dark);
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
         }
 
-        header p {
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        /* Intro Text */
-        .intro {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        /* Grid Layout for STEM Categories */
-        .stem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Individual Feature Cards */
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
+        .logo {
             font-size: 1.5rem;
-            margin-bottom: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Custom Colors for each Subject */
-        .science { border-top: 8px solid #ff6b6b; color: #ff6b6b; }
-        .tech { border-top: 8px solid #4ecdc4; color: #4ecdc4; }
-        .engineering { border-top: 8px solid #feca57; color: #feca57; }
-        .math { border-top: 8px solid #ff9ff3; color: #ff9ff3; }
-
-        .card p {
-            color: #666;
-            font-size: 0.95rem;
+        .logo span {
+            color: var(--accent-blue);
         }
 
-        /* Call to Action Button */
-        .cta-section {
-            text-align: center;
-            margin-top: 4rem;
+        .nav-tabs {
+            display: flex;
+            gap: 1rem;
         }
 
-        .btn {
-            background-color: #4ecdc4;
-            color: white;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            font-weight: bold;
+        .tab-btn {
+            background: none;
             border: none;
-            border-radius: 50px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
             cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(78, 205, 196, 0.4);
-            transition: background 0.2s ease;
+            transition: all 0.3s ease;
+            border-radius: 0.375rem;
         }
 
-        .btn:hover {
-            background-color: #3dbbb2;
+        .tab-btn:hover {
+            color: var(--text-main);
+            background-color: #334155;
         }
 
-        /* Footer */
-        footer {
+        .tab-btn.active {
+            color: var(--bg-dark);
+            background-color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home/Contact Tab Styling */
+        .hero {
             text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 1rem;
+            border: 1px solid #334155;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .contact-card {
+            background-color: var(--panel-dark);
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
             padding: 2rem;
-            margin-top: 4rem;
-            color: #888;
-            font-size: 0.9rem;
-            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-card h2 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .email-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .email-link {
+            display: block;
+            background-color: #334155;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .email-link:hover {
+            background-color: #475569;
+            color: var(--accent-blue);
+        }
+
+        /* Online Lessons Tab Styling */
+        .lesson-container {
+            background-color: var(--panel-dark);
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .lesson-header {
+            color: var(--accent-blue);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 0.5rem;
+        }
+
+        .lesson-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+        }
+
+        .lesson-text p {
+            margin-bottom: 1rem;
+        }
+
+        /* Quiz Styling */
+        .quiz-section {
+            background-color: #111827;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .quiz-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .question-block {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #f1f5f9;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--panel-dark);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background-color: #334155;
+        }
+
+        .option-label input[type="radio"] {
+            accent-color: var(--accent-blue);
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-blue);
+            color: var(--bg-dark);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Results Area */
+        .results-box {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            display: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .results-box.pass {
+            background-color: rgba(74, 222, 128, 0.15);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .results-box.fail {
+            background-color: rgba(248, 113, 113, 0.15);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+        }
+
+        .locked-lesson {
+            background-color: #0f172a;
+            border: 2px dashed #334155;
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>STEM 4 KIDS</h1>
-        <p>Igniting Curiosity & Empowering Young Creators!</p>
+        <div class="nav-container">
+            <div class="logo">
+                &lt;/&gt; ApexCoding<span>Tutoring</span>
+            </div>
+            <nav class="nav-tabs">
+                <button class="tab-btn active" onclick="switchTab('contact')">Contact Services</button>
+                <button class="tab-btn" onclick="switchTab('lessons')">Online Lessons</button>
+            </nav>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="intro">
-            <h2>Welcome to the Future of Learning</h2>
-            <p>Dedicated to helping kids explore, experiment, and develop vital skills for tomorrow's world through fun, interactive projects.</p>
-        </div>
-
-        <div class="stem-grid">
-            <div class="card science">
-                <h3>Science</h3>
-                <p>Uncover the mysteries of nature, space, and chemical reactions with hands-on experiments.</p>
+    <main>
+        <section id="contact-tab" class="content-section active">
+            <div class="hero">
+                <h1>Master Coding with 1-on-1 Mentorship</h1>
+                <p>Unlock your potential. We provide personalized coding tutoring services tailored to your pace, skill level, and goals.</p>
             </div>
             
-            <div class="card tech">
-                <h3>Technology</h3>
-                <p>Dive into creative coding, interactive games, and building digital worlds block by block.</p>
+            <div class="contact-card">
+                <h2>Get in Touch Today</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Ready to begin your journey? Contact our expert instructors directly to book a session:</p>
+                <div class="email-list">
+                    <a href="mailto:saleel.khisti@gmail.com" class="email-link">✉ Email Saleel Khisti</a>
+                    <a href="mailto:monku.1224@gmail.com" class="email-link">✉ Email Monku</a>
+                </div>
             </div>
+        </section>
+
+        <section id="lessons-tab" class="content-section">
             
-            <div class="card engineering">
-                <h3>Engineering</h3>
-                <p>Design, build, and test structures from bridges to simple robotics challenges.</p>
+            <div class="lesson-container">
+                <div class="lesson-header">LESSON 1: INTRODUCTION TO CODING</div>
+                
+                <div class="lesson-text">
+                    <p>So...you want to learn coding, well here is how to start. We will begin with basic block coding.</p>
+                    <p>Coding is giving a robot instructions for it to follow. In the world of coding, there are many "languages" to learn or different ways to write code. We will be focusing on block and python coding. Coding is providing detailed and formatted plans to a robot. This is the core idea of coding for all languages.</p>
+                    <p>Block coding consists of prepared sets of code. Each block has a unique purpose such as, "Hello," or "What is your name?" When you structure the blocks correctly, the computer performs them in order. This is called a sequence. Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error.</p>
+                    <p>Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it. Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent an accurate solution. Mistakes are ok though, they are just a part of the coding process.</p>
+                    <p>Computers can't guess what you want to code. If you just say "make a calculator" the computer won't know what to do. You must break the task into steps.</p>
+                    <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. Coding is essential for every person to learn and develop. The number one rule of coding is to find unique solutions to problems.</p>
+                </div>
+
+                <div class="quiz-section">
+                    <h3>Lesson 1 Knowledge Check</h3>
+                    <form id="quiz-form">
+                        
+                        <div class="question-block">
+                            <p class="question-text">1. What is the core idea of coding?</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q1" value="A"> A. Conditionals</label>
+                                <label class="option-label"><input type="radio" name="q1" value="B"> B. Giving detailed plans to a robot</label>
+                                <label class="option-label"><input type="radio" name="q1" value="C"> C. Solving equations</label>
+                                <label class="option-label"><input type="radio" name="q1" value="D"> D. Computing equations</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">2. True or False: There is only one coding language.</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q2" value="True"> True</label>
+                                <label class="option-label"><input type="radio" name="q2" value="False"> False</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">3. What is block coding made up of?</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q3" value="A"> A. Lines of code</label>
+                                <label class="option-label"><input type="radio" name="q3" value="B"> B. Arithmetic code</label>
+                                <label class="option-label"><input type="radio" name="q3" value="C"> C. Sets of code</label>
+                                <label class="option-label"><input type="radio" name="q3" value="D"> D. Linear code</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">4. Do all blocks in block coding have the same purpose?</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q4" value="A"> A. Yes</label>
+                                <label class="option-label"><input type="radio" name="q4" value="B"> B. No</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">5. What is it called when a computer performs blocks in order?</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q5" value="A"> A. Sequence</label>
+                                <label class="option-label"><input type="radio" name="q5" value="B"> B. Order</label>
+                                <label class="option-label"><input type="radio" name="q5" value="C"> C. Method</label>
+                                <label class="option-label"><input type="radio" name="q5" value="D"> D. Pathway</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">6. What is coding used for?</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q6" value="A"> A. Solve problems</label>
+                                <label class="option-label"><input type="radio" name="q6" value="B"> B. Social media</label>
+                                <label class="option-label"><input type="radio" name="q6" value="C"> C. Make websites</label>
+                                <label class="option-label"><input type="radio" name="q6" value="D"> D. All of the above (Because coding can be used to solve problems, create apps/websites, make games, etc.)</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">7. What is debugging?</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q7" value="A"> A. Fixing mistakes</label>
+                                <label class="option-label"><input type="radio" name="q7" value="B"> B. Finalizing an idea</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">8. True or False: Mistakes in coding are okay.</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q8" value="True"> True</label>
+                                <label class="option-label"><input type="radio" name="q8" value="False"> False</label>
+                            </div>
+                        </div>
+
+                        <div class="question-block">
+                            <p class="question-text">9. What is the number one rule of coding?</p>
+                            <div class="options-group">
+                                <label class="option-label"><input type="radio" name="q9" value="A"> A. Find unique ways to solve a problem</label>
+                                <label class="option-label"><input type="radio" name="q9" value="B"> B. Make robots</label>
+                            </div>
+                        </div>
+
+                        <button type="button" class="submit-btn" onclick="gradeQuiz()">Submit Quiz</button>
+                    </form>
+
+                    <div id="results" class="results-box"></div>
+                </div>
             </div>
+
+            <div id="next-lesson-lock" class="locked-lesson">
+                <h3>🔒 Lesson 2: Next Steps</h3>
+                <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson 1 Quiz to unlock the next level of your training!</p>
+            </div>
+
+            <div id="next-lesson-content" class="lesson-container" style="display: none;">
+                <div class="lesson-header">LESSON 2: LEVEL UP!</div>
+                <div class="lesson-text">
+                    <p>🎉 <strong>Congratulations!</strong> You passed the first benchmark. Contact your instructors to unlock advanced interactive projects!</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabName) {
+            const contactTab = document.getElementById('contact-tab');
+            const lessonsTab = document.getElementById('lessons-tab');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if(tabName === 'contact') {
+                contactTab.classList.add('active');
+                lessonsTab.classList.remove('active');
+                buttons[0].classList.add('active');
+            } else {
+                lessonsTab.classList.add('active');
+                contactTab.classList.remove('active');
+                buttons[1].classList.add('active');
+            }
+        }
+
+        // Quiz grading logic
+        function gradeQuiz() {
+            // Document exact answer patterns
+            const correctAnswers = {
+                q1: 'B',
+                q2: 'False',
+                q3: 'C',
+                q4: 'B',
+                q5: 'A',
+                q6: 'D',
+                q7: 'A',
+                q8: 'True',
+                q9: 'A'
+            };
+
+            const form = document.getElementById('quiz-form');
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+
+            for (let key in correctAnswers) {
+                const selected = form.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === correctAnswers[key]) {
+                    score++;
+                }
+            }
+
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const resultsBox = document.getElementById('results');
+            const lockSection = document.getElementById('next-lesson-lock');
+            const hiddenSection = document.getElementById('next-lesson-content');
+
+            resultsBox.style.display = 'block';
+
+            if (percentage >= 80) {
+                resultsBox.className = "results-box pass";
+                resultsBox.innerHTML = `Passed! Your Score: ${percentage}% (${score}/${totalQuestions}). <br> Excellent work! Lesson 2 has been unlocked below.`;
+                
+                // Unlock sequence
+                lockSection.style.display = 'none';
+                hiddenSection.style.display = 'block';
+            } else {
+                resultsBox.className = "results-box fail";
+                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${totalQuestions}). <br> You need an 80% or higher to unlock the next lesson. Review the text above and try again!`;
+                
+                // Lock sequence reset if they pass then fail again
+                lockSection.style.display = 'block';
+                hiddenSection.style.display = 'none';
+            }
             
-            <div class="card math">
-                <h3>Math</h3>
-                <p>Master puzzles, logic puzzles, and numbers through engaging stories and patterns.</p>
-            </div>
-        </div>
-
-        <div class="cta-section">
-            <a href="#" class="btn">Explore Courses</a>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 STEM 4 KIDS. All rights reserved.</p>
-    </footer>
-
+            // Auto-scroll down to results view seamlessly
+            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
 </body>
 </html>
