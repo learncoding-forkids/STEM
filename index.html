@@ -190,6 +190,41 @@
             transform: translateY(-2px);
         }
 
+        /* Progress Bar Styling */
+        .progress-container {
+            background-color: var(--panel-dark);
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .progress-bar-bg {
+            background-color: #0f172a;
+            border-radius: 1rem;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+            border-radius: 1rem;
+        }
+
         /* Online Lessons Tab Styling */
         .lesson-container {
             background-color: var(--panel-dark);
@@ -365,6 +400,16 @@
 
             <div id="lessons-content-area" style="display: none;">
                 
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>Course Completion Tracker</span>
+                        <span id="progress-text">0% Completed</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+                
                 <div class="lesson-container">
                     <div class="lesson-header">LESSON 1: INTRODUCTION TO CODING</div>
                     
@@ -476,7 +521,9 @@
                 <div id="next-lesson-content" class="lesson-container" style="display: none;">
                     <div class="lesson-header">LESSON 2: LEVEL UP!</div>
                     <div class="lesson-text">
-                        <p>🎉 <strong>Congratulations!</strong> You passed the first benchmark. Contact your instructors to unlock advanced interactive projects!</p>
+                        <p>🎉 <strong>Congratulations! You have completed the introductory syllabus!</strong></p>
+                        <p>You have unlocked 100% of the introductory coursework provided in your master layout document. You now hold a grasp on critical concepts like structures, sequences, and code debugging optimization.</p>
+                        <p>To advance your structural journey into 1-on-1 complex algorithm architecture, custom web systems, or native Python frameworks, please schedule your next mentorship session directly with your training advisors via the contact methods listed on the profile tab.</p>
                     </div>
                 </div>
 
@@ -506,10 +553,15 @@
             }
         }
 
-        // Activates curriculum and hides landing button
         function startCurriculum() {
             document.getElementById('lessons-welcome').style.display = 'none';
             document.getElementById('lessons-content-area').style.display = 'block';
+            updateProgressBar(25); // Reading lesson 1 sets initial reading progress
+        }
+
+        function updateProgressBar(percentage) {
+            document.getElementById('progress-bar-fill').style.width = percentage + '%';
+            document.getElementById('progress-text').innerText = percentage + '% Completed';
         }
 
         function gradeQuiz() {
@@ -548,11 +600,17 @@
                 resultsBox.innerHTML = `Passed! Your Score: ${percentage}% (${score}/${totalQuestions}). <br> Excellent work! Lesson 2 has been unlocked below.`;
                 lockSection.style.display = 'none';
                 hiddenSection.style.display = 'block';
+                
+                // Max out progress since all documentation text/answers are covered
+                updateProgressBar(100);
             } else {
                 resultsBox.className = "results-box fail";
                 resultsBox.innerHTML = `Score: ${percentage}% (${score}/${totalQuestions}). <br> You need an 80% or higher to unlock the next lesson. Review the text above and try again!`;
                 lockSection.style.display = 'block';
                 hiddenSection.style.display = 'none';
+                
+                // Revert progress indicator to original checkpoint state
+                updateProgressBar(25);
             }
             
             resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
