@@ -252,12 +252,26 @@
             margin-bottom: 1rem;
         }
 
+        .lesson-text pre {
+            background-color: #0f172a;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            color: var(--accent-green);
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 1rem;
+            border: 1px solid #334155;
+        }
+
         /* Quiz Styling */
         .quiz-section {
             background-color: #111827;
             border-radius: 0.75rem;
             padding: 2rem;
             border-left: 4px solid var(--accent-blue);
+        }
+
+        .quiz-section.quiz-l2 {
+            border-left: 4px solid var(--accent-green);
         }
 
         .quiz-section h3 {
@@ -319,6 +333,10 @@
             display: block;
             width: 100%;
             margin-top: 1rem;
+        }
+
+        .submit-btn.btn-l2 {
+            background-color: var(--accent-green);
         }
 
         .submit-btn:hover {
@@ -424,106 +442,158 @@
 
                     <div class="quiz-section">
                         <h3>Lesson 1 Knowledge Check</h3>
-                        <form id="quiz-form">
+                        <form id="quiz-form-l1">
                             
                             <div class="question-block">
                                 <p class="question-text">1. What is the core idea of coding?</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q1" value="A"> A. Conditionals</label>
-                                    <label class="option-label"><input type="radio" name="q1" value="B"> B. Giving detailed plans to a robot</label>
-                                    <label class="option-label"><input type="radio" name="q1" value="C"> C. Solving equations</label>
-                                    <label class="option-label"><input type="radio" name="q1" value="D"> D. Computing equations</label>
+                                    <label class="option-label"><input type="radio" name="l1q1" value="A"> A. Conditionals</label>
+                                    <label class="option-label"><input type="radio" name="l1q1" value="B"> B. Giving detailed plans to a robot</label>
+                                    <label class="option-label"><input type="radio" name="l1q1" value="C"> C. Solving equations</label>
+                                    <label class="option-label"><input type="radio" name="l1q1" value="D"> D. Computing equations</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">2. True or False: There is only one coding language.</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q2" value="True"> True</label>
-                                    <label class="option-label"><input type="radio" name="q2" value="False"> False</label>
+                                    <label class="option-label"><input type="radio" name="l1q2" value="True"> True</label>
+                                    <label class="option-label"><input type="radio" name="l1q2" value="False"> False</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">3. What is block coding made up of?</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q3" value="A"> A. Lines of code</label>
-                                    <label class="option-label"><input type="radio" name="q3" value="B"> B. Arithmetic code</label>
-                                    <label class="option-label"><input type="radio" name="q3" value="C"> C. Sets of code</label>
-                                    <label class="option-label"><input type="radio" name="q3" value="D"> D. Linear code</label>
+                                    <label class="option-label"><input type="radio" name="l1q3" value="A"> A. Lines of code</label>
+                                    <label class="option-label"><input type="radio" name="l1q3" value="B"> B. Arithmetic code</label>
+                                    <label class="option-label"><input type="radio" name="l1q3" value="C"> C. Sets of code</label>
+                                    <label class="option-label"><input type="radio" name="l1q3" value="D"> D. Linear code</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">4. Do all blocks in block coding have the same purpose?</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q4" value="A"> A. Yes</label>
-                                    <label class="option-label"><input type="radio" name="q4" value="B"> B. No</label>
+                                    <label class="option-label"><input type="radio" name="l1q4" value="A"> A. Yes</label>
+                                    <label class="option-label"><input type="radio" name="l1q4" value="B"> B. No</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">5. What is it called when a computer performs blocks in order?</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q5" value="A"> A. Sequence</label>
-                                    <label class="option-label"><input type="radio" name="q5" value="B"> B. Order</label>
-                                    <label class="option-label"><input type="radio" name="q5" value="C"> C. Method</label>
-                                    <label class="option-label"><input type="radio" name="q5" value="D"> D. Pathway</label>
+                                    <label class="option-label"><input type="radio" name="l1q5" value="A"> A. Sequence</label>
+                                    <label class="option-label"><input type="radio" name="l1q5" value="B"> B. Order</label>
+                                    <label class="option-label"><input type="radio" name="l1q5" value="C"> C. Method</label>
+                                    <label class="option-label"><input type="radio" name="l1q5" value="D"> D. Pathway</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">6. What is coding used for?</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q6" value="A"> A. Solve problems</label>
-                                    <label class="option-label"><input type="radio" name="q6" value="B"> B. Social media</label>
-                                    <label class="option-label"><input type="radio" name="q6" value="C"> C. Make websites</label>
-                                    <label class="option-label"><input type="radio" name="q6" value="D"> D. All of the above (Because coding can be used to solve problems, create apps/websites, make games, etc.)</label>
+                                    <label class="option-label"><input type="radio" name="l1q6" value="A"> A. Solve problems</label>
+                                    <label class="option-label"><input type="radio" name="l1q6" value="B"> B. Social media</label>
+                                    <label class="option-label"><input type="radio" name="l1q6" value="C"> C. Make websites</label>
+                                    <label class="option-label"><input type="radio" name="l1q6" value="D"> D. All of the above (Because coding can be used to solve problems, create apps/websites, make games, etc.)</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">7. What is debugging?</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q7" value="A"> A. Fixing mistakes</label>
-                                    <label class="option-label"><input type="radio" name="q7" value="B"> B. Finalizing an idea</label>
+                                    <label class="option-label"><input type="radio" name="l1q7" value="A"> A. Fixing mistakes</label>
+                                    <label class="option-label"><input type="radio" name="l1q7" value="B"> B. Finalizing an idea</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">8. True or False: Mistakes in coding are okay.</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q8" value="True"> True</label>
-                                    <label class="option-label"><input type="radio" name="q8" value="False"> False</label>
+                                    <label class="option-label"><input type="radio" name="l1q8" value="True"> True</label>
+                                    <label class="option-label"><input type="radio" name="l1q8" value="False"> False</label>
                                 </div>
                             </div>
 
                             <div class="question-block">
                                 <p class="question-text">9. What is the number one rule of coding?</p>
                                 <div class="options-group">
-                                    <label class="option-label"><input type="radio" name="q9" value="A"> A. Find unique ways to solve a problem</label>
-                                    <label class="option-label"><input type="radio" name="q9" value="B"> B. Make robots</label>
+                                    <label class="option-label"><input type="radio" name="l1q9" value="A"> A. Find unique ways to solve a problem</label>
+                                    <label class="option-label"><input type="radio" name="l1q9" value="B"> B. Make robots</label>
                                 </div>
                             </div>
 
-                            <button type="button" class="submit-btn" onclick="gradeQuiz()">Submit Quiz</button>
+                            <button type="button" class="submit-btn" onclick="gradeLesson1()">Submit Quiz</button>
                         </form>
 
-                        <div id="results" class="results-box"></div>
+                        <div id="results-l1" class="results-box"></div>
                     </div>
                 </div>
 
-                <div id="next-lesson-lock" class="locked-lesson">
-                    <h3>🔒 Lesson 2: Next Steps</h3>
-                    <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson 1 Quiz to unlock the next level of your training!</p>
+                <div id="lesson-2-lock" class="locked-lesson">
+                    <h3>🔒 Lesson 2: Introduction to Python Text-Based Code</h3>
+                    <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson 1 Quiz to unlock this block!</p>
                 </div>
 
-                <div id="next-lesson-content" class="lesson-container" style="display: none;">
-                    <div class="lesson-header">LESSON 2: LEVEL UP!</div>
+                <div id="lesson-2-container" class="lesson-container" style="display: none;">
+                    <div class="lesson-header">LESSON 2: TRANSITION TO PYTHON</div>
+                    
                     <div class="lesson-text">
-                        <p>🎉 <strong>Congratulations! You have completed the introductory syllabus!</strong></p>
-                        <p>You have unlocked 100% of the introductory coursework provided in your master layout document. You now hold a grasp on critical concepts like structures, sequences, and code debugging optimization.</p>
-                        <p>To advance your structural journey into 1-on-1 complex algorithm architecture, custom web systems, or native Python frameworks, please schedule your next mentorship session directly with your training advisors via the contact methods listed on the profile tab.</p>
+                        <p>Now that you understand block configurations and sequences, it is time to look at real text-based programming using **Python**.</p>
+                        <p>In Python, instead of dragging visual logic puzzle fragments together, you type functional actions step-by-step. The rules regarding ordering still strictly apply. If you arrange statements out of sequence, or make typos, the computer cannot process your goals correctly. This is called a <em>syntax error</em>.</p>
+                        <p>Let's look at how to display word outputs on a machine dashboard using the <code>print()</code> instruction system:</p>
+                        <pre>print("Hello, World!")</pre>
+                        <p>Variables are data lockers inside your programs. They allow the engine to remember information like scores, coordinates, user profiles, or computations. For example, setting up a numerical storage box works like this:</p>
+                        <pre>score = 100
+print(score)</pre>
+                        <p>Just like block models, your goal with text-based engines is to find clean, elegant solutions to complicated automation problems!</p>
+                    </div>
+
+                    <div class="quiz-section quiz-l2">
+                        <h3>Lesson 2 Knowledge Check</h3>
+                        <form id="quiz-form-l2">
+                            
+                            <div class="question-block">
+                                <p class="question-text">1. What type of programming language is Python?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="l2q1" value="A"> A. Visual Block-based</label>
+                                    <label class="option-label"><input type="radio" name="l2q1" value="B"> B. Text-based</label>
+                                    <label class="option-label"><input type="radio" name="l2q1" value="C"> C. Graphical layout only</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">2. What type of mistake is a code structural typo called in Python?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="l2q2" value="A"> A. Syntax Error</label>
+                                    <label class="option-label"><input type="radio" name="l2q2" value="B"> B. Block Error</label>
+                                    <label class="option-label"><input type="radio" name="l2q2" value="C"> C. Robot Mistake</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">3. What feature functions as a "data storage locker" inside an engineering program?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="l2q3" value="A"> A. A script tag</label>
+                                    <label class="option-label"><input type="radio" name="l2q3" value="B"> B. A sequence order box</label>
+                                    <label class="option-label"><input type="radio" name="l2q3" value="C"> C. A Variable</label>
+                                </div>
+                            </div>
+
+                            <button type="button" class="submit-btn btn-l2" onclick="gradeLesson2()">Submit Lesson 2 Quiz</button>
+                        </form>
+
+                        <div id="results-l2" class="results-box"></div>
+                    </div>
+                </div>
+
+                <div id="course-complete-container" class="lesson-container" style="display: none; background: linear-gradient(135deg, #111827 0%, #1e293b 100%); border-color: var(--accent-green);">
+                    <div class="lesson-header" style="color: var(--accent-green); text-align: center; border: none;">🎓 COURSE COMPLETE!</div>
+                    <div class="lesson-text" style="text-align: center;">
+                        <p style="font-size: 1.3rem;">🎉 <strong>Congratulations! You have completed the active online curriculum blocks!</strong></p>
+                        <p style="margin-top: 1rem; color: var(--text-muted);">You tracked a perfect progression score through both primary language benchmarks and debugging algorithms.</p>
+                        <p style="margin-top: 1rem;">To take your training parameters further into advanced software creation, full-stack application logic, or game building, book your live 1-on-1 private mentoring slots by contacting your instructors on the <strong>Contact Services</strong> tab!</p>
                     </div>
                 </div>
 
@@ -556,7 +626,7 @@
         function startCurriculum() {
             document.getElementById('lessons-welcome').style.display = 'none';
             document.getElementById('lessons-content-area').style.display = 'block';
-            updateProgressBar(25); // Reading lesson 1 sets initial reading progress
+            updateProgressBar(15);
         }
 
         function updateProgressBar(percentage) {
@@ -564,55 +634,90 @@
             document.getElementById('progress-text').innerText = percentage + '% Completed';
         }
 
-        function gradeQuiz() {
-            const correctAnswers = {
-                q1: 'B',
-                q2: 'False',
-                q3: 'C',
-                q4: 'B',
-                q5: 'A',
-                q6: 'D',
-                q7: 'A',
-                q8: 'True',
-                q9: 'A'
+        // LESSON 1 GRADING
+        function gradeLesson1() {
+            const answersL1 = {
+                l1q1: 'B', l1q2: 'False', l1q3: 'C', l1q4: 'B', l1q5: 'A',
+                l1q6: 'D', l1q7: 'A', l1q8: 'True', l1q9: 'A'
             };
 
-            const form = document.getElementById('quiz-form');
+            const form = document.getElementById('quiz-form-l1');
             let score = 0;
-            let totalQuestions = Object.keys(correctAnswers).length;
+            let total = Object.keys(answersL1).length;
 
-            for (let key in correctAnswers) {
-                const selected = form.querySelector(`input[name="${key}"]:checked`);
-                if (selected && selected.value === correctAnswers[key]) {
+            for (let key in answersL1) {
+                const checked = form.querySelector(`input[name="${key}"]:checked`);
+                if (checked && checked.value === answersL1[key]) {
                     score++;
                 }
             }
 
-            const percentage = Math.round((score / totalQuestions) * 100);
-            const resultsBox = document.getElementById('results');
-            const lockSection = document.getElementById('next-lesson-lock');
-            const hiddenSection = document.getElementById('next-lesson-content');
+            const percentage = Math.round((score / total) * 100);
+            const resultsBox = document.getElementById('results-l1');
+            const lockSection = document.getElementById('lesson-2-lock');
+            const lesson2Section = document.getElementById('lesson-2-container');
 
             resultsBox.style.display = 'block';
 
             if (percentage >= 80) {
                 resultsBox.className = "results-box pass";
-                resultsBox.innerHTML = `Passed! Your Score: ${percentage}% (${score}/${totalQuestions}). <br> Excellent work! Lesson 2 has been unlocked below.`;
-                lockSection.style.display = 'none';
-                hiddenSection.style.display = 'block';
+                resultsBox.innerHTML = `Passed! Your Score: ${percentage}% (${score}/${total}). <br> Excellent work! Lesson 2 has been unlocked below.`;
                 
-                // Max out progress since all documentation text/answers are covered
-                updateProgressBar(100);
+                lockSection.style.display = 'none';
+                lesson2Section.style.display = 'block';
+                updateProgressBar(50); // Move progress up to half-way mark
             } else {
                 resultsBox.className = "results-box fail";
-                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${totalQuestions}). <br> You need an 80% or higher to unlock the next lesson. Review the text above and try again!`;
-                lockSection.style.display = 'block';
-                hiddenSection.style.display = 'none';
+                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${total}). <br> You need an 80% or higher to unlock the next lesson. Review the text above and try again!`;
                 
-                // Revert progress indicator to original checkpoint state
-                updateProgressBar(25);
+                lockSection.style.display = 'block';
+                lesson2Section.style.display = 'none';
+                document.getElementById('course-complete-container').style.display = 'none';
+                updateProgressBar(15);
             }
             
+            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // LESSON 2 GRADING
+        function gradeLesson2() {
+            const answersL2 = {
+                l2q1: 'B',
+                l2q2: 'A',
+                l2q3: 'C'
+            };
+
+            const form = document.getElementById('quiz-form-l2');
+            let score = 0;
+            let total = Object.keys(answersL2).length;
+
+            for (let key in answersL2) {
+                const checked = form.querySelector(`input[name="${key}"]:checked`);
+                if (checked && checked.value === answersL2[key]) {
+                    score++;
+                }
+            }
+
+            const percentage = Math.round((score / total) * 100);
+            const resultsBox = document.getElementById('results-l2');
+            const completeSection = document.getElementById('course-complete-container');
+
+            resultsBox.style.display = 'block';
+
+            if (percentage >= 80) {
+                resultsBox.className = "results-box pass";
+                resultsBox.innerHTML = `Passed Lesson 2! Your Score: ${percentage}% (${score}/${total}). <br> Amazing job! You have fully completed the curriculum modules.`;
+                
+                completeSection.style.display = 'block';
+                updateProgressBar(100); // Complete course milestone!
+            } else {
+                resultsBox.className = "results-box fail";
+                resultsBox.innerHTML = `Score: ${percentage}% (${score}/${total}). <br> You need an 80% or higher to graduate this block. Review the text instructions above and try again!`;
+                
+                completeSection.style.display = 'none';
+                updateProgressBar(50);
+            }
+
             resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     </script>
