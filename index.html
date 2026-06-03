@@ -162,6 +162,34 @@
             color: var(--accent-blue);
         }
 
+        /* Start Lessons Welcome Panel */
+        .start-panel {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 1rem;
+        }
+
+        .start-btn {
+            background-color: var(--accent-blue);
+            color: var(--bg-dark);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: transform 0.2s, opacity 0.2s;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+        }
+
+        .start-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
         /* Online Lessons Tab Styling */
         .lesson-container {
             background-color: var(--panel-dark);
@@ -329,119 +357,129 @@
 
         <section id="lessons-tab" class="content-section">
             
-            <div class="lesson-container">
-                <div class="lesson-header">LESSON 1: INTRODUCTION TO CODING [cite: 1]</div>
+            <div id="lessons-welcome" class="start-panel">
+                <h2>Interactive Curriculum</h2>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Step-by-step coding modules built to take you from a beginner to an expert programmer.</p>
+                <button class="start-btn" onclick="startCurriculum()">Start online lessons</button>
+            </div>
+
+            <div id="lessons-content-area" style="display: none;">
                 
-                <div class="lesson-text">
-                    <p>So...you want to learn coding, well here is how to start. We will begin with basic block coding. [cite: 2]</p>
-                    <p>Coding is giving a robot instructions for it to follow. [cite: 3] In the world of coding, there are many "languages" to learn or different ways to write code. [cite: 4] We will be focusing on block and python coding. Coding is providing detailed and formatted plans to a robot. [cite: 5] This is the core idea of coding for all languages. [cite: 6]</p>
-                    <p>Block coding consists of prepared sets of code. Each block has a unique purpose such as, "Hello," or "What is your name?" [cite: 7] When you structure the blocks correctly, the computer performs them in order. This is called a sequence. [cite: 8] Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error. [cite: 9]</p>
-                    <p>Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it. [cite: 10] Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent an accurate solution. [cite: 11] Mistakes are ok though, they are just a part of the coding process. [cite: 12]</p>
-                    <p>Computers can't guess what you want to code. If you just say "make a calculator" the computer won't know what to do. [cite: 13] You must break the task into steps. [cite: 14]</p>
-                    <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. [cite: 15] Coding is essential for every person to learn and develop. [cite: 16] The number one rule of coding is to find unique solutions to problems. [cite: 17]</p>
+                <div class="lesson-container">
+                    <div class="lesson-header">LESSON 1: INTRODUCTION TO CODING</div>
+                    
+                    <div class="lesson-text">
+                        <p>So...you want to learn coding, well here is how to start. We will begin with basic block coding.</p>
+                        <p>Coding is giving a robot instructions for it to follow. In the world of coding, there are many "languages" to learn or different ways to write code. We will be focusing on block and python coding. Coding is providing detailed and formatted plans to a robot. This is the core idea of coding for all languages.</p>
+                        <p>Block coding consists of prepared sets of code. Each block has a unique purpose such as, "Hello," or "What is your name?" When you structure the blocks correctly, the computer performs them in order. This is called a sequence. Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error.</p>
+                        <p>Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it. Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent an accurate solution. Mistakes are ok though, they are just a part of the coding process.</p>
+                        <p>Computers can't guess what you want to code. If you just say "make a calculator" the computer won't know what to do. You must break the task into steps.</p>
+                        <p>Coding is around all of us whether it be robots, social media, or even the website you are reading this from. Coding is essential for every person to learn and develop. The number one rule of coding is to find unique solutions to problems.</p>
+                    </div>
+
+                    <div class="quiz-section">
+                        <h3>Lesson 1 Knowledge Check</h3>
+                        <form id="quiz-form">
+                            
+                            <div class="question-block">
+                                <p class="question-text">1. What is the core idea of coding?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q1" value="A"> A. Conditionals</label>
+                                    <label class="option-label"><input type="radio" name="q1" value="B"> B. Giving detailed plans to a robot</label>
+                                    <label class="option-label"><input type="radio" name="q1" value="C"> C. Solving equations</label>
+                                    <label class="option-label"><input type="radio" name="q1" value="D"> D. Computing equations</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">2. True or False: There is only one coding language.</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q2" value="True"> True</label>
+                                    <label class="option-label"><input type="radio" name="q2" value="False"> False</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">3. What is block coding made up of?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q3" value="A"> A. Lines of code</label>
+                                    <label class="option-label"><input type="radio" name="q3" value="B"> B. Arithmetic code</label>
+                                    <label class="option-label"><input type="radio" name="q3" value="C"> C. Sets of code</label>
+                                    <label class="option-label"><input type="radio" name="q3" value="D"> D. Linear code</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">4. Do all blocks in block coding have the same purpose?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q4" value="A"> A. Yes</label>
+                                    <label class="option-label"><input type="radio" name="q4" value="B"> B. No</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">5. What is it called when a computer performs blocks in order?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q5" value="A"> A. Sequence</label>
+                                    <label class="option-label"><input type="radio" name="q5" value="B"> B. Order</label>
+                                    <label class="option-label"><input type="radio" name="q5" value="C"> C. Method</label>
+                                    <label class="option-label"><input type="radio" name="q5" value="D"> D. Pathway</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">6. What is coding used for?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q6" value="A"> A. Solve problems</label>
+                                    <label class="option-label"><input type="radio" name="q6" value="B"> B. Social media</label>
+                                    <label class="option-label"><input type="radio" name="q6" value="C"> C. Make websites</label>
+                                    <label class="option-label"><input type="radio" name="q6" value="D"> D. All of the above (Because coding can be used to solve problems, create apps/websites, make games, etc.)</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">7. What is debugging?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q7" value="A"> A. Fixing mistakes</label>
+                                    <label class="option-label"><input type="radio" name="q7" value="B"> B. Finalizing an idea</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">8. True or False: Mistakes in coding are okay.</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q8" value="True"> True</label>
+                                    <label class="option-label"><input type="radio" name="q8" value="False"> False</label>
+                                </div>
+                            </div>
+
+                            <div class="question-block">
+                                <p class="question-text">9. What is the number one rule of coding?</p>
+                                <div class="options-group">
+                                    <label class="option-label"><input type="radio" name="q9" value="A"> A. Find unique ways to solve a problem</label>
+                                    <label class="option-label"><input type="radio" name="q9" value="B"> B. Make robots</label>
+                                </div>
+                            </div>
+
+                            <button type="button" class="submit-btn" onclick="gradeQuiz()">Submit Quiz</button>
+                        </form>
+
+                        <div id="results" class="results-box"></div>
+                    </div>
                 </div>
 
-                <div class="quiz-section">
-                    <h3>Lesson 1 Knowledge Check</h3>
-                    <form id="quiz-form">
-                        
-                        <div class="question-block">
-                            <p class="question-text">1. What is the core idea of coding? [cite: 18]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q1" value="A"> A. Conditionals [cite: 19]</label>
-                                <label class="option-label"><input type="radio" name="q1" value="B"> B. Giving detailed plans to a robot [cite: 20]</label>
-                                <label class="option-label"><input type="radio" name="q1" value="C"> C. Solving equations [cite: 21]</label>
-                                <label class="option-label"><input type="radio" name="q1" value="D"> D. Computing equations [cite: 22]</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">2. True or False: There is only one coding language. [cite: 24]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q2" value="True"> True</label>
-                                <label class="option-label"><input type="radio" name="q2" value="False"> False [cite: 24]</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">3. What is block coding made up of? [cite: 25]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q3" value="A"> A. Lines of code [cite: 26]</label>
-                                <label class="option-label"><input type="radio" name="q3" value="B"> B. Arithmetic code [cite: 27]</label>
-                                <label class="option-label"><input type="radio" name="q3" value="C"> C. Sets of code [cite: 28]</label>
-                                <label class="option-label"><input type="radio" name="q3" value="D"> D. Linear code [cite: 29]</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">4. Do all blocks in block coding have the same purpose? [cite: 31]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q4" value="A"> A. Yes [cite: 32]</label>
-                                <label class="option-label"><input type="radio" name="q4" value="B"> B. No [cite: 33]</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">5. What is it called when a computer performs blocks in order? [cite: 35]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q5" value="A"> A. Sequence [cite: 36]</label>
-                                <label class="option-label"><input type="radio" name="q5" value="B"> B. Order [cite: 37]</label>
-                                <label class="option-label"><input type="radio" name="q5" value="C"> C. Method [cite: 38]</label>
-                                <label class="option-label"><input type="radio" name="q5" value="D"> D. Pathway [cite: 39]</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">6. What is coding used for? [cite: 41]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q6" value="A"> A. Solve problems [cite: 42]</label>
-                                <label class="option-label"><input type="radio" name="q6" value="B"> B. Social media [cite: 43]</label>
-                                <label class="option-label"><input type="radio" name="q6" value="C"> C. Make websites [cite: 44]</label>
-                                <label class="option-label"><input type="radio" name="q6" value="D"> D. All of the above (Because coding can be used to solve problems, create apps/websites, make games, etc.) [cite: 45, 47]</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">7. What is debugging? [cite: 48]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q7" value="A"> A. Fixing mistakes [cite: 49]</label>
-                                <label class="option-label"><input type="radio" name="q7" value="B"> B. Finalizing an idea [cite: 50]</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">8. True or False: Mistakes in coding are okay. [cite: 52]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q8" value="True"> True [cite: 52]</label>
-                                <label class="option-label"><input type="radio" name="q8" value="False"> False</label>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <p class="question-text">9. What is the number one rule of coding? [cite: 53]</p>
-                            <div class="options-group">
-                                <label class="option-label"><input type="radio" name="q9" value="A"> A. Find unique ways to solve a problem [cite: 54]</label>
-                                <label class="option-label"><input type="radio" name="q9" value="B"> B. Make robots [cite: 55]</label>
-                            </div>
-                        </div>
-
-                        <button type="button" class="submit-btn" onclick="gradeQuiz()">Submit Quiz</button>
-                    </form>
-
-                    <div id="results" class="results-box"></div>
+                <div id="next-lesson-lock" class="locked-lesson">
+                    <h3>🔒 Lesson 2: Next Steps</h3>
+                    <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson 1 Quiz to unlock the next level of your training!</p>
                 </div>
-            </div>
 
-            <div id="next-lesson-lock" class="locked-lesson">
-                <h3>🔒 Lesson 2: Next Steps</h3>
-                <p style="margin-top: 0.5rem;">Score 80% or higher on the Lesson 1 Quiz to unlock the next level of your training!</p>
-            </div>
-
-            <div id="next-lesson-content" class="lesson-container" style="display: none;">
-                <div class="lesson-header">LESSON 2: LEVEL UP!</div>
-                <div class="lesson-text">
-                    <p>🎉 <strong>Congratulations!</strong> You passed the first benchmark. Contact your instructors to unlock advanced interactive projects!</p>
+                <div id="next-lesson-content" class="lesson-container" style="display: none;">
+                    <div class="lesson-header">LESSON 2: LEVEL UP!</div>
+                    <div class="lesson-text">
+                        <p>🎉 <strong>Congratulations!</strong> You passed the first benchmark. Contact your instructors to unlock advanced interactive projects!</p>
+                    </div>
                 </div>
+
             </div>
 
         </section>
@@ -454,13 +492,11 @@
             const btnContact = document.getElementById('btn-contact');
             const btnLessons = document.getElementById('btn-lessons');
 
-            // Remove active status everywhere first
             btnContact.classList.remove('active');
             btnLessons.classList.remove('active');
             contactTab.classList.remove('active');
             lessonsTab.classList.remove('active');
 
-            // Toggle visibility based on string evaluation
             if (tabName === 'contact') {
                 contactTab.classList.add('active');
                 btnContact.classList.add('active');
@@ -468,6 +504,12 @@
                 lessonsTab.classList.add('active');
                 btnLessons.classList.add('active');
             }
+        }
+
+        // Activates curriculum and hides landing button
+        function startCurriculum() {
+            document.getElementById('lessons-welcome').style.display = 'none';
+            document.getElementById('lessons-content-area').style.display = 'block';
         }
 
         function gradeQuiz() {
